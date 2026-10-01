@@ -134,8 +134,9 @@ O que a plataforma faz e o repositório não:
 - **A aplicação no Coolify é a imagem Nitro na porta 3000**, e não mais o SPA
   estático da Vercel do site anterior.
 - **O healthcheck no painel precisa apontar para `/health`.**
-- **Secrets do repositório**: `DOCKERHUB_USERNAME`, `DOCKERHUB_TOKEN`,
-  `COOLIFY_TOKEN` e `COOLIFY_UUID_APP` (o uuid da aplicação no painel).
+- **Secrets do repositório**: `DOCKERHUB_USERNAME`, `DOCKERHUB_TOKEN` e
+  `COOLIFY_TOKEN`. O uuid da aplicação fica em `main-deploy-coolify.yml`, e a
+  imagem publicada é `manganga-app`.
 - **`VITE_API_URL`** entra no build: é o endereço da API AdonisJS.
 
 O deploy sai por `POST` no Coolify com `curl -fsS`, e o smoke test espera

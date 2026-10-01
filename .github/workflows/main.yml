@@ -27,4 +27,3 @@ jobs:
     uses: ./.github/workflows/main-deploy-coolify.yml
     secrets:
       COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
-      COOLIFY_UUID_APP: ${{ secrets.COOLIFY_UUID_APP }}
