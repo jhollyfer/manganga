@@ -20,7 +20,7 @@ function RouteComponent(): React.JSX.Element {
   const { redirect } = route.useSearch()
 
   return (
-    <section className="rounded-3xl bg-card p-6 text-card-foreground shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)] sm:p-8">
+    <section className="bg-card p-6 text-card-foreground sm:p-8">
       <p className="eyebrow text-primary">{m.signin_eyebrow()}</p>
       <h1 className="mt-2 text-h3">
         {m.signin_headingStart()} <em>{m.signin_headingEm()}</em>.

@@ -44,7 +44,7 @@ export function NotFoundPage({
       {...props}
     >
       <div className="relative mx-auto flex max-w-3xl flex-col items-center py-24 text-center">
-        <BrandStar className="mb-8 size-16 float-gentle motion-reduce:animate-none" />
+        <BrandStar className="mb-8 size-16" />
         <span className="mb-7 inline-flex items-center rounded-full border border-brand-leaf/40 bg-brand-leaf/10 px-3.5 py-1.5 text-micro font-bold text-brand-leaf">
           {code}
         </span>

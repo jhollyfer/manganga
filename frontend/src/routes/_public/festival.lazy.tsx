@@ -52,14 +52,14 @@ function RouteComponent(): React.JSX.Element {
 
       <nav
         aria-label={m.festival_navLabel()}
-        className="sticky top-16 z-30 border-b-2 border-ink bg-background"
+        className="sticky top-16 z-30 border-b border-foreground bg-background"
       >
         <ul className="container-x rail gap-1 py-2">
           {sections.map((section) => (
             <li key={section.id} className="shrink-0">
               <a
                 href={`#${section.id}`}
-                className="inline-flex h-10 items-center px-3 text-micro font-bold tracking-[0.12em] uppercase hover:text-primary-glow"
+                className="inline-flex h-10 items-center px-3 text-micro font-bold hover:text-primary-glow"
               >
                 {section.label}
               </a>
@@ -90,13 +90,16 @@ function RouteComponent(): React.JSX.Element {
             {FESTIVAL_STATS.map((stat) => (
               <div
                 key={stat.value}
-                className="flex items-baseline gap-4 border-b-2 border-ink/20 py-4 first:border-t-4 first:border-t-ink"
+                className="flex items-baseline gap-4 border-b border-foreground/20 py-4 first:border-t first:border-t-ink"
               >
                 <dt className="sr-only">{localized(stat.label)}</dt>
                 <dd className="w-36 shrink-0 font-display text-h1 text-primary-glow">
                   {stat.value}
                 </dd>
-                <dd aria-hidden="true" className="font-serif text-h4 italic">
+                <dd
+                  aria-hidden="true"
+                  className="font-display font-semibold text-h4"
+                >
                   {localized(stat.label)}
                 </dd>
               </div>
@@ -105,10 +108,7 @@ function RouteComponent(): React.JSX.Element {
         </div>
       </section>
 
-      <section
-        id="como-funciona"
-        className="stage zigzag-y scroll-mt-32 py-20 md:py-28"
-      >
+      <section id="como-funciona" className="band scroll-mt-32 py-20 md:py-28">
         <div className="container-x grid gap-14 lg:grid-cols-2">
           <div>
             <SectionHeading
@@ -125,7 +125,7 @@ function RouteComponent(): React.JSX.Element {
               {ITEM_GROUPS.map((group) => (
                 <li
                   key={group}
-                  className="flex items-center justify-between border-b-2 border-on-stage/30 py-4 first:border-t-2"
+                  className="flex items-center justify-between border-b border-on-stage/30 py-4 first:border-t"
                 >
                   <span className="font-semibold">
                     {ITEM_GROUP_LABELS[group]()}
@@ -133,7 +133,7 @@ function RouteComponent(): React.JSX.Element {
                   <Link
                     to="/boi/itens"
                     search={{ grupo: group }}
-                    className="text-micro font-bold tracking-[0.1em] uppercase underline decoration-2 underline-offset-4 hover:text-primary-glow"
+                    className="text-micro font-bold underline decoration-2 underline-offset-4 hover:text-primary-glow"
                   >
                     {m.festival_howItems({
                       count: ITEMS.filter((item) => item.group === group)
@@ -144,15 +144,15 @@ function RouteComponent(): React.JSX.Element {
               ))}
             </ul>
           </div>
-          <Accordion className="self-start border-t-2 border-on-stage/40">
+          <Accordion className="self-start border-t border-on-stage/40">
             {QUESTIONS.map((question) => (
               <AccordionItem
                 key={question.slug}
                 value={question.slug}
                 id={question.slug}
-                className="scroll-mt-32 border-b-2 border-on-stage/40"
+                className="scroll-mt-32 border-b border-on-stage/40"
               >
-                <AccordionTrigger className="py-5 font-display text-h4 font-extrabold text-on-stage uppercase hover:no-underline">
+                <AccordionTrigger className="py-5 font-display text-h4 font-bold text-on-stage hover:no-underline">
                   {localized(question.question)}
                 </AccordionTrigger>
                 <AccordionContent className="pb-6 text-body leading-relaxed text-on-stage/80">
@@ -278,7 +278,7 @@ function Glossary(): React.JSX.Element {
         </div>
 
         {entries.length === 0 && (
-          <p className="border-2 border-dashed border-ink/30 p-10 font-serif text-h4 text-muted-foreground italic">
+          <p className="border border-dashed border-border p-10 font-display font-semibold text-h4 text-muted-foreground">
             {m.festival_glossaryEmpty()}
           </p>
         )}

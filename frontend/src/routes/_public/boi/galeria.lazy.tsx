@@ -78,7 +78,7 @@ function RouteComponent(): React.JSX.Element {
                   type="button"
                   onClick={() => setOpen(image)}
                   data-tall={index % 3 === 0}
-                  className="group relative block aspect-[4/3] w-full overflow-hidden rounded-sm border-2 border-ink bg-stage text-left shadow-[5px_5px_0_0_var(--ink)] data-[tall=true]:aspect-[3/4] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                  className="group relative block aspect-[4/3] w-full overflow-hidden rounded-sm border border-foreground bg-stage text-left data-[tall=true]:aspect-[3/4] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
                 >
                   <CoverImage
                     cover={image.cover}

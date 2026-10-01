@@ -17,7 +17,7 @@ export function Store(): React.JSX.Element | null {
   return (
     <ProductRail
       id="home-loja"
-      className="border-y-2 border-ink bg-secondary"
+      className="border-t border-border"
       eyebrow={m.home_storeEyebrow()}
       title={
         <>

@@ -54,53 +54,51 @@ function RouteComponent(): React.JSX.Element {
         </div>
       </PageHero>
 
-      <div id="manifesto" className="scroll-mt-16">
-        {THEME.chapters.map((chapter, index) => (
-          <section
-            key={chapter.numeral}
-            data-flip={index % 2 === 1}
-            className="group border-b-2 border-ink/15 py-20 md:py-28"
-          >
-            <div className="container-x grid items-center gap-10 md:grid-cols-2 md:gap-16">
-              <div
-                className={cn(
-                  REVEAL,
-                  'sticker relative aspect-[4/3] -rotate-1 overflow-hidden p-0 md:group-data-[flip=true]:order-2 md:group-data-[flip=true]:rotate-1',
-                )}
-              >
-                <CoverImage cover={chapter.cover} />
-                <span className="absolute bottom-0 left-0 bg-ink px-4 py-1 font-display text-5xl font-black text-background">
-                  {chapter.numeral}
-                </span>
-              </div>
-              <div className={cn(REVEAL, 'delay-100')}>
-                <p className="eyebrow mb-4 text-primary">
+      {/*
+        Os capítulos em duas colunas desencontradas, a da direita descida meia
+        altura, como páginas de revista abertas. A versão anterior alternava
+        foto e texto de um lado e do outro, quatro vezes seguidas, e o
+        zigue-zague repetido é o desenho de página gerada em série.
+      */}
+      <div id="manifesto" className="scroll-mt-16 py-20 md:py-28">
+        <ol className="container-x grid gap-16 md:grid-cols-2 md:gap-x-16 md:gap-y-24">
+          {THEME.chapters.map((chapter, index) => (
+            <li
+              key={chapter.numeral}
+              data-offset={index % 2 === 1}
+              className={cn(REVEAL, 'md:data-[offset=true]:mt-32')}
+            >
+              <article>
+                <div className="aspect-[3/2] overflow-hidden bg-stage">
+                  <CoverImage cover={chapter.cover} />
+                </div>
+                <p className="mt-6 text-small text-muted-foreground">
                   {localized(chapter.eyebrow)}
                 </p>
-                <h2 className="text-h1">{localized(chapter.title)}</h2>
-                <p className="mt-6 text-body-lg leading-relaxed text-muted-foreground">
+                <h2 className="mt-2 text-h2">{localized(chapter.title)}</h2>
+                <p className="mt-4 max-w-[56ch] text-body-lg leading-relaxed text-muted-foreground">
                   {localized(chapter.text)}
                 </p>
-              </div>
-            </div>
-          </section>
-        ))}
+              </article>
+            </li>
+          ))}
+        </ol>
       </div>
 
-      <section className="stage zigzag-top py-24 md:py-32">
+      <section className="band py-24 md:py-32">
         <div className="container-x max-w-5xl">
-          <p className="font-serif text-h2 leading-[1.05] normal-case italic">
+          <p className="font-display font-semibold text-h2 leading-[1.05]">
             “{localized(THEME.closing)}”
           </p>
         </div>
-        <ul className="container-x mt-20 grid border-t-2 border-on-stage/40 md:grid-cols-3">
+        <ul className="container-x mt-20 grid border-t border-on-stage/40 md:grid-cols-3">
           {next.map((item) => (
             <li key={item.to}>
               <Link
                 to={item.to}
-                className="group flex h-full flex-col border-b-2 border-on-stage/40 py-6 md:border-r-2 md:border-b-0 md:px-6 md:first:pl-0 md:last:border-r-0"
+                className="group flex h-full flex-col border-b border-on-stage/40 py-6 md:border-r md:border-b-0 md:px-6 md:first:pl-0 md:last:border-r-0"
               >
-                <span className="font-display text-h3 font-extrabold uppercase transition-colors group-hover:text-primary-glow">
+                <span className="font-display text-h3 font-bold transition-colors group-hover:text-primary-glow">
                   {item.label}
                 </span>
                 <span className="mt-2 flex-1 text-small opacity-75">

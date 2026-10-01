@@ -137,7 +137,7 @@ function RouteComponent(): React.JSX.Element {
       {!members.isError && (
         <div
           className={cn(
-            'overflow-hidden rounded-sm border-2 border-ink bg-card transition-opacity',
+            'overflow-hidden rounded-sm border border-foreground bg-card transition-opacity',
             members.isPlaceholderData && 'opacity-60',
           )}
           aria-busy={members.isFetching}

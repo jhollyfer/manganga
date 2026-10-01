@@ -173,8 +173,8 @@ function OrderPage({ order }: { order: Order }): React.JSX.Element {
         className="md:pb-16"
       >
         <div className="mt-8 flex flex-wrap items-center gap-3">
-          <p className="inline-flex items-center gap-3 rounded-sm border-2 border-on-stage/40 bg-on-stage/[0.06] py-1.5 pr-1.5 pl-5 text-on-stage">
-            <span className="text-micro tracking-[0.14em] text-on-stage/70 uppercase">
+          <p className="inline-flex items-center gap-3 rounded-sm border border-on-stage/40 bg-on-stage/[0.06] py-1.5 pr-1.5 pl-5 text-on-stage">
+            <span className="text-micro text-on-stage/70">
               {m.order_code()}
             </span>
             <span className="font-mono text-body-lg font-semibold tracking-wider">
@@ -224,7 +224,7 @@ function OrderPage({ order }: { order: Order }): React.JSX.Element {
                   className={cn(
                     'inline-flex size-10 items-center justify-center rounded-full bg-secondary text-muted-foreground',
                     done && 'bg-primary text-primary-foreground',
-                    current && 'bg-brand-gold text-stage',
+                    current && 'bg-primary text-primary-foreground',
                   )}
                 >
                   {done && <CheckIcon weight="bold" className="size-5" />}
@@ -263,7 +263,7 @@ function OrderPage({ order }: { order: Order }): React.JSX.Element {
                     <button
                       type="button"
                       onClick={() => void copy(CONTACT.storeEmail)}
-                      className="inline-flex h-10 items-center gap-2 rounded-sm border-2 border-ink px-4 text-small font-semibold"
+                      className="inline-flex h-10 items-center gap-2 rounded-sm border border-foreground px-4 text-small font-semibold"
                     >
                       <CopyIcon aria-hidden="true" className="size-4" />
                       {m.order_copyKey()}
@@ -276,7 +276,7 @@ function OrderPage({ order }: { order: Order }): React.JSX.Element {
                   </p>
                 </div>
               )}
-              <p className="rounded-sm border border-brand-gold/40 bg-brand-gold/10 p-4 text-small leading-relaxed">
+              <p className="border border-border bg-secondary p-4 text-small leading-relaxed">
                 {m.checkout_demoNotice()}
               </p>
               <PillButton

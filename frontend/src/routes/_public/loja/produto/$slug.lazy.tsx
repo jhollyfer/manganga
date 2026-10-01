@@ -87,7 +87,7 @@ function RouteComponent(): React.JSX.Element {
 }
 
 const CHIP =
-  'inline-flex h-11 min-w-11 items-center justify-center rounded-sm border-2 border-ink/30 px-3.5 text-small font-semibold transition-colors hover:border-foreground/45 aria-pressed:border-foreground aria-pressed:bg-foreground aria-pressed:text-background motion-reduce:transition-none'
+  'inline-flex h-11 min-w-11 items-center justify-center rounded-sm border border-border px-3.5 text-small font-semibold transition-colors hover:border-foreground/45 aria-pressed:border-foreground aria-pressed:bg-foreground aria-pressed:text-background motion-reduce:transition-none'
 
 /** Os tamanhos infantis são números; os adultos, letras. */
 function isKidsGrid(product: Product): boolean {
@@ -208,11 +208,8 @@ function ProductPage({ product }: { product: Product }): React.JSX.Element {
                 })}
                 className="p-8 md:p-14"
               />
-              <ProductBadges
-                product={product}
-                className="absolute top-4 left-4"
-              />
             </div>
+            <ProductBadges product={product} className="mt-3" />
             {product.colors.length > 1 && (
               <ul className="mt-4 grid grid-cols-4 gap-3 sm:grid-cols-5">
                 {product.colors.map((each) => (
@@ -485,8 +482,8 @@ function StockHint({
 
   if (level === 'low')
     return (
-      <p className="flex items-center gap-2 text-small font-semibold text-brand-urucum">
-        <span className="size-2 animate-pulse rounded-full bg-brand-urucum motion-reduce:animate-none" />
+      <p className="flex items-center gap-2 text-small font-semibold text-destructive">
+        <span className="size-2 rounded-full bg-destructive" />
         {m.product_lowStock()}
       </p>
     )

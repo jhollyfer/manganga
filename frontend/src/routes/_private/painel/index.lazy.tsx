@@ -294,7 +294,7 @@ function DashboardContent({ data }: { data: Dashboard }): React.JSX.Element {
 
 function StatCard({ stat }: { stat: Stat }): React.JSX.Element {
   return (
-    <Card className="h-full rounded-sm border-t-4 border-t-ink">
+    <Card className="h-full rounded-sm border-t border-t-ink">
       <CardHeader>
         <CardDescription className="text-micro font-bold tracking-[0.1em] uppercase">
           {stat.label}

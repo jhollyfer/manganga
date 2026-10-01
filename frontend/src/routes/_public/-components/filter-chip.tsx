@@ -3,7 +3,9 @@ import * as React from 'react'
 import { cn } from '#/lib/utils'
 
 /**
- * A pílula de filtro: itens por grupo, notícias por editoria, agenda por tipo.
+ * O filtro: itens por grupo, notícias por editoria, agenda por tipo. Texto
+ * com sublinhado no ativo, como as abas de editoria de um jornal, e não a
+ * fileira de pílulas com borda.
  *
  * É um link e não um botão: o filtro mora na URL, e o link é o que deixa abrir
  * o filtro em outra aba e compartilhar o endereço. O ativo ganha
@@ -30,7 +32,7 @@ export function FilterChip({
     {
       'aria-current': current,
       className: cn(
-        'inline-flex h-9 items-center rounded-sm border-2 border-current/25 px-3 text-micro font-bold tracking-[0.08em] uppercase opacity-80 transition-[opacity,border-color] hover:border-current hover:opacity-100 aria-[current=true]:border-ink aria-[current=true]:bg-ink aria-[current=true]:text-background aria-[current=true]:opacity-100',
+        'mr-3 inline-flex h-9 items-center border-b-2 border-transparent text-small font-medium opacity-65 transition-[opacity,border-color] hover:opacity-100 aria-[current=true]:border-current aria-[current=true]:opacity-100',
       ),
     },
     children,

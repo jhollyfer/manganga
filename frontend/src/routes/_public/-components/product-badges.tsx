@@ -7,18 +7,17 @@ import { cn } from '#/lib/utils'
 import { m } from '#/paraglide/messages'
 
 /**
- * A cor de cada selo. Cor de marca e não do tema: o selo fica sobre o
- * desenho do produto, que tem fundo próprio, e precisa ler igual no claro e
- * no escuro.
+ * A cor de cada selo. Texto e não etiqueta colada sobre o desenho do
+ * produto: a etiqueta preta por cima da imagem tampava o produto e repetia em
+ * todo cartão o mesmo enfeite.
  */
 const BADGE_TONES: Record<Badge, string> = {
-  new: 'bg-brand-leaf text-stage',
-  bestseller: 'bg-brand-gold text-stage',
-  season: 'bg-brand-forest text-white',
+  new: 'text-primary',
+  bestseller: 'text-foreground',
+  season: 'text-muted-foreground',
 }
 
-const PILL =
-  'inline-flex h-6 items-center rounded-sm px-2 text-2xs font-bold tracking-[0.08em] uppercase'
+const PILL = 'text-micro font-semibold'
 
 /**
  * Os selos do produto: novidade, mais vendido, coleção da temporada e o
@@ -43,10 +42,10 @@ export function ProductBadges({
   return (
     <ul
       data-slot="product-badges"
-      className={cn('flex flex-wrap gap-1.5', className)}
+      className={cn('flex flex-wrap gap-x-3 gap-y-1', className)}
     >
       {percent > 0 && (
-        <li className={cn(PILL, 'bg-brand-urucum text-white')}>
+        <li className={cn(PILL, 'text-primary')}>
           {m.store_badgeDiscount({ percent })}
         </li>
       )}

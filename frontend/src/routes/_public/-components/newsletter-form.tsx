@@ -70,7 +70,7 @@ export function NewsletterForm({
             {fieldState.error && (
               <FieldError
                 id={errorId('newsletter-email')}
-                className="text-brand-gold"
+                className="text-primary-glow"
               >
                 {fieldState.error.message}
               </FieldError>

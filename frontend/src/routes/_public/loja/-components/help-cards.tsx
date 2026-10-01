@@ -27,7 +27,7 @@ export function HelpContact({
     <div
       data-slot="help-contact"
       className={cn(
-        'stage grid gap-6 rounded-sm p-8 md:grid-cols-[1fr_auto] md:items-end md:p-10',
+        'band grid gap-6 p-8 md:grid-cols-[1fr_auto] md:items-end md:p-10',
         className,
       )}
     >
@@ -75,7 +75,7 @@ export function HelpCards({
     <ul
       data-slot="help-cards"
       className={cn(
-        'grid border-t-4 border-ink sm:grid-cols-2 lg:grid-cols-3',
+        'grid border-t border-foreground sm:grid-cols-2 lg:grid-cols-3',
         className,
       )}
     >
@@ -89,13 +89,13 @@ export function HelpCards({
             <Link
               to="/loja/ajuda/$slug"
               params={{ slug: topic.slug }}
-              className="group flex h-full flex-col gap-3 border-b-2 border-ink/20 py-6 sm:pr-6"
+              className="group flex h-full flex-col gap-3 border-b border-foreground/20 py-6 sm:pr-6"
             >
-              <span className="font-serif text-h3 leading-none text-primary-glow italic">
+              <span className="font-display font-semibold text-h3 leading-none text-primary-glow">
                 {index + 1}.
               </span>
               <span className="grid gap-1.5">
-                <span className="font-display text-h4 font-extrabold uppercase transition-colors group-hover:text-primary-glow">
+                <span className="font-display text-h4 font-bold transition-colors group-hover:text-primary-glow">
                   {localized(topic.title)}
                 </span>
                 <span className="text-small leading-relaxed text-muted-foreground">

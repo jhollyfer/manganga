@@ -1,67 +1,70 @@
 import type * as React from 'react'
 import { Link } from '@tanstack/react-router'
-import { ArrowDownIcon } from '@phosphor-icons/react'
 
-import { CoverImage } from '../artwork'
 import { PillButton } from '../pill-button'
 import { REVEAL } from '../reveal'
-import { Festoon } from './festoon'
-import { Stamp } from './stamp'
-import { useNow } from './use-now'
-import { daysUntil, formatLongDate } from '#/lib/dates'
-import type { AgendaEvent } from '#/lib/events'
 import { localized } from '#/lib/i18n'
-import { FOUNDED_YEAR, SEASON_YEAR, SITE_TITLE } from '#/lib/site'
+import { PHOTOS } from '#/lib/media'
+import { SEASON_YEAR, SITE_TITLE } from '#/lib/site'
 import { THEME } from '#/lib/theme'
 import { cn } from '#/lib/utils'
 import { m } from '#/paraglide/messages'
 
 /**
- * O hero: o cartaz do arraial inteiro.
+ * O hero: a foto da festa de ponta a ponta, e o nome do boi sobre ela.
  *
- * O nome do boi de ponta a ponta em letra de cartaz, o tema escrito à mão por
- * baixo, a foto do Besouro colada como recorte torto com o carimbo de
- * "desde 1992" no canto, e a contagem como canhoto de ingresso. A primeira
- * versão era foto esmaecida em tela cheia com texto por cima, que é o hero de
- * qualquer site; um cartaz se monta por colagem.
+ * A versão cartaz montava uma colagem (bandeirinhas desenhadas, selo girando,
+ * recorte torto com sombra deslocada, canhoto de ingresso) e cada peça era um
+ * enfeite a mais disputando o olho. Aqui a foto é o cartaz: o texto encosta
+ * no canto de baixo, sobre um véu escuro que só existe para a letra ler, e o
+ * hero tem quatro coisas e não mais (rótulo, título, frase, ações). A
+ * contagem para o festival foi para a agenda, que é onde ela informa.
  *
- * A foto entra com `fetchPriority="high"` porque é ela que o LCP mede junto
- * com o título.
+ * A foto entra com `fetchPriority="high"` porque é ela que o LCP mede.
  */
-export function Hero({
-  festival,
-}: {
-  festival: AgendaEvent | undefined
-}): React.JSX.Element {
+export function Hero(): React.JSX.Element {
   return (
     <section
       data-slot="home-hero"
-      className="stage zigzag-bottom relative overflow-hidden"
+      className="stage relative isolate flex min-h-[100dvh] items-end overflow-hidden"
     >
-      <Festoon className="pointer-events-none absolute inset-x-0 top-16 h-16 md:h-24" />
+      <img
+        src={PHOTOS.festival}
+        alt=""
+        fetchPriority="high"
+        decoding="async"
+        className="absolute inset-0 -z-20 size-full object-cover object-[50%_35%]"
+      />
+      {/* Véu de leitura: escurece só a faixa de baixo, onde o texto mora. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgb(8_20_13/0.92)_0%,rgb(8_20_13/0.55)_45%,rgb(8_20_13/0.1)_75%)]"
+      />
 
-      <div className="container-x grid gap-12 pt-36 pb-16 md:pt-44 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:pb-24">
-        <div>
-          <p className={cn(REVEAL, 'eyebrow mb-5 text-primary-glow')}>
-            {m.home_heroEyebrow({ year: SEASON_YEAR })}
-          </p>
-          <h1 className={cn(REVEAL, 'delay-75')}>
-            <span className="block text-display-xl text-on-stage">
-              {SITE_TITLE}
-            </span>
-            <em className="mt-3 block text-h2 leading-[0.95]">
-              {localized(THEME.title)}
-            </em>
-          </h1>
+      <div className="container-x w-full pt-28 pb-14 md:pb-20">
+        <p className={cn(REVEAL, 'eyebrow mb-4 text-on-stage/80')}>
+          {m.home_heroEyebrow({ year: SEASON_YEAR })}
+        </p>
+        <h1 className={cn(REVEAL, 'delay-75')}>
+          <span className="block text-display-xl uppercase [font-stretch:68%]">
+            {SITE_TITLE}
+          </span>
+          <em className="mt-2 block pb-1 text-h2 leading-[1.05] font-semibold">
+            {localized(THEME.title)}
+          </em>
+        </h1>
+        <div className="mt-8 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <p
             className={cn(
               REVEAL,
-              'mt-8 max-w-[46ch] text-lead leading-snug text-on-stage/85 delay-150',
+              'max-w-[44ch] text-body-lg leading-relaxed text-on-stage/85 delay-150',
             )}
           >
             {m.home_heroLead()}
           </p>
-          <div className={cn(REVEAL, 'mt-10 flex flex-wrap gap-4 delay-200')}>
+          <div
+            className={cn(REVEAL, 'flex shrink-0 flex-wrap gap-3 delay-200')}
+          >
             <PillButton
               tone="light"
               render={<Link to="/tema">{m.home_heroThemeCta()}</Link>}
@@ -72,64 +75,7 @@ export function Hero({
             />
           </div>
         </div>
-
-        <div
-          className={cn(REVEAL, 'relative mx-auto w-full max-w-md delay-150')}
-        >
-          <div className="aspect-[4/5] -rotate-2 overflow-hidden rounded-sm border-2 border-on-stage shadow-[10px_10px_0_0_var(--primary-glow)]">
-            <CoverImage
-              cover={{ kind: 'photo', photo: 'festival', focus: '50% 30%' }}
-              alt={m.home_manifestoImageAlt()}
-              loading="eager"
-            />
-          </div>
-          <Stamp
-            text={m.home_heroStamp({ year: FOUNDED_YEAR })}
-            className="absolute -top-10 -left-8 size-32 md:size-36"
-          />
-          {festival && <Countdown festival={festival} />}
-        </div>
       </div>
-
-      <a
-        href="#manifesto"
-        className="container-x mb-6 flex items-center gap-2 text-micro font-bold tracking-[0.14em] text-on-stage/75 uppercase hover:text-primary-glow"
-      >
-        <ArrowDownIcon className="size-4" weight="bold" />
-        {m.home_heroScroll()}
-      </a>
     </section>
-  )
-}
-
-/**
- * A contagem até a próxima noite de festival, como canhoto de ingresso preso
- * na foto.
- *
- * A data vem do servidor e aparece já no primeiro quadro; o número de dias
- * depende do relógio de quem lê e entra depois da hidratação (`useNow`).
- */
-function Countdown({ festival }: { festival: AgendaEvent }): React.JSX.Element {
-  const now = useNow()
-
-  return (
-    <Link
-      to="/agenda/$slug"
-      params={{ slug: festival.slug }}
-      className="absolute -right-3 -bottom-8 flex rotate-3 items-stretch rounded-sm bg-brand-urucum text-brand-bone shadow-[6px_6px_0_0_var(--ink)] transition-transform hover:rotate-0 md:-right-8"
-    >
-      <span className="flex items-center border-r-2 border-dashed border-brand-bone/60 px-4 font-display text-6xl leading-none font-black tabular-nums">
-        {now !== null && daysUntil(festival.startsAt, now)}
-        {now === null && '…'}
-      </span>
-      <span className="flex flex-col justify-center px-4 py-3 leading-tight">
-        <span className="text-micro font-bold tracking-[0.12em] uppercase">
-          {m.home_countdownLabel()}
-        </span>
-        <span className="mt-0.5 font-serif text-body-lg italic">
-          {formatLongDate(festival.startsAt)}
-        </span>
-      </span>
-    </Link>
   )
 }

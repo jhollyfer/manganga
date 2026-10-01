@@ -5,9 +5,9 @@ import { REVEAL } from './reveal'
 import { cn } from '#/lib/utils'
 
 type SectionHeadingProps = {
-  /** O rótulo pequeno acima do título, em caixa alta. */
+  /** O rótulo pequeno acima do título. Usar pouco: no máximo uma seção em três. */
   eyebrow?: string
-  /** O título em letra de cartaz. A palavra que canta vai em `<em>`. */
+  /** O título. A palavra que canta vai em `<em>`. */
   title: React.ReactNode
   lead?: React.ReactNode
   /** O "ver todos" à direita, já montado como link. */
@@ -18,7 +18,7 @@ type SectionHeadingProps = {
 }
 
 /**
- * O topo de uma seção: rótulo, título de cartaz, frase de apoio e o "ver
+ * O topo de uma seção: título, frase de apoio logo abaixo dele e o "ver
  * todos" encostado na base do título.
  *
  * Não é obrigatório. Seção que se explica pelo próprio conteúdo (a lista de
@@ -37,15 +37,17 @@ export function SectionHeading({
     <div
       data-slot="section-heading"
       className={cn(
-        'mb-10 flex flex-col gap-6 md:mb-14 md:flex-row md:items-end md:justify-between',
+        'mb-10 flex flex-col gap-6 md:mb-16 md:flex-row md:items-end md:justify-between',
         className,
       )}
     >
       <div className={cn(REVEAL, 'max-w-4xl')}>
-        {eyebrow && <p className="eyebrow mb-3 text-primary-glow">{eyebrow}</p>}
+        {eyebrow && (
+          <p className="eyebrow mb-3 text-muted-foreground">{eyebrow}</p>
+        )}
         <Tag className="text-h2">{title}</Tag>
         {lead && (
-          <p className="mt-5 max-w-[54ch] text-body-lg leading-relaxed opacity-80">
+          <p className="mt-5 max-w-[58ch] text-body-lg leading-relaxed opacity-75">
             {lead}
           </p>
         )}
@@ -55,7 +57,7 @@ export function SectionHeading({
   )
 }
 
-/** O "ver todos" do canto da seção: texto em caixa alta com a seta. */
+/** O "ver todos" do canto da seção: link sublinhado com a seta. */
 export function SectionAction({
   children,
   render,
@@ -64,7 +66,7 @@ export function SectionAction({
   render: React.ReactElement<{ className?: string; children?: React.ReactNode }>
 }): React.JSX.Element {
   const className =
-    'group inline-flex shrink-0 items-center gap-2 border-b-2 border-current pb-1 text-micro font-bold tracking-[0.12em] uppercase transition-colors hover:text-primary-glow'
+    'group inline-flex shrink-0 items-center gap-2 border-b border-current pb-0.5 text-small font-semibold transition-colors hover:text-primary-glow'
 
   return React.cloneElement(
     render,

@@ -22,16 +22,16 @@ import { getLocale } from '#/paraglide/runtime'
 import appCss from '../styles.css?url'
 
 /**
- * Os woff2 do título e do corpo, com o endereço de hash que o build gera. O
- * título é o maior elemento da primeira tela, e chegar na fonte reserva faz
- * o hero pular de altura quando a fonte de cartaz carrega.
+ * O woff2 da Archivo, com o endereço de hash que o build gera. Um arquivo só
+ * serve título e corpo (a largura e o peso são eixos da mesma fonte), e o
+ * título é o maior elemento da primeira tela: chegar na fonte reserva faz o
+ * hero pular de altura quando a Archivo carrega.
  *
  * `?url` e não um caminho escrito à mão: um literal quebraria no próximo build
  * que mudasse o hash, e quebraria em silêncio - um `preload` que aponta para
  * 404 não estraga a página, só deixa de adiantar o download.
  */
-import displayLatin from '@fontsource-variable/big-shoulders-display/files/big-shoulders-display-latin-wght-normal.woff2?url'
-import bodyLatin from '@fontsource-variable/hanken-grotesk/files/hanken-grotesk-latin-wght-normal.woff2?url'
+import archivoLatin from '@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2?url'
 
 import type { QueryClient } from '@tanstack/react-query'
 
@@ -82,14 +82,7 @@ export const Route = createRootRouteWithContext<RouterContext>()({
         rel: 'preload',
         as: 'font',
         type: 'font/woff2',
-        href: displayLatin,
-        crossOrigin: 'anonymous',
-      },
-      {
-        rel: 'preload',
-        as: 'font',
-        type: 'font/woff2',
-        href: bodyLatin,
+        href: archivoLatin,
         crossOrigin: 'anonymous',
       },
       { rel: 'stylesheet', href: appCss },

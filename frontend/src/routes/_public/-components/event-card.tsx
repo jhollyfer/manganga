@@ -1,5 +1,6 @@
 import type * as React from 'react'
 import { Link } from '@tanstack/react-router'
+import { ArrowRightIcon } from '@phosphor-icons/react'
 
 import {
   dayOfMonth,
@@ -13,13 +14,13 @@ import { EVENT_TYPE_LABELS } from '#/lib/labels'
 import { cn } from '#/lib/utils'
 
 /**
- * Uma linha da programação, como no cartaz do arraial: o dia grande à
- * esquerda, o tipo, o título e onde e quando, separados por um fio de tinta.
+ * Uma linha da programação: a data, o título, onde e quando, separados por um
+ * fio fino.
  *
- * Linha e não cartão: a programação de festa se lê de cima para baixo, como
- * lista, e uma grade de cartões iguais é o desenho que qualquer gerador de
- * site entrega. A cor vem de quem envolve, então a mesma linha serve no papel
- * e na folha verde.
+ * Linha e não cartão: a programação se lê de cima para baixo, como lista, e
+ * uma grade de cartões iguais é o desenho que qualquer gerador de site
+ * entrega. A cor vem de quem envolve, então a mesma linha serve no papel e na
+ * faixa verde.
  *
  * A linha inteira é o link, com o título como nome acessível.
  */
@@ -37,30 +38,36 @@ export function EventCard({
       data-slot="event-card"
       data-type={event.type}
       className={cn(
-        'group grid grid-cols-[4.5rem_1fr] gap-5 border-t-2 border-current py-5',
+        'group grid grid-cols-[4.5rem_1fr_auto] items-start gap-5 border-t border-border py-6 md:grid-cols-[7rem_1fr_14rem_auto] md:items-baseline md:gap-8',
         className,
       )}
     >
-      <div className="leading-none">
-        <span className="block font-display text-6xl font-black group-data-[type=festival]:text-primary-glow">
+      <p className="leading-none">
+        <span className="font-display text-5xl font-bold tabular-nums [font-stretch:72%] group-data-[type=festival]:text-primary-glow">
           {dayOfMonth(event.startsAt)}
-        </span>
-        <span className="mt-1 block text-micro font-bold tracking-[0.14em] uppercase opacity-75">
+        </span>{' '}
+        <span className="mt-1 block text-small opacity-70 md:inline">
           {formatMonthShort(event.startsAt)}
         </span>
-      </div>
+      </p>
       <div className="min-w-0">
-        <p className="eyebrow mb-1.5 text-primary-glow">
-          {EVENT_TYPE_LABELS[event.type]()}
-        </p>
         <h3 className="text-h4 transition-colors group-hover:text-primary-glow">
           {localized(event.title)}
         </h3>
-        <p className="mt-2 text-small opacity-75">
-          <span className="capitalize">{formatWeekday(event.startsAt)}</span>,{' '}
-          {formatTime(event.startsAt)} · {event.location}
+        <p className="mt-1 text-small opacity-70">
+          {EVENT_TYPE_LABELS[event.type]()}
         </p>
       </div>
+      <p className="col-span-2 col-start-2 text-small opacity-70 md:col-span-1 md:col-start-auto">
+        <span className="capitalize">{formatWeekday(event.startsAt)}</span>,{' '}
+        {formatTime(event.startsAt)}
+        <br />
+        {event.location}
+      </p>
+      <ArrowRightIcon
+        aria-hidden="true"
+        className="col-start-3 row-start-1 size-5 self-center opacity-50 transition-transform duration-300 group-hover:translate-x-1 group-hover:opacity-100 motion-reduce:transition-none md:col-start-4"
+      />
     </Link>
   )
 }

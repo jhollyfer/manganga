@@ -9,8 +9,9 @@ import type { NewsArticle } from '#/lib/news'
 import { cn } from '#/lib/utils'
 
 /**
- * A notícia como recorte de jornal: a capa com borda de tinta, a editoria
- * carimbada no canto, a data e o título em letra de cartaz.
+ * A notícia como chamada de jornal: a capa, a editoria e a data numa linha
+ * pequena embaixo dela, e o título. A editoria fica fora da foto: etiqueta
+ * colada sobre imagem é enfeite que tampa a imagem.
  *
  * `featured` é o destaque da listagem, com a capa mais larga e o título
  * maior. O título é o nome acessível do link, e a capa é decorativa.
@@ -32,21 +33,16 @@ export function NewsCard({
       data-featured={featured}
       className={cn('group flex flex-col', className)}
     >
-      <div className="relative aspect-[4/3] overflow-hidden rounded-sm border-2 border-ink bg-stage group-data-[featured=true]:aspect-[16/10]">
+      <div className="relative aspect-[4/3] overflow-hidden bg-stage group-data-[featured=true]:aspect-[16/10]">
         <CoverImage
           cover={article.cover}
           className="transition-transform duration-700 ease-out-expo group-hover:scale-[1.03] motion-reduce:transition-none"
         />
-        <span className="absolute top-0 left-0 bg-ink px-2.5 py-1 text-micro font-bold tracking-[0.1em] text-background uppercase">
-          {NEWS_CATEGORY_LABELS[article.category]()}
-        </span>
       </div>
-      <time
-        dateTime={article.date}
-        className="mt-4 text-micro font-bold tracking-[0.1em] uppercase opacity-60"
-      >
-        {formatShortDate(article.date)}
-      </time>
+      <p className="mt-4 text-micro opacity-65">
+        {NEWS_CATEGORY_LABELS[article.category]()} ·{' '}
+        <time dateTime={article.date}>{formatShortDate(article.date)}</time>
+      </p>
       <h3 className="mt-1.5 text-h4 transition-colors group-hover:text-primary-glow group-data-[featured=true]:text-h3">
         {localized(article.title)}
       </h3>

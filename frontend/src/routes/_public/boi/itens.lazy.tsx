@@ -60,14 +60,14 @@ function RouteComponent(): React.JSX.Element {
             ))}
           </nav>
 
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="border-b border-border">
             {items.map((item, index) => (
               <li
                 key={item.slug}
                 className={REVEAL}
                 style={{ animationDelay: `${(index % 6) * STAGGER}ms` }}
               >
-                <ItemCard item={item} className="bg-surface" />
+                <ItemCard item={item} />
               </li>
             ))}
           </ul>

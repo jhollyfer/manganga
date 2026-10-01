@@ -62,7 +62,7 @@ function RouteComponent(): React.JSX.Element {
         crumbs={[{ label: m.nav_groupFestival() }]}
       >
         {festival && (
-          <div className="sticker mt-10 flex max-w-2xl rotate-[-1deg] flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between">
+          <div className="sticker mt-10 flex max-w-2xl flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className="eyebrow mb-1 text-primary-glow">
                 {m.agenda_featuredEyebrow()}
@@ -145,7 +145,7 @@ function RouteComponent(): React.JSX.Element {
           </div>
 
           {events.length === 0 && (
-            <div className="flex flex-col items-start border-2 border-dashed border-ink/30 px-6 py-12">
+            <div className="flex flex-col items-start border border-dashed border-border px-6 py-12">
               <CalendarXIcon className="size-10 text-muted-foreground" />
               <p className="mt-4 text-body-lg font-semibold">
                 {m.agenda_emptyTitle()}

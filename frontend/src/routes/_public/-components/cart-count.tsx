@@ -26,7 +26,7 @@ export function CartCount({
     <span
       data-slot="cart-count"
       className={cn(
-        'inline-flex min-w-5 items-center justify-center rounded-full bg-brand-urucum px-1 text-2xs leading-5 font-bold text-white tabular-nums',
+        'inline-flex min-w-5 items-center justify-center rounded-full bg-primary px-1 text-2xs leading-5 font-bold text-primary-foreground tabular-nums',
         className,
       )}
     >

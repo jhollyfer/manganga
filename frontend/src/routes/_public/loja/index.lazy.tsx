@@ -256,10 +256,10 @@ function SeasonBanner(): React.JSX.Element {
               art={FEATURED.art}
               color={FEATURED.colors.at(0)?.hex ?? '#f7f6f0'}
               label={localized(FEATURED.name)}
-              className="relative bg-transparent float-gentle motion-reduce:animate-none"
+              className="relative bg-transparent"
             />
             <p className="absolute right-0 bottom-6 rounded-sm bg-on-stage px-4 py-3 text-stage shadow-xl md:right-4">
-              <span className="block text-micro font-semibold tracking-[0.12em] uppercase opacity-70">
+              <span className="block text-micro font-semibold opacity-70">
                 {localized(FEATURED.name)}
               </span>
               <span className="text-h4 font-semibold tabular-nums">

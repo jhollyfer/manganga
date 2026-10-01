@@ -54,7 +54,7 @@ function RouteComponent(): React.JSX.Element {
         </div>
       </section>
 
-      <section className="stage zigzag-y py-20 md:py-28">
+      <section className="band py-20 md:py-28">
         <div className="container-x grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <SectionHeading
             eyebrow={m.visit_tipsEyebrow()}
@@ -65,14 +65,14 @@ function RouteComponent(): React.JSX.Element {
             }
             lead={m.visit_tipsLead()}
           />
-          <ul className="border-t-2 border-on-stage/40">
+          <ul className="border-t border-on-stage/40">
             {tips.map((tip, index) => (
               <li
                 key={tip.title}
-                className={`${REVEAL} grid grid-cols-[3rem_1fr] gap-4 border-b-2 border-on-stage/40 py-6`}
+                className={`${REVEAL} grid grid-cols-[3rem_1fr] gap-4 border-b border-on-stage/40 py-6`}
                 style={{ animationDelay: `${index * STAGGER}ms` }}
               >
-                <span className="font-serif text-h3 leading-none text-primary-glow italic">
+                <span className="font-display font-semibold text-h3 leading-none text-primary-glow">
                   {index + 1}.
                 </span>
                 <div>

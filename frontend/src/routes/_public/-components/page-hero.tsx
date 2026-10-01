@@ -17,7 +17,7 @@ type PageHeroProps = {
   title: React.ReactNode
   eyebrow?: string
   lead?: React.ReactNode
-  /** A imagem colada ao lado do título, como recorte no cartaz. */
+  /** A foto larga embaixo do título. */
   cover?: Cover
   /** A trilha até aqui, sem a home (que entra sozinha) e sem a própria página. */
   crumbs?: ReadonlyArray<Crumb>
@@ -27,13 +27,12 @@ type PageHeroProps = {
 }
 
 /**
- * O topo das páginas internas: papel, título de cartaz e o recorte colado.
+ * O topo das páginas internas: a trilha, o título, a frase de apoio e, quando
+ * a página tem imagem, a foto larga logo abaixo, como a abertura de matéria.
  *
- * A primeira versão punha a foto esmaecida atrás do título, sob um gradiente
- * escuro, que é o topo de página de todo site montado no automático. Aqui a
- * imagem é um recorte com borda de tinta, levemente torto, ao lado do texto,
- * e o título ocupa a largura que quiser. A folha verde fica para a home e
- * para as faixas de destaque, e a página interna abre clara.
+ * A versão cartaz colava a imagem ao lado do título como recorte torto com
+ * borda de tinta; antes dela, a foto esmaecida atrás do título sob gradiente.
+ * Os dois eram enfeite. Aqui a foto vem inteira, reta, na largura do texto.
  *
  * A trilha é desenhada aqui e o JSON-LD dela fica com a rota, que sabe o
  * endereço absoluto no idioma da requisição.
@@ -51,35 +50,35 @@ export function PageHero({
     <section
       data-slot="page-hero"
       className={cn(
-        'relative overflow-hidden border-b-2 border-ink pt-28 pb-14 md:pt-36 md:pb-20',
+        'relative border-b border-border pt-28 pb-14 md:pt-36 md:pb-20',
         className,
       )}
     >
-      <div className="container-x grid items-end gap-10 lg:grid-cols-[1fr_auto]">
-        <div className="min-w-0">
-          <nav aria-label={m.a11y_breadcrumb()} className={cn(REVEAL, 'mb-6')}>
-            <ol className="flex flex-wrap items-center gap-2 text-micro font-bold tracking-[0.1em] text-muted-foreground uppercase">
-              <li>
-                <Link to="/" className="hover:text-primary-glow">
-                  {m.nav_home()}
-                </Link>
+      <div className="container-x">
+        <nav aria-label={m.a11y_breadcrumb()} className={cn(REVEAL, 'mb-8')}>
+          <ol className="flex flex-wrap items-center gap-2 text-small text-muted-foreground">
+            <li>
+              <Link to="/" className="hover:text-foreground">
+                {m.nav_home()}
+              </Link>
+            </li>
+            {crumbs.map((crumb) => (
+              <li key={crumb.label} className="flex items-center gap-2">
+                <span aria-hidden="true">/</span>
+                {crumb.to && (
+                  <Link to={crumb.to} className="hover:text-foreground">
+                    {crumb.label}
+                  </Link>
+                )}
+                {!crumb.to && <span>{crumb.label}</span>}
               </li>
-              {crumbs.map((crumb) => (
-                <li key={crumb.label} className="flex items-center gap-2">
-                  <span aria-hidden="true">/</span>
-                  {crumb.to && (
-                    <Link to={crumb.to} className="hover:text-primary-glow">
-                      {crumb.label}
-                    </Link>
-                  )}
-                  {!crumb.to && <span>{crumb.label}</span>}
-                </li>
-              ))}
-            </ol>
-          </nav>
+            ))}
+          </ol>
+        </nav>
 
+        <div className="max-w-5xl">
           {eyebrow && (
-            <p className={cn(REVEAL, 'eyebrow mb-4 text-primary-glow')}>
+            <p className={cn(REVEAL, 'eyebrow mb-4 text-muted-foreground')}>
               {eyebrow}
             </p>
           )}
@@ -88,7 +87,7 @@ export function PageHero({
             <p
               className={cn(
                 REVEAL,
-                'mt-6 max-w-[56ch] text-lead leading-snug text-muted-foreground delay-150',
+                'mt-6 max-w-[58ch] text-lead leading-snug text-muted-foreground delay-150',
               )}
             >
               {lead}
@@ -102,7 +101,7 @@ export function PageHero({
             aria-hidden="true"
             className={cn(
               REVEAL,
-              'sticker hidden aspect-[4/5] w-72 rotate-2 overflow-hidden p-0 delay-200 lg:block xl:w-80',
+              'mt-12 aspect-[16/9] overflow-hidden bg-stage delay-200 md:mt-16 md:aspect-[21/9]',
             )}
           >
             <CoverImage cover={cover} loading="eager" />

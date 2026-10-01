@@ -20,7 +20,7 @@ export type ListingPatch = Partial<Omit<ListingSearch, 'q'>>
 
 /** O chip de filtro: tamanho e "só promoções". */
 const CHIP =
-  'inline-flex h-9 min-w-9 items-center justify-center gap-1.5 rounded-sm border-2 border-ink/30 px-3 text-small font-medium text-foreground/80 transition-colors hover:border-foreground/40 aria-pressed:border-foreground aria-pressed:bg-foreground aria-pressed:text-background motion-reduce:transition-none'
+  'inline-flex h-9 min-w-9 items-center justify-center gap-1.5 rounded-sm border border-border px-3 text-small font-medium text-foreground/80 transition-colors hover:border-foreground/40 aria-pressed:border-foreground aria-pressed:bg-foreground aria-pressed:text-background motion-reduce:transition-none'
 
 /** Liga o filtro, ou desliga quando o clique é no que já está ligado. */
 function toggle<T>(current: T | undefined, value: T): T | undefined {
@@ -91,11 +91,11 @@ export function Listing({
           aria-expanded={open}
           aria-controls={panelId}
           onClick={() => setOpen(!open)}
-          className="group/filters inline-flex h-11 w-fit items-center gap-2 rounded-sm border-2 border-ink/30 px-4 text-small font-semibold lg:hidden"
+          className="group/filters inline-flex h-11 w-fit items-center gap-2 rounded-sm border border-border px-4 text-small font-semibold lg:hidden"
         >
           <FunnelSimpleIcon aria-hidden="true" className="size-4" />
           {m.store_filters()}
-          {filtered && <span className="size-2 rounded-full bg-brand-urucum" />}
+          {filtered && <span className="size-2 rounded-full bg-primary" />}
           <CaretDownIcon
             aria-hidden="true"
             className="size-4 transition-transform group-aria-expanded/filters:rotate-180 motion-reduce:transition-none"
@@ -210,7 +210,7 @@ export function Listing({
                 if (value === 'relevance') sort = undefined
                 onChange({ sort })
               }}
-              className="h-10 rounded-sm border-2 border-ink/70 bg-surface px-4 text-small font-medium text-foreground outline-none focus-visible:border-primary/60 focus-visible:ring-2 focus-visible:ring-ring/20"
+              className="h-10 rounded-sm border border-foreground/70 bg-surface px-4 text-small font-medium text-foreground outline-none focus-visible:border-primary/60 focus-visible:ring-2 focus-visible:ring-ring/20"
             >
               {SORTS.map((sort) => (
                 <option key={sort} value={sort}>
@@ -232,7 +232,7 @@ export function Listing({
                 <button
                   type="button"
                   onClick={onClear}
-                  className="inline-flex h-11 items-center rounded-sm border-2 border-ink bg-primary px-5 text-micro font-bold uppercase text-primary-foreground"
+                  className="inline-flex h-11 items-center rounded-sm border border-foreground bg-primary px-5 text-micro font-bold text-primary-foreground"
                 >
                   {m.store_clearFilters()}
                 </button>

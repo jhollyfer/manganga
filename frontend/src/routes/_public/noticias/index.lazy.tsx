@@ -137,7 +137,7 @@ function RouteComponent(): React.JSX.Element {
           </div>
 
           {articles.length === 0 && (
-            <div className="flex flex-col items-start border-2 border-dashed border-ink/30 px-6 py-12">
+            <div className="flex flex-col items-start border border-dashed border-border px-6 py-12">
               <NewspaperIcon className="size-10 text-muted-foreground" />
               <p className="mt-4 text-body-lg font-semibold">
                 {m.news_emptyTitle()}

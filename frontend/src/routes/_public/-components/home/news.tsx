@@ -28,7 +28,6 @@ export function News({
     <section data-slot="home-news" className="py-24 md:py-32">
       <div className="container-x">
         <SectionHeading
-          eyebrow={m.home_newsEyebrow()}
           title={
             <>
               {m.home_newsTitleLead()} <em>{m.home_newsTitleEm()}</em>
@@ -40,13 +39,13 @@ export function News({
             </SectionAction>
           }
         />
-        <div className="grid gap-12 border-t-4 border-ink pt-10 lg:grid-cols-[1.5fr_1fr]">
+        <div className="grid gap-12 border-t border-foreground pt-10 lg:grid-cols-[1.5fr_1fr]">
           <NewsCard article={featured} featured className={REVEAL} />
-          <ul className="grid content-start lg:border-l-2 lg:border-ink/15 lg:pl-10">
+          <ul className="grid content-start lg:border-l lg:border-border lg:pl-10">
             {rest.map((article, index) => (
               <li
                 key={article.slug}
-                className={`${REVEAL} border-b-2 border-ink/15 py-6 first:pt-0`}
+                className={`${REVEAL} border-b border-border py-6 first:pt-0`}
                 style={{ animationDelay: `${(index + 1) * STAGGER}ms` }}
               >
                 <Link
@@ -54,7 +53,7 @@ export function News({
                   params={{ slug: article.slug }}
                   className="group block"
                 >
-                  <p className="text-micro font-bold tracking-[0.1em] text-primary-glow uppercase">
+                  <p className="text-micro text-muted-foreground">
                     {NEWS_CATEGORY_LABELS[article.category]()} ·{' '}
                     <time dateTime={article.date}>
                       {formatShortDate(article.date)}

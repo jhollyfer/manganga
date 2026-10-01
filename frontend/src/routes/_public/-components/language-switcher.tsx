@@ -41,14 +41,14 @@ export function LanguageSwitcher(): React.JSX.Element {
       <DropdownMenuTrigger
         data-slot="language-switcher"
         aria-label={m.a11y_changeLanguage()}
-        className="inline-flex min-h-9 items-center gap-1.5 rounded-sm border-2 border-ink px-2.5 py-1 text-micro font-bold tracking-[0.12em] text-foreground uppercase transition-colors hover:bg-ink hover:text-background focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring motion-reduce:transition-none"
+        className="inline-flex min-h-9 items-center gap-1.5 rounded-sm border border-foreground px-2.5 py-1 text-micro font-bold text-foreground transition-colors hover:bg-ink hover:text-background focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring motion-reduce:transition-none"
       >
         {current.label}
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="end"
         sideOffset={10}
-        className="min-w-[180px] rounded-sm border-2 border-ink bg-background p-1 shadow-[4px_4px_0_0_var(--ink)]"
+        className="min-w-[180px] rounded-sm border border-foreground bg-background p-1"
       >
         {OPTIONS.map((option) => (
           <DropdownMenuItem
@@ -58,9 +58,7 @@ export function LanguageSwitcher(): React.JSX.Element {
             className="flex cursor-pointer items-center justify-between rounded-sm px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground data-[current=true]:bg-foreground/5 data-[current=true]:text-foreground"
           >
             <span>{option.native}</span>
-            <span className="text-[10px] font-medium tracking-[0.22em] uppercase">
-              {option.label}
-            </span>
+            <span className="text-[10px] font-medium">{option.label}</span>
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

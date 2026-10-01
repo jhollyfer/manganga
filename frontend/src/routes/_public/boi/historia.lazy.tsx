@@ -38,7 +38,7 @@ function RouteComponent(): React.JSX.Element {
       <section className="py-24 md:py-32">
         <div className="container-x grid gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div
-            className={`${REVEAL} sticker relative mx-auto aspect-square w-full max-w-md -rotate-2 overflow-hidden p-0`}
+            className={`${REVEAL} sticker relative mx-auto aspect-square w-full max-w-md overflow-hidden p-0`}
           >
             <CoverImage
               cover={{ kind: 'photo', photo: 'festival', focus: '50% 35%' }}
@@ -58,7 +58,7 @@ function RouteComponent(): React.JSX.Element {
               <p>{m.history_founderP2()}</p>
               <p>{m.history_founderP3()}</p>
             </div>
-            <p className="mt-10 border-t-2 border-ink pt-5 font-serif text-h4 text-primary italic">
+            <p className="mt-10 border-t border-foreground pt-5 font-display font-semibold text-h4 text-primary">
               {m.history_statFounded()} {FOUNDED_YEAR}. {years}{' '}
               {m.history_statYears()}.
             </p>
@@ -66,7 +66,7 @@ function RouteComponent(): React.JSX.Element {
         </div>
       </section>
 
-      <section className="stage zigzag-y py-24 md:py-32">
+      <section className="band py-24 md:py-32">
         <div className="container-x">
           <SectionHeading
             eyebrow={m.history_timelineEyebrow()}
@@ -77,18 +77,14 @@ function RouteComponent(): React.JSX.Element {
               </>
             }
           />
-          <ol className="relative grid gap-12 border-l-2 border-on-stage/40 pl-8 md:pl-12">
+          <ol className="relative grid gap-12 border-l border-on-stage/30 pl-8 md:pl-12">
             {MILESTONES.map((milestone, index) => (
               <li
                 key={localized(milestone.when)}
                 className={`${REVEAL} relative`}
                 style={{ animationDelay: `${index * STAGGER}ms` }}
               >
-                <span
-                  aria-hidden="true"
-                  className="absolute top-4 -left-[calc(2rem+9px)] size-4 rotate-45 bg-primary-glow md:-left-[calc(3rem+9px)]"
-                />
-                <p className="font-display text-h1 text-primary-glow">
+                <p className="font-display text-h2 text-primary-glow tabular-nums">
                   {localized(milestone.when)}
                 </p>
                 <h3 className="mt-2 font-sans text-h4 font-bold normal-case">
@@ -114,14 +110,14 @@ function RouteComponent(): React.JSX.Element {
               </>
             }
           />
-          <ol className="grid border-t-4 border-ink md:grid-cols-3">
+          <ol className="grid border-t border-foreground md:grid-cols-3">
             {PILLARS.map((pillar, index) => (
               <li
                 key={pillar.key}
-                className={`${REVEAL} border-b-2 border-ink/20 py-8 md:border-r-2 md:border-b-0 md:px-8 md:first:pl-0 md:last:border-r-0`}
+                className={`${REVEAL} border-b border-foreground/20 py-8 md:border-r md:border-b-0 md:px-8 md:first:pl-0 md:last:border-r-0`}
                 style={{ animationDelay: `${index * STAGGER}ms` }}
               >
-                <span className="font-serif text-h2 leading-none text-primary-glow italic">
+                <span className="font-display font-semibold text-h2 leading-none text-primary-glow">
                   {index + 1}.
                 </span>
                 <h3 className="mt-4 text-h3">{localized(pillar.title)}</h3>

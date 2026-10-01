@@ -46,14 +46,14 @@ export function ProductCard({
           color={main?.hex ?? '#f7f6f0'}
           className="p-6 transition-transform duration-700 ease-out-expo group-hover:scale-[1.04] motion-reduce:transition-none"
         />
-        <ProductBadges product={product} className="absolute top-3 left-3" />
         {soldOut && (
-          <span className="absolute inset-x-3 bottom-3 rounded-sm bg-ink py-1.5 text-center text-micro font-semibold text-on-stage">
+          <span className="absolute inset-x-3 bottom-3 bg-foreground py-1.5 text-center text-micro font-semibold text-background">
             {m.product_soldOut()}
           </span>
         )}
       </div>
       <div className="flex flex-1 flex-col gap-2 pt-4">
+        <ProductBadges product={product} />
         {product.colors.length > 1 && (
           <ul aria-hidden="true" className="flex gap-1.5">
             {product.colors.map((color) => (

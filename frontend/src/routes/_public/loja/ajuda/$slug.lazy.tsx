@@ -87,7 +87,7 @@ function RouteComponent(): React.JSX.Element {
                     params={{ slug: each.slug }}
                     className="flex items-center gap-3 rounded-sm px-3 py-2.5 text-small font-medium text-foreground/75 transition-colors hover:text-primary-glow data-[status=active]:bg-ink data-[status=active]:text-background motion-reduce:transition-none"
                   >
-                    <span className="font-serif text-body-lg text-primary-glow italic">
+                    <span className="font-display font-semibold text-body-lg text-primary-glow">
                       {index + 1}.
                     </span>
                     {localized(each.title)}

@@ -62,7 +62,7 @@ function RouteComponent(): React.JSX.Element {
               <li key={subject}>
                 <a
                   href={`mailto:${SUBJECT_EMAILS[subject]}`}
-                  className="group flex h-full flex-col border-t-4 border-ink pt-5 transition-colors hover:text-primary-glow"
+                  className="group flex h-full flex-col border-t border-foreground pt-5 transition-colors hover:text-primary-glow"
                 >
                   <EnvelopeSimpleIcon className="size-7 text-primary" />
                   <span className="mt-5 text-body-lg font-semibold">

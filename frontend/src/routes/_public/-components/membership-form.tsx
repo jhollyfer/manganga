@@ -99,7 +99,7 @@ export function MembershipForm(): React.JSX.Element {
     return (
       <div
         role="status"
-        className="flex flex-col items-start gap-4 border-t-4 border-primary pt-6"
+        className="flex flex-col items-start gap-4 border-t border-primary pt-6"
       >
         <CheckCircleIcon weight="fill" className="size-10 text-primary" />
         <h3 className="text-h3">{m.member_successTitle()}</h3>
@@ -153,7 +153,7 @@ export function MembershipForm(): React.JSX.Element {
                 {MEMBERSHIP_CATEGORIES.map((category) => (
                   <label
                     key={category}
-                    className="flex cursor-pointer gap-3 rounded-sm border-2 border-ink/30 bg-surface p-4 has-[[data-checked]]:border-ink has-[[data-checked]]:shadow-[3px_3px_0_0_var(--ink)]"
+                    className="flex cursor-pointer gap-3 rounded-sm border border-border bg-surface p-4 has-[[data-checked]]:border-foreground has-[[data-checked]]:shadow-[3px_3px_0_0_var(--ink)]"
                   >
                     <RadioGroupItem value={category} className="mt-0.5" />
                     <span>
@@ -225,7 +225,7 @@ export function MembershipForm(): React.JSX.Element {
           <Field>
             <p
               role="alert"
-              className="border-2 border-destructive p-4 text-small text-destructive"
+              className="border border-destructive p-4 text-small text-destructive"
             >
               {m.member_errorGeneral()}
             </p>

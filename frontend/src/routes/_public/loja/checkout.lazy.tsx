@@ -308,7 +308,7 @@ function CheckoutForm({ cart }: { cart: Cart }): React.JSX.Element {
       className="grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,1fr)_24rem] lg:gap-14"
     >
       <div className="grid content-start gap-6">
-        <p className="flex items-start gap-3 rounded-sm border border-brand-gold/40 bg-brand-gold/10 p-4 text-small leading-relaxed">
+        <p className="flex items-start gap-3 border border-border bg-secondary p-4 text-small leading-relaxed">
           <InfoIcon
             aria-hidden="true"
             className="mt-0.5 size-5 shrink-0 text-warning"

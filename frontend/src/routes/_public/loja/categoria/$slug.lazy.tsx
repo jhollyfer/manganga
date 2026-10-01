@@ -97,7 +97,7 @@ function RouteComponent(): React.JSX.Element {
           emptyAction={
             <Link
               to="/loja"
-              className="inline-flex h-11 items-center rounded-sm border-2 border-ink px-5 text-small font-semibold"
+              className="inline-flex h-11 items-center rounded-sm border border-foreground px-5 text-small font-semibold"
             >
               {m.store_backToStore()}
             </Link>

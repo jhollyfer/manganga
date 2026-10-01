@@ -82,25 +82,32 @@ node scripts/generate-icons.mjs  # favicon.ico, apple-touch e ícones do manifes
 
 ## Design
 
-Cartaz de arraial impresso em serigrafia, refeito com a skill
-`frontend-design` para sair do desenho genérico. A régua de estrutura continua
-o site do Boi Caprichoso (`boicaprichoso.com`); a pele é do Mangangá.
+Revista, com a foto no centro. O cartaz de arraial (selo girando,
+bandeirinhas desenhadas, recorte torto com sombra deslocada, serifa itálica
+no meio do título) foi aposentado por parecer feito no automático, com as
+skills `design-taste-frontend`, `redesign-existing-projects` e
+`high-end-visual-design` (em `.claude/skills/`) como régua.
 
-- **Papel e tinta**: fundo cor de osso com grão fixo por cima, tintas chapadas
-  (verde-mata, urucum, ouro, a estrela verde do Boi Besouro). Sem vidro, sem
-  brilho, sem gradiente, sem preto ou branco puros.
-- **Letra**: títulos em Big Shoulders Display, caixa alta e condensada; a
-  palavra que canta vai em `<em>`, que vira Instrument Serif itálico na tinta
-  de destaque (`--primary-glow`: urucum no papel, ouro na folha verde). Corpo
-  em Hanken Grotesk. Título não termina em ponto.
-- **Peças**: `sticker` (borda de tinta e sombra deslocada sem desfoque),
-  `zigzag-top`, `zigzag-bottom` e `zigzag-y` (o picotado entre faixas),
-  `stage` (a folha verde que alterna com o papel), `eyebrow` sem o fio
-  decorativo. Botão é retângulo que afunda no clique (`PillButton`).
-- **O que não volta**: cabeçalho de vidro, grade de cartões iguais com ícone em
-  quadradinho, bloco "número grande e rótulo pequeno", cantos muito
-  arredondados, palco quase preto com acento neon. Lista numerada, coluna de
-  jornal e colagem levemente torta no lugar deles.
+- **Papel, tinta e um verde**: papel branco frio (`#eff1ec`), tinta
+  quase-preta esverdeada, e um acento só, o verde da estrela
+  (`--primary-glow`). Nada de creme cor de osso, urucum ou ouro na
+  interface: a cor vem das fotos.
+- **Letra**: uma família, Archivo. Título com `font-stretch: 78%`, peso 780,
+  caixa normal; caixa alta só no nome do boi. A palavra que canta vai em
+  `<em>`, que é o itálico da mesma letra no verde. Título não termina em
+  ponto.
+- **Peças**: fio fino (`border`, nunca `border-2`), cantos retos, botão
+  chapado que afunda um pixel (`PillButton`), `band` para a faixa de
+  destaque das páginas internas, `stage` (verde escuro) só no convite final
+  da home, no rodapé e na entrada do painel. `eyebrow` em caixa normal e no
+  máximo uma a cada três seções.
+- **Imagem**: foto de verdade, reta e larga. Registro sem foto usa um recorte
+  duotone das fotos do acervo (`artwork.tsx`), nunca ilustração desenhada em
+  SVG. Nada colado por cima da foto além do véu de leitura do hero.
+- **O que não volta**: etiqueta em caixa alta espaçada sobre todo título,
+  grade de cartões iguais, bloco "número grande e rótulo pequeno", letreiro
+  correndo, enfeite girando ou balançando, selo sobre imagem, zigue-zague de
+  layout repetido seção após seção, travessão.
 
 Os tokens estão em `src/styles.css`.
 

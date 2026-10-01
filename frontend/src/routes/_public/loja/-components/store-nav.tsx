@@ -12,7 +12,7 @@ import { m } from '#/paraglide/messages'
  * então a vitrine marcada é a da URL, sem estado nenhum aqui.
  */
 const NAV_LINK =
-  'inline-flex h-9 shrink-0 items-center whitespace-nowrap rounded-sm px-3 text-micro font-bold tracking-[0.08em] uppercase text-foreground/70 transition-colors hover:bg-secondary hover:text-foreground data-[status=active]:bg-foreground data-[status=active]:text-background motion-reduce:transition-none'
+  'inline-flex h-9 shrink-0 items-center whitespace-nowrap rounded-sm px-3 text-micro font-bold text-foreground/70 transition-colors hover:bg-secondary hover:text-foreground data-[status=active]:bg-foreground data-[status=active]:text-background motion-reduce:transition-none'
 
 /**
  * A barra da loja: as vitrines e a busca, presa logo abaixo do cabeçalho.
@@ -45,7 +45,7 @@ export function StoreNav({
   return (
     <div
       data-slot="store-nav"
-      className="sticky top-16 z-30 border-b-2 border-ink bg-background"
+      className="sticky top-16 z-30 border-b border-foreground bg-background"
     >
       <div className="container-x flex flex-col gap-3 py-3 lg:flex-row lg:items-center lg:justify-between">
         <nav aria-label={m.store_navLabel()} className="-mx-4 min-w-0 lg:mx-0">
@@ -75,7 +75,7 @@ export function StoreNav({
                 to="/loja/busca"
                 search={{ sale: true }}
                 activeOptions={{ includeSearch: true }}
-                className={cn(NAV_LINK, 'text-brand-urucum')}
+                className={cn(NAV_LINK, 'text-primary')}
               >
                 {m.store_navSale()}
               </Link>
@@ -110,7 +110,7 @@ export function StoreNav({
             onChange={(event) => setQuery(event.target.value)}
             placeholder={m.store_searchPlaceholder()}
             maxLength={80}
-            className="h-10 w-full rounded-sm border-2 border-ink/70 bg-surface pr-4 pl-10 text-small text-foreground outline-none placeholder:text-foreground/45 focus-visible:border-primary/60 focus-visible:ring-2 focus-visible:ring-ring/20"
+            className="h-10 w-full rounded-sm border border-foreground/70 bg-surface pr-4 pl-10 text-small text-foreground outline-none placeholder:text-foreground/45 focus-visible:border-primary/60 focus-visible:ring-2 focus-visible:ring-ring/20"
           />
         </form>
       </div>

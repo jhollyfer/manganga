@@ -30,14 +30,6 @@ describe('movimento respeita quem pediu menos movimento', () => {
     expect(REVEAL).toContain('motion-reduce:animate-none')
   })
 
-  it('o cordão de bandeirinhas para quieto', () => {
-    // O balanço é decoração: quem pediu menos movimento não pode ver o festão
-    // balançando no topo de toda visita.
-    expect(read(components, 'home', 'festoon.tsx')).toContain(
-      'motion-reduce:animate-none',
-    )
-  })
-
   it('nenhuma peça da vitrine carrega o motion', () => {
     // A animação é CSS. Um import do `motion/react` traria a biblioteca
     // inteira para o bundle da home.
@@ -47,7 +39,6 @@ describe('movimento respeita quem pediu menos movimento', () => {
       'page-hero.tsx',
       'artwork.tsx',
       'home/hero.tsx',
-      'home/festoon.tsx',
       'home/manifesto.tsx',
       'home/agenda.tsx',
       'home/items.tsx',
@@ -55,8 +46,6 @@ describe('movimento respeita quem pediu menos movimento', () => {
       'home/news.tsx',
       'home/history.tsx',
       'home/festival.tsx',
-      'home/gallery.tsx',
-      'home/sponsors.tsx',
       'home/join.tsx',
     ])
       expect(read(components, file)).not.toContain('motion/react')

@@ -27,7 +27,7 @@ function SizeTable({
         {caption}
       </caption>
       <thead>
-        <tr className="border-b border-border text-micro tracking-[0.08em] text-muted-foreground uppercase">
+        <tr className="border-b border-border text-micro text-muted-foreground">
           <th scope="col" className="py-2 pr-4 font-semibold">
             {m.product_sizeColumn()}
           </th>

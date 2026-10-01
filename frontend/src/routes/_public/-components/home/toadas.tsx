@@ -1,7 +1,7 @@
 import type * as React from 'react'
 import { Link } from '@tanstack/react-router'
 
-import { Artwork } from '../artwork'
+import { CoverImage } from '../artwork'
 import { REVEAL } from '../reveal'
 import { SectionAction } from '../section-heading'
 import { localized } from '#/lib/i18n'
@@ -10,8 +10,8 @@ import { cn } from '#/lib/utils'
 import { m } from '#/paraglide/messages'
 
 /**
- * As toadas da temporada como contracapa de disco: a capa colada de um lado,
- * a lista de faixas do outro, numerada e com fio pontilhado entre elas.
+ * As toadas da temporada como encarte de disco: a capa (a foto do boi, em
+ * quadrado) com o nome do álbum embaixo, e as faixas numeradas ao lado.
  *
  * Sem player embutido: o iframe do Spotify que o Caprichoso usa pesa mais que
  * a home inteira num 4G do Alto Solimões. A lista leva à página de toadas,
@@ -23,55 +23,52 @@ export function Toadas(): React.JSX.Element | null {
 
   return (
     <section data-slot="home-toadas" className="bg-secondary py-24 md:py-32">
-      <div className="container-x grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-        <div className={cn(REVEAL, 'lg:sticky lg:top-28')}>
-          <p className="eyebrow mb-3 text-primary-glow">
-            {m.home_toadasEyebrow()}
+      <div className="container-x grid gap-14 lg:grid-cols-12 lg:items-start">
+        <figure className={cn(REVEAL, 'lg:sticky lg:top-28 lg:col-span-5')}>
+          <div className="aspect-square overflow-hidden bg-stage">
+            <CoverImage
+              cover={{ kind: 'photo', photo: 'boi', focus: '50% 30%' }}
+              alt={m.home_manifestoImageAlt()}
+            />
+          </div>
+          <figcaption className="mt-4 flex items-baseline justify-between gap-4">
+            <span className="font-display text-h4 font-bold [font-stretch:85%]">
+              {album.title}
+            </span>
+            <span className="text-small text-muted-foreground tabular-nums">
+              {album.year}
+            </span>
+          </figcaption>
+          <p className="mt-2 max-w-[44ch] text-small text-muted-foreground">
+            {localized(album.description)}
           </p>
+        </figure>
+
+        <div className={cn(REVEAL, 'delay-100 lg:col-span-6 lg:col-start-7')}>
           <h2 className="text-h2">
             {m.home_toadasTitleLead()} <em>{m.home_toadasTitleEm()}</em>
           </h2>
-          <div className="sticker mt-10 aspect-square w-64 rotate-[-4deg] overflow-hidden p-0 md:w-72">
-            <div className="relative size-full">
-              <Artwork art="estrela" />
-              <p className="absolute inset-x-4 bottom-4 font-display text-3xl leading-[0.9] font-extrabold text-brand-bone uppercase">
-                {album.title}
-              </p>
-              <p className="absolute top-3 right-4 font-display text-xl font-bold text-brand-gold">
-                {album.year}
-              </p>
-            </div>
-          </div>
-          <p className="mt-8 max-w-[40ch] text-small text-muted-foreground">
-            {localized(album.description)}
-          </p>
-        </div>
-
-        <div className={cn(REVEAL, 'delay-100')}>
-          <ol>
+          <ol className="mt-10 border-b border-foreground/20">
             {album.tracks.map((track) => (
-              <li
-                key={track.number}
-                className="border-b-2 border-dashed border-ink/25"
-              >
+              <li key={track.number} className="border-t border-foreground/20">
                 <Link
                   to="/boi/toadas"
                   hash={`faixa-${track.number}`}
-                  className="group grid grid-cols-[3rem_1fr_auto] items-baseline gap-4 py-5"
+                  className="group grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-4 py-4"
                 >
-                  <span className="font-display text-3xl font-black text-primary-glow tabular-nums">
+                  <span className="text-small text-muted-foreground tabular-nums">
                     {String(track.number).padStart(2, '0')}
                   </span>
                   <span className="min-w-0">
-                    <span className="block font-display text-h4 font-extrabold uppercase transition-colors group-hover:text-primary-glow">
+                    <span className="block text-body-lg font-semibold transition-colors group-hover:text-primary-glow">
                       {track.title}
                     </span>
-                    <span className="mt-1 block text-small text-muted-foreground">
+                    <span className="block text-small text-muted-foreground">
                       {track.composers}
                     </span>
                   </span>
                   {track.lyrics.length > 0 && (
-                    <span className="font-serif text-body text-primary italic">
+                    <span className="text-micro text-muted-foreground">
                       {m.home_toadasHasLyrics()}
                     </span>
                   )}

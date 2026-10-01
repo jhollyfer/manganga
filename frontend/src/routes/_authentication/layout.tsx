@@ -42,10 +42,8 @@ function RouteComponent(): React.JSX.Element {
 
       <main className="flex flex-1 flex-col items-center justify-center px-4 pt-4 pb-16">
         <div className="mb-8 flex flex-col items-center gap-3 text-center">
-          <BrandStar className="size-14 float-gentle motion-reduce:animate-none" />
-          <span className="font-display text-h4 font-extrabold uppercase">
-            {SITE_TITLE}
-          </span>
+          <BrandStar className="size-14" />
+          <span className="font-display text-h4 font-bold">{SITE_TITLE}</span>
         </div>
         <div className="w-full max-w-md">
           <Outlet />

@@ -95,15 +95,17 @@ function RouteComponent(): React.JSX.Element | null {
 
           <div className="grid gap-12 lg:grid-cols-[320px_1fr]">
             <div className="lg:sticky lg:top-24 lg:self-start">
-              <div className="sticker relative aspect-square -rotate-2 overflow-hidden p-0">
+              <div className="aspect-square overflow-hidden bg-stage">
                 <Artwork art="estrela" />
-                <span className="absolute top-0 left-0 bg-brand-gold px-3 py-1 font-display text-xl font-black text-ink">
+              </div>
+              <p className="mt-4 flex items-baseline justify-between gap-4">
+                <span className="font-display text-h4 font-bold">
+                  {album.title}
+                </span>
+                <span className="text-small text-muted-foreground tabular-nums">
                   {album.year}
                 </span>
-                <p className="absolute inset-x-5 bottom-5 font-display text-h3 font-extrabold text-brand-bone uppercase">
-                  {album.title}
-                </p>
-              </div>
+              </p>
               <p className="mt-5 text-small leading-relaxed text-muted-foreground">
                 {localized(album.description)}
               </p>
@@ -116,21 +118,21 @@ function RouteComponent(): React.JSX.Element | null {
               <h2 className="mb-6 text-h2">
                 {m.toadas_lyricsTitle({ year: album.year })}
               </h2>
-              <Accordion className="border-t-4 border-ink">
+              <Accordion className="border-t border-foreground">
                 {album.tracks.map((track) => (
                   <AccordionItem
                     key={track.number}
                     value={String(track.number)}
                     id={`faixa-${track.number}`}
-                    className="scroll-mt-24 border-b-2 border-ink/20"
+                    className="scroll-mt-24 border-b border-foreground/20"
                   >
                     <AccordionTrigger className="py-4 hover:no-underline">
                       <span className="flex items-center gap-4 text-left">
-                        <span className="w-10 font-display text-3xl font-black text-primary-glow tabular-nums">
+                        <span className="w-10 font-display text-3xl font-bold text-primary-glow tabular-nums">
                           {track.number}
                         </span>
                         <span>
-                          <span className="block font-display text-h4 font-extrabold uppercase">
+                          <span className="block font-display text-h4 font-bold">
                             {track.title}
                           </span>
                           <span className="block text-micro text-muted-foreground">
@@ -141,7 +143,7 @@ function RouteComponent(): React.JSX.Element | null {
                     </AccordionTrigger>
                     <AccordionContent className="pb-8 pl-14">
                       {track.lyrics.length > 0 && (
-                        <div className="grid gap-6 font-serif text-h4 leading-snug whitespace-pre-line text-foreground italic">
+                        <div className="grid gap-6 font-display font-semibold text-h4 leading-snug whitespace-pre-line text-foreground">
                           {track.lyrics.map((stanza) => (
                             <p key={stanza}>{stanza}</p>
                           ))}
