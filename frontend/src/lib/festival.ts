@@ -293,10 +293,9 @@ export const GLOSSARY: ReadonlyArray<GlossaryTerm> = [
   {
     term: 'Vazante',
     definition: {
-      'pt-BR':
-        'O tempo em que o rio baixa, depois da cheia. Tema do Mangangá em 2026.',
-      en: 'The season when the river drops, after the flood. Mangangá theme in 2026.',
-      es: 'La época en que el río baja, después de la crecida. Tema del Mangangá en 2026.',
+      'pt-BR': 'O tempo em que o rio baixa, depois da cheia.',
+      en: 'The season when the river drops, after the flood.',
+      es: 'La época en que el río baja, después de la crecida.',
     },
   },
 ]

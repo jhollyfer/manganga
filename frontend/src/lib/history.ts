@@ -76,15 +76,15 @@ export const MILESTONES: ReadonlyArray<Milestone> = [
   {
     when: { 'pt-BR': '2026', en: '2026', es: '2026' },
     title: {
-      'pt-BR': 'O boi volta ao alagado',
-      en: 'The boi returns to the floodplain',
-      es: 'El boi vuelve al anegado',
+      'pt-BR': 'Utopia Ancestral',
+      en: 'Ancestral Utopia',
+      es: 'Utopía Ancestral',
     },
     text: {
       'pt-BR':
-        'O tema da temporada canta as origens do boi e a gente que vive com a cheia do rio.',
-      en: 'The season theme sings the roots of the boi and the people who live with the river flood.',
-      es: 'El tema de la temporada canta los orígenes del boi y la gente que vive con la crecida del río.',
+        'O tema da temporada volta aos povos do Alto Solimões e às origens do boi para sonhar o futuro.',
+      en: 'The season theme goes back to the peoples of the Upper Solimões and the roots of the boi to dream the future.',
+      es: 'El tema de la temporada vuelve a los pueblos del Alto Solimões y a los orígenes del boi para soñar el futuro.',
     },
   },
 ]

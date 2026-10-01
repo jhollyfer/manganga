@@ -99,16 +99,16 @@ export const NEWS: ReadonlyArray<NewsArticle> = [
     },
     excerpt: {
       'pt-BR':
-        'O boi branco da estrela verde vai cantar o alagado, a cheia e a gente que vive com o rio.',
-      en: 'The white boi with the green star will sing the floodplain, the rising river and the people who live with it.',
-      es: 'El boi blanco de la estrella verde cantará el anegado, la crecida y la gente que vive con el río.',
+        'Utopia Ancestral: o boi branco da estrela verde volta aos que vieram antes para sonhar o que vem depois.',
+      en: 'Ancestral Utopia: the white boi with the green star goes back to those who came before to dream what comes next.',
+      es: 'Utopía Ancestral: el boi blanco de la estrella verde vuelve a los que vinieron antes para soñar lo que viene después.',
     },
     body: [
       {
         'pt-BR':
-          'Em noite de festa no curral, a diretoria apresentou o tema da temporada 2026. A proposta volta às origens do Boi Besouro, o boi do alagado, e conta a vida dos pescadores e agricultores que enfrentam todo ano a cheia do Javarizinho.',
-        en: 'On a party night at the curral, the board unveiled the 2026 season theme. It goes back to the roots of Boi Besouro, the boi of the floodplain, and tells the life of the fishermen and farmers who face the Javarizinho flood every year.',
-        es: 'En noche de fiesta en el corral, la directiva presentó el tema de la temporada 2026. La propuesta vuelve a los orígenes del Boi Besouro, el boi del anegado, y cuenta la vida de los pescadores y agricultores que enfrentan cada año la crecida del Javarizinho.',
+          'Em noite de festa no curral, a diretoria apresentou o tema da temporada 2026, Utopia Ancestral. A proposta volta aos povos do Alto Solimões e às origens do Boi Besouro, o boi do alagado, para contar o mundo que os mais velhos conheceram e que a arena quer ver de novo.',
+        en: 'On a party night at the curral, the board unveiled the 2026 season theme, Ancestral Utopia. It goes back to the peoples of the Upper Solimões and the roots of Boi Besouro, the boi of the floodplain, to tell the world the elders knew and the arena wants to see again.',
+        es: 'En noche de fiesta en el corral, la directiva presentó el tema de la temporada 2026, Utopía Ancestral. La propuesta vuelve a los pueblos del Alto Solimões y a los orígenes del Boi Besouro, el boi del anegado, para contar el mundo que los mayores conocieron y que la arena quiere ver de nuevo.',
       },
       {
         'pt-BR':

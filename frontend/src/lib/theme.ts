@@ -6,8 +6,9 @@ import type { Cover } from './media'
  *
  * Um registro só, e não uma lista por ano: a página `/tema` é sempre a da
  * temporada em cartaz, como a `/tema-2026` do Caprichoso, sem o ano no
- * endereço para o link não envelhecer. O texto é de exemplo, escrito a partir
- * da origem do Boi Besouro, o boi do alagado.
+ * endereço para o link não envelhecer. O tema de 2026 é "Utopia Ancestral";
+ * o texto dos capítulos é de exemplo, escrito a partir da origem do Boi
+ * Besouro, e a diretoria revisa antes de valer como manifesto oficial.
  */
 export type ThemeChapter = {
   numeral: string
@@ -19,34 +20,38 @@ export type ThemeChapter = {
 
 export const THEME = {
   title: {
-    'pt-BR': 'O boi que canta o alagado',
-    en: 'The boi that sings the floodplain',
-    es: 'El boi que canta el anegado',
+    'pt-BR': 'Utopia Ancestral',
+    en: 'Ancestral Utopia',
+    es: 'Utopía Ancestral',
   },
   lead: {
     'pt-BR':
-      'Quando o Javarizinho sobe, o Coaban não para. O Mangangá volta às suas origens para cantar a cheia, a vazante e a gente que aprendeu a viver com o rio.',
-    en: 'When the Javarizinho rises, Coaban does not stop. Mangangá goes back to its roots to sing the flood, the ebb and the people who learned to live with the river.',
-    es: 'Cuando el Javarizinho sube, el Coaban no se detiene. El Mangangá vuelve a sus orígenes para cantar la crecida, la bajante y la gente que aprendió a vivir con el río.',
+      'O Mangangá olha para trás para sonhar para a frente: os povos do Alto Solimões, o pescador do beco 50 e o mundo que a floresta ainda promete.',
+    en: 'Mangangá looks back in order to dream forward: the peoples of the Upper Solimões, the fisherman of alley 50 and the world the forest still promises.',
+    es: 'El Mangangá mira hacia atrás para soñar hacia adelante: los pueblos del Alto Solimões, el pescador del callejón 50 y el mundo que la selva todavía promete.',
   },
   closing: {
     'pt-BR':
-      'O boi branco da estrela verde é o pescador que não larga o remo. É a casa levantada no esteio, o forró na rua seca, a galera que volta todo ano. É o alagado cantando.',
-    en: 'The white boi with the green star is the fisherman who never lets go of the oar. It is the house raised on stilts, the forró on the dry street, the crowd that returns every year. It is the floodplain singing.',
-    es: 'El boi blanco de la estrella verde es el pescador que no suelta el remo. Es la casa levantada sobre pilotes, el forró en la calle seca, la hinchada que vuelve cada año. Es el anegado cantando.',
+      'A utopia não está no futuro. Ela foi vivida antes de nós, na beira deste rio, e o boi branco da estrela verde volta à arena para lembrar o caminho.',
+    en: 'Utopia is not in the future. It was lived before us, on the bank of this river, and the white boi with the green star returns to the arena to remember the way.',
+    es: 'La utopía no está en el futuro. Fue vivida antes que nosotros, a la orilla de este río, y el boi blanco de la estrella verde vuelve a la arena para recordar el camino.',
   },
   chapters: [
     {
       numeral: 'I',
       eyebrow: { 'pt-BR': 'Capítulo I', en: 'Chapter I', es: 'Capítulo I' },
-      title: { 'pt-BR': 'A cheia', en: 'The flood', es: 'La crecida' },
+      title: {
+        'pt-BR': 'Os que vieram antes',
+        en: 'Those who came before',
+        es: 'Los que vinieron antes',
+      },
       text: {
         'pt-BR':
-          'Todo ano a água chega sem pedir licença. Entra no quintal, sobe a escada, cobre a rua. E todo ano o bairro responde do mesmo jeito: levanta o assoalho, amarra a canoa na porta e segue a vida em cima do rio.',
-        en: 'Every year the water arrives without asking. It enters the yard, climbs the stairs, covers the street. And every year the neighbourhood answers the same way: raises the floor, ties the canoe to the door and goes on living above the river.',
-        es: 'Cada año el agua llega sin pedir permiso. Entra al patio, sube la escalera, cubre la calle. Y cada año el barrio responde igual: levanta el piso, amarra la canoa a la puerta y sigue la vida sobre el río.',
+          'Antes da cidade, o Javari e o Solimões já tinham dono: os povos que pescavam, plantavam e contavam a origem do mundo nestas águas. A arena começa por eles.',
+        en: 'Before the town, the Javari and the Solimões already had keepers: the peoples who fished, planted and told the origin of the world in these waters. The arena begins with them.',
+        es: 'Antes de la ciudad, el Yavarí y el Solimões ya tenían dueños: los pueblos que pescaban, sembraban y contaban el origen del mundo en estas aguas. La arena empieza por ellos.',
       },
-      cover: { kind: 'art', art: 'rio' },
+      cover: { kind: 'art', art: 'mata' },
     },
     {
       numeral: 'II',
@@ -74,21 +79,25 @@ export const THEME = {
       },
       text: {
         'pt-BR':
-          'Branco como a espuma do rio, com uma estrela verde na testa. O Besouro carrega na pele a resistência de quem planta na várzea e colhe antes da água voltar.',
-        en: 'White as river foam, with a green star on the forehead. The Besouro carries on its skin the resilience of those who plant on the floodplain and harvest before the water returns.',
-        es: 'Blanco como la espuma del río, con una estrella verde en la frente. El Besouro lleva en la piel la resistencia de quien siembra en la várzea y cosecha antes de que el agua vuelva.',
+          'Branco como a espuma do rio, com uma estrela verde na testa. O Besouro carrega na pele a herança de quem planta na várzea e colhe antes da água voltar.',
+        en: 'White as river foam, with a green star on the forehead. The Besouro carries on its skin the heritage of those who plant on the floodplain and harvest before the water returns.',
+        es: 'Blanco como la espuma del río, con una estrella verde en la frente. El Besouro lleva en la piel la herencia de quien siembra en la várzea y cosecha antes de que el agua vuelva.',
       },
       cover: { kind: 'art', art: 'estrela' },
     },
     {
       numeral: 'IV',
       eyebrow: { 'pt-BR': 'Capítulo IV', en: 'Chapter IV', es: 'Capítulo IV' },
-      title: { 'pt-BR': 'A vazante', en: 'The ebb', es: 'La bajante' },
+      title: {
+        'pt-BR': 'O mundo prometido',
+        en: 'The promised world',
+        es: 'El mundo prometido',
+      },
       text: {
         'pt-BR':
-          'Quando a água baixa, a rua seca vira terreiro. É a hora do forró, da lamparina acesa e do boi saindo do curral. A vazante é a festa de quem atravessou a cheia junto.',
-        en: 'When the water drops, the dry street becomes a dance floor. It is time for forró, for the lit oil lamp and for the boi leaving the curral. The ebb is the party of those who crossed the flood together.',
-        es: 'Cuando el agua baja, la calle seca se vuelve terreiro. Es la hora del forró, del candil encendido y del boi saliendo del corral. La bajante es la fiesta de quienes atravesaron juntos la crecida.',
+          'A floresta de pé, o rio com peixe, a festa na rua de todo mundo. A utopia do Mangangá é a que os mais velhos já conheceram, e a arena é onde ela volta a existir por uma noite.',
+        en: "The forest standing, the river full of fish, the party on everyone's street. Mangangá's utopia is the one the elders already knew, and the arena is where it exists again for one night.",
+        es: 'La selva en pie, el río con peces, la fiesta en la calle de todos. La utopía del Mangangá es la que los mayores ya conocieron, y la arena es donde vuelve a existir por una noche.',
       },
       cover: { kind: 'photo', photo: 'festival', focus: '50% 60%' },
     },

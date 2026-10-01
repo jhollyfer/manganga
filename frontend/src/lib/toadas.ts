@@ -28,12 +28,12 @@ export type Album = {
 export const ALBUMS: ReadonlyArray<Album> = [
   {
     year: 2026,
-    title: 'O boi que canta o alagado',
+    title: 'Utopia Ancestral',
     description: {
       'pt-BR':
-        'O álbum da temporada 2026, gravado para o tema que volta às origens do Boi Besouro.',
-      en: 'The 2026 season album, recorded for the theme that goes back to the roots of Boi Besouro.',
-      es: 'El álbum de la temporada 2026, grabado para el tema que vuelve a los orígenes del Boi Besouro.',
+        'O álbum da temporada 2026, gravado para o tema Utopia Ancestral.',
+      en: 'The 2026 season album, recorded for the Ancestral Utopia theme.',
+      es: 'El álbum de la temporada 2026, grabado para el tema Utopía Ancestral.',
     },
     tracks: [
       {
