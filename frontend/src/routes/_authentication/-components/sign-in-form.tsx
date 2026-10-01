@@ -179,7 +179,7 @@ export function SignInForm({
         {signIn.isError && (
           <p
             role="alert"
-            className="flex items-start gap-2 rounded-lg bg-destructive/10 px-3 py-2.5 text-small text-destructive"
+            className="flex items-start gap-2 border-2 border-destructive px-3 py-2.5 text-small text-destructive"
           >
             <WarningCircleIcon
               aria-hidden="true"

@@ -1,15 +1,7 @@
 import type * as React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { createLazyFileRoute } from '@tanstack/react-router'
-import {
-  ArrowDownRightIcon,
-  ArrowUpRightIcon,
-  CalendarBlankIcon,
-  TrendUpIcon,
-  UserPlusIcon,
-  UsersIcon,
-} from '@phosphor-icons/react'
-import type { Icon } from '@phosphor-icons/react'
+import { ArrowDownRightIcon, ArrowUpRightIcon } from '@phosphor-icons/react'
 import {
   Area,
   AreaChart,
@@ -129,7 +121,6 @@ function RouteComponent(): React.JSX.Element {
 type Stat = {
   label: string
   value: string
-  icon: Icon
   /** O comparativo sob o número; `null` quando o próprio número já é a taxa. */
   growth: { value: number; label: string } | null
   note?: string
@@ -143,7 +134,6 @@ function DashboardContent({ data }: { data: Dashboard }): React.JSX.Element {
     {
       label: m.admin_dashboard_totalMembers(),
       value: formatNumber(stats.totalMembers, locale),
-      icon: UsersIcon,
       growth: {
         value: stats.monthlyGrowth,
         label: m.admin_dashboard_vsLastMonth(),
@@ -152,7 +142,6 @@ function DashboardContent({ data }: { data: Dashboard }): React.JSX.Element {
     {
       label: m.admin_dashboard_today(),
       value: formatNumber(stats.todayRegistrations, locale),
-      icon: UserPlusIcon,
       growth: {
         value: stats.dailyGrowth,
         label: m.admin_dashboard_vsYesterday(),
@@ -161,7 +150,6 @@ function DashboardContent({ data }: { data: Dashboard }): React.JSX.Element {
     {
       label: m.admin_dashboard_week(),
       value: formatNumber(stats.weekRegistrations, locale),
-      icon: CalendarBlankIcon,
       growth: {
         value: stats.weeklyGrowth,
         label: m.admin_dashboard_vsLastWeek(),
@@ -170,7 +158,6 @@ function DashboardContent({ data }: { data: Dashboard }): React.JSX.Element {
     {
       label: m.admin_dashboard_growthRate(),
       value: formatPercent(stats.monthlyGrowth, locale),
-      icon: TrendUpIcon,
       growth: null,
       note: m.admin_dashboard_growthRateNote(),
     },
@@ -307,20 +294,14 @@ function DashboardContent({ data }: { data: Dashboard }): React.JSX.Element {
 
 function StatCard({ stat }: { stat: Stat }): React.JSX.Element {
   return (
-    <Card className="h-full">
-      <CardHeader className="grid-cols-[1fr_auto] items-start">
-        <div className="flex flex-col gap-1">
-          <CardDescription className="text-small">{stat.label}</CardDescription>
-          <CardTitle className="font-display text-h3 leading-none tabular-nums">
-            {stat.value}
-          </CardTitle>
-        </div>
-        <span
-          aria-hidden="true"
-          className="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary"
-        >
-          <stat.icon className="size-5" />
-        </span>
+    <Card className="h-full rounded-sm border-t-4 border-t-ink">
+      <CardHeader>
+        <CardDescription className="text-micro font-bold tracking-[0.1em] uppercase">
+          {stat.label}
+        </CardDescription>
+        <CardTitle className="font-display text-h2 leading-none tabular-nums">
+          {stat.value}
+        </CardTitle>
       </CardHeader>
       <CardContent className="mt-auto">
         {stat.growth && (
@@ -382,12 +363,9 @@ function DashboardSkeleton(): React.JSX.Element {
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {[0, 1, 2, 3].map((index) => (
           <Card key={index}>
-            <CardHeader className="grid-cols-[1fr_auto]">
-              <div className="flex flex-col gap-2">
-                <Skeleton className="h-3 w-24" />
-                <Skeleton className="h-8 w-16" />
-              </div>
-              <Skeleton className="size-10 rounded-xl" />
+            <CardHeader className="gap-2">
+              <Skeleton className="h-3 w-24" />
+              <Skeleton className="h-10 w-20" />
             </CardHeader>
             <CardContent>
               <Skeleton className="h-3 w-32" />

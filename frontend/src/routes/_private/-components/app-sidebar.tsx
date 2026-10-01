@@ -91,7 +91,7 @@ export function AppSidebar(): React.JSX.Element {
               >
                 <BrandStar className="size-7!" />
                 <span className="flex flex-col leading-none">
-                  <span className="font-display text-xl italic">
+                  <span className="font-display text-2xl font-extrabold uppercase">
                     {SITE_TITLE}
                   </span>
                   <span className="text-2xs tracking-[0.16em] text-muted-foreground uppercase">
