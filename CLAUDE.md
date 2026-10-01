@@ -82,13 +82,27 @@ node scripts/generate-icons.mjs  # favicon.ico, apple-touch e ícones do manifes
 
 ## Design
 
-A régua visual é o site do Boi Caprichoso (`boicaprichoso.com`): papel claro
-alternando com o **palco** escuro (`stage`), títulos em Instrument Serif
-terminando em ponto, com a palavra que canta em itálico, corpo em Inter,
-rótulo pequeno em caixa alta acima de cada seção, trilhos horizontais e
-cabeçalho de vidro. As cores são do Mangangá: o Boi Besouro é branco com uma
-estrela verde na testa, então verde-mata, verde-folha, osso, e o urucum e o
-ouro das fantasias como acento. Os tokens estão em `src/styles.css`.
+Cartaz de arraial impresso em serigrafia, refeito com a skill
+`frontend-design` para sair do desenho genérico. A régua de estrutura continua
+o site do Boi Caprichoso (`boicaprichoso.com`); a pele é do Mangangá.
+
+- **Papel e tinta**: fundo cor de osso com grão fixo por cima, tintas chapadas
+  (verde-mata, urucum, ouro, a estrela verde do Boi Besouro). Sem vidro, sem
+  brilho, sem gradiente, sem preto ou branco puros.
+- **Letra**: títulos em Big Shoulders Display, caixa alta e condensada; a
+  palavra que canta vai em `<em>`, que vira Instrument Serif itálico na tinta
+  de destaque (`--primary-glow`: urucum no papel, ouro na folha verde). Corpo
+  em Hanken Grotesk. Título não termina em ponto.
+- **Peças**: `sticker` (borda de tinta e sombra deslocada sem desfoque),
+  `zigzag-top`, `zigzag-bottom` e `zigzag-y` (o picotado entre faixas),
+  `stage` (a folha verde que alterna com o papel), `eyebrow` sem o fio
+  decorativo. Botão é retângulo que afunda no clique (`PillButton`).
+- **O que não volta**: cabeçalho de vidro, grade de cartões iguais com ícone em
+  quadradinho, bloco "número grande e rótulo pequeno", cantos muito
+  arredondados, palco quase preto com acento neon. Lista numerada, coluna de
+  jornal e colagem levemente torta no lugar deles.
+
+Os tokens estão em `src/styles.css`.
 
 ## Estilo de código
 
