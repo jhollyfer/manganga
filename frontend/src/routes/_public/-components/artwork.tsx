@@ -133,7 +133,10 @@ function Mata(): React.JSX.Element {
       {layers.map((layer) => {
         const step = 400 / (layer.peaks.length - 1)
         const crest = layer.peaks
-          .map((peak, index) => `${(index * step).toFixed(0)},${layer.base - peak}`)
+          .map(
+            (peak, index) =>
+              `${(index * step).toFixed(0)},${layer.base - peak}`,
+          )
           .join(' ')
 
         return (
@@ -161,12 +164,7 @@ function Tambor(): React.JSX.Element {
       {drums.map((drum) => (
         <g key={drum.cx}>
           <circle cx={drum.cx} cy={drum.cy} r={drum.r} fill="#e4572e" />
-          <circle
-            cx={drum.cx}
-            cy={drum.cy}
-            r={drum.r * 0.8}
-            fill="#fbfaf5"
-          />
+          <circle cx={drum.cx} cy={drum.cy} r={drum.r * 0.8} fill="#fbfaf5" />
           <circle
             cx={drum.cx}
             cy={drum.cy}

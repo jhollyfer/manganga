@@ -163,7 +163,8 @@ export const GLOSSARY: ReadonlyArray<GlossaryTerm> = [
   {
     term: 'Alegoria',
     definition: {
-      'pt-BR': 'Estrutura cenográfica gigante que se movimenta na arena e conta parte do tema.',
+      'pt-BR':
+        'Estrutura cenográfica gigante que se movimenta na arena e conta parte do tema.',
       en: 'Giant scenic structure that moves in the arena and tells part of the theme.',
       es: 'Estructura escenográfica gigante que se mueve en la arena y cuenta parte del tema.',
     },
@@ -171,7 +172,8 @@ export const GLOSSARY: ReadonlyArray<GlossaryTerm> = [
   {
     term: 'Amo do boi',
     definition: {
-      'pt-BR': 'O dono da fazenda no auto do boi, que canta versos de improviso.',
+      'pt-BR':
+        'O dono da fazenda no auto do boi, que canta versos de improviso.',
       en: 'The farm owner in the boi play, who sings improvised verses.',
       es: 'El dueño de la hacienda en el auto del boi, que canta versos improvisados.',
     },
@@ -195,7 +197,8 @@ export const GLOSSARY: ReadonlyArray<GlossaryTerm> = [
   {
     term: 'Auto do boi',
     definition: {
-      'pt-BR': 'A narrativa tradicional da morte e ressurreição do boi, base de toda apresentação.',
+      'pt-BR':
+        'A narrativa tradicional da morte e ressurreição do boi, base de toda apresentação.',
       en: 'The traditional story of the death and resurrection of the ox, the basis of every show.',
       es: 'La narrativa tradicional de la muerte y resurrección del buey, base de toda presentación.',
     },
@@ -203,7 +206,8 @@ export const GLOSSARY: ReadonlyArray<GlossaryTerm> = [
   {
     term: 'Bumbódromo',
     definition: {
-      'pt-BR': 'O estádio do festival, com a arena no centro e a galera nas arquibancadas.',
+      'pt-BR':
+        'O estádio do festival, com a arena no centro e a galera nas arquibancadas.',
       en: 'The festival stadium, with the arena in the middle and the crowd in the stands.',
       es: 'El estadio del festival, con la arena en el centro y la hinchada en las tribunas.',
     },
@@ -211,7 +215,8 @@ export const GLOSSARY: ReadonlyArray<GlossaryTerm> = [
   {
     term: 'Contrário',
     definition: {
-      'pt-BR': 'O boi adversário. No festival não se diz o nome dele: é sempre o contrário.',
+      'pt-BR':
+        'O boi adversário. No festival não se diz o nome dele: é sempre o contrário.',
       en: 'The rival boi. At the festival its name is never said: it is always the contrário.',
       es: 'El boi adversario. En el festival no se dice su nombre: es siempre el contrario.',
     },
@@ -219,7 +224,8 @@ export const GLOSSARY: ReadonlyArray<GlossaryTerm> = [
   {
     term: 'Curral',
     definition: {
-      'pt-BR': 'A sede do boi, onde acontecem os ensaios e as festas da comunidade.',
+      'pt-BR':
+        'A sede do boi, onde acontecem os ensaios e as festas da comunidade.',
       en: 'The boi headquarters, where rehearsals and community parties happen.',
       es: 'La sede del boi, donde se hacen los ensayos y las fiestas de la comunidad.',
     },
@@ -227,7 +233,8 @@ export const GLOSSARY: ReadonlyArray<GlossaryTerm> = [
   {
     term: 'Cunhã-poranga',
     definition: {
-      'pt-BR': '"Moça bonita" em nheengatu, item que representa a mulher indígena.',
+      'pt-BR':
+        '"Moça bonita" em nheengatu, item que representa a mulher indígena.',
       en: '"Beautiful girl" in Nheengatu, the item that represents the Indigenous woman.',
       es: '"Muchacha bonita" en ñeengatú, ítem que representa a la mujer indígena.',
     },
@@ -235,7 +242,8 @@ export const GLOSSARY: ReadonlyArray<GlossaryTerm> = [
   {
     term: 'Galera',
     definition: {
-      'pt-BR': 'A torcida organizada do boi, que canta, dança e também é avaliada.',
+      'pt-BR':
+        'A torcida organizada do boi, que canta, dança e também é avaliada.',
       en: 'The organised crowd of the boi, which sings, dances and is also judged.',
       es: 'La hinchada organizada del boi, que canta, baila y también es evaluada.',
     },
@@ -259,7 +267,8 @@ export const GLOSSARY: ReadonlyArray<GlossaryTerm> = [
   {
     term: 'Pajé',
     definition: {
-      'pt-BR': 'O líder espiritual indígena, figura central das lendas na arena.',
+      'pt-BR':
+        'O líder espiritual indígena, figura central das lendas na arena.',
       en: 'The Indigenous spiritual leader, a central figure of the legends in the arena.',
       es: 'El líder espiritual indígena, figura central de las leyendas en la arena.',
     },
@@ -267,7 +276,8 @@ export const GLOSSARY: ReadonlyArray<GlossaryTerm> = [
   {
     term: 'Toada',
     definition: {
-      'pt-BR': 'A música do boi-bumbá, composta para cada tema e cantada pela galera.',
+      'pt-BR':
+        'A música do boi-bumbá, composta para cada tema e cantada pela galera.',
       en: 'The boi-bumbá song, written for each theme and sung by the crowd.',
       es: 'La música del boi-bumbá, compuesta para cada tema y cantada por la hinchada.',
     },
@@ -283,7 +293,8 @@ export const GLOSSARY: ReadonlyArray<GlossaryTerm> = [
   {
     term: 'Vazante',
     definition: {
-      'pt-BR': 'O tempo em que o rio baixa, depois da cheia. Tema do Mangangá em 2026.',
+      'pt-BR':
+        'O tempo em que o rio baixa, depois da cheia. Tema do Mangangá em 2026.',
       en: 'The season when the river drops, after the flood. Mangangá theme in 2026.',
       es: 'La época en que el río baja, después de la crecida. Tema del Mangangá en 2026.',
     },

@@ -5,13 +5,14 @@ import type { LocalizedText } from './i18n'
  * A agenda do boi: ensaios, festas, shows e as noites de festival.
  *
  * Conteúdo em `lib/`, como as notícias, e de exemplo: a diretoria troca pelas
- * datas reais. O horário vai com o fuso de Benjamin Constant (`-05:00`) no
- * próprio texto da data, e é por isso que ele aparece certo para quem abre a
- * agenda em Manaus, uma hora à frente.
+ * datas reais. O horário é o da parede do curral, com o deslocamento no
+ * próprio texto da data, e a tela o mostra como foi escrito (`dates.ts`): quem
+ * abre a agenda em Letícia ou em Manaus vê "20h" e chega na hora do curral, e
+ * não na conversão para o fuso do próprio celular.
  */
 export type AgendaEvent = {
   slug: string
-  /** ISO 8601 com o fuso local, `2026-10-17T20:00:00-05:00`. */
+  /** ISO 8601 com o deslocamento local, `2026-10-17T20:00:00-05:00`. */
   startsAt: string
   type: EventType
   title: LocalizedText
@@ -35,7 +36,8 @@ export const EVENTS: ReadonlyArray<AgendaEvent> = [
       es: 'Ensayo general en el corral',
     },
     summary: {
-      'pt-BR': 'Tribos, Marujada e itens juntos pela primeira vez na temporada.',
+      'pt-BR':
+        'Tribos, Marujada e itens juntos pela primeira vez na temporada.',
       en: 'Tribes, Marujada and items together for the first time this season.',
       es: 'Tribus, Marujada e ítems juntos por primera vez en la temporada.',
     },
@@ -107,7 +109,8 @@ export const EVENTS: ReadonlyArray<AgendaEvent> = [
       es: 'Asamblea general de socios',
     },
     summary: {
-      'pt-BR': 'Prestação de contas da temporada e planejamento do próximo festival.',
+      'pt-BR':
+        'Prestação de contas da temporada e planejamento do próximo festival.',
       en: 'Season accounts and planning for the next festival.',
       es: 'Rendición de cuentas de la temporada y planificación del próximo festival.',
     },
@@ -248,7 +251,10 @@ export function eventTime(event: AgendaEvent): number {
 }
 
 /** Os eventos a partir de `now`, do mais próximo para o mais distante. */
-export function upcomingEvents(now: number, limit?: number): Array<AgendaEvent> {
+export function upcomingEvents(
+  now: number,
+  limit?: number,
+): Array<AgendaEvent> {
   const upcoming = EVENTS.filter((event) => eventTime(event) >= now).sort(
     (a, b) => eventTime(a) - eventTime(b),
   )

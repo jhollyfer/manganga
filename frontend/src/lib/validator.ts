@@ -69,7 +69,7 @@ export function personName() {
 /*
  * Os formatos, em constante: com a expressão em linha o Prettier quebra a
  * cadeia em várias linhas, e `validator-messages.test.ts` lê cada cadeia de
- * `vine.string()` numa linha só para cobrar o `maxLength`.
+ * texto do schema numa linha só para cobrar o `maxLength`.
  */
 const PHONE = /^[\d\s()+-]{10,20}$/
 const BR_DATE = /^(0[1-9]|[12]\d|3[01])\/(0[1-9]|1[0-2])\/(19|20)\d{2}$/

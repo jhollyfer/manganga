@@ -73,7 +73,7 @@ export function validateListingSearch(
 export function normalize(value: string): string {
   return value
     .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '')
+    .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
 }
 
@@ -110,7 +110,10 @@ export function applyListing(
       !product.colors.some((color) => color.id === search.color)
     )
       return false
-    if (search.sale && !(product.compareAt && product.compareAt > product.price))
+    if (
+      search.sale &&
+      !(product.compareAt && product.compareAt > product.price)
+    )
       return false
     if (search.q && !matchesQuery(product, search.q)) return false
 

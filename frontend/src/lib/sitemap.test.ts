@@ -4,7 +4,9 @@ import { buildSitemap } from './sitemap'
 
 describe('buildSitemap', () => {
   it('monta a URL absoluta sem barra dupla', () => {
-    const xml = buildSitemap('https://manganga.maiyu.com.br/', [{ path: '/noticias' }])
+    const xml = buildSitemap('https://manganga.maiyu.com.br/', [
+      { path: '/noticias' },
+    ])
 
     expect(xml).toContain('<loc>https://manganga.maiyu.com.br/noticias</loc>')
   })

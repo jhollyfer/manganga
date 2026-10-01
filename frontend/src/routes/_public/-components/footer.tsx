@@ -155,7 +155,10 @@ export function Footer(): React.JSX.Element {
           © {year} {SITE_TITLE}. {m.footer_rights()}. {m.footer_signoff()}
         </p>
         <div className="flex items-center gap-2">
-          <ul aria-label={m.footer_social()} className="flex items-center gap-1">
+          <ul
+            aria-label={m.footer_social()}
+            className="flex items-center gap-1"
+          >
             {SOCIALS.map((social) => {
               const Icon = SOCIAL_ICONS[social.name]
 

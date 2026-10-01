@@ -1,6 +1,16 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-// Provisório: a página de verdade substitui este arquivo.
+import { pageHead } from '#/lib/head'
+import { validateNewsSearch } from '#/lib/news-search'
+import { m } from '#/paraglide/messages'
+
+/** As notícias, com editoria e busca na URL. */
 export const Route = createFileRoute('/_public/noticias/')({
-  component: () => <section className="container-x pt-32 pb-24">/_public/noticias/</section>,
+  validateSearch: validateNewsSearch,
+  head: () =>
+    pageHead({
+      path: '/noticias',
+      title: m.news_pageTitle(),
+      description: m.news_pageLead(),
+    }),
 })

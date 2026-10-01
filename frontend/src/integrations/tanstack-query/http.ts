@@ -78,10 +78,7 @@ function buildUrl(path: string, query: RequestOptions['query']): string {
   return url.toString()
 }
 
-async function send(
-  path: string,
-  options: RequestOptions,
-): Promise<Response> {
+async function send(path: string, options: RequestOptions): Promise<Response> {
   const headers: Record<string, string> = {
     Accept: 'application/json',
     'X-Timezone': timezone(),
@@ -101,7 +98,8 @@ async function send(
     signal: options.signal,
   })
 
-  if (!response.ok) throw new HttpError(response.status, await errorBody(response))
+  if (!response.ok)
+    throw new HttpError(response.status, await errorBody(response))
 
   return response
 }

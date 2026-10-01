@@ -9,8 +9,8 @@ import { REVEAL } from './-components/reveal'
 /**
  * As decisões da vitrine que vivem numa string, e não numa função.
  *
- * O mesmo desenho do `vitrine-contract.test.ts` do academy: `motion-reduce:`
- * numa classe, o alvo do "pular para o conteúdo", a ausência do `motion`.
+ * As decisões que moram numa classe: `motion-reduce:`, o alvo do "pular para
+ * o conteúdo", a ausência do `motion`.
  * Apagar qualquer uma deixaria a suíte verde com a decisão quebrada na tela,
  * então a rede é ler o arquivo, **sem comentário**, para o teste não se
  * satisfazer com o JSDoc que explica a regra.
@@ -30,27 +30,34 @@ describe('movimento respeita quem pediu menos movimento', () => {
     expect(REVEAL).toContain('motion-reduce:animate-none')
   })
 
-  it('o traço das cenas volta a aparecer sem animação', () => {
-    // Sem isto o anel da samaúma fica invisível para quem desligou o
-    // movimento: o deslocamento do traçado é o próprio estado inicial.
-    expect(read(components, 'vision-scenes.tsx')).toContain(
-      'motion-reduce:[stroke-dashoffset:0]',
+  it('o cordão de bandeirinhas para quieto', () => {
+    // O balanço é decoração: quem pediu menos movimento não pode ver o festão
+    // balançando no topo de toda visita.
+    expect(read(components, 'home', 'festoon.tsx')).toContain(
+      'motion-reduce:animate-none',
     )
   })
 
   it('nenhuma peça da vitrine carrega o motion', () => {
-    // A animação é CSS, como no academy. Um import do `motion/react` traria a
-    // biblioteca inteira de volta para o bundle da home.
+    // A animação é CSS. Um import do `motion/react` traria a biblioteca
+    // inteira para o bundle da home.
     for (const file of [
-      'hero.tsx',
-      'work.tsx',
-      'vision.tsx',
-      'vision-scenes.tsx',
-      'process.tsx',
-      'capabilities.tsx',
-      'navy-band.tsx',
-      'closing-cta.tsx',
       'header.tsx',
+      'footer.tsx',
+      'page-hero.tsx',
+      'artwork.tsx',
+      'home/hero.tsx',
+      'home/festoon.tsx',
+      'home/manifesto.tsx',
+      'home/agenda.tsx',
+      'home/items.tsx',
+      'home/toadas.tsx',
+      'home/news.tsx',
+      'home/history.tsx',
+      'home/festival.tsx',
+      'home/gallery.tsx',
+      'home/sponsors.tsx',
+      'home/join.tsx',
     ])
       expect(read(components, file)).not.toContain('motion/react')
   })

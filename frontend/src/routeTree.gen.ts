@@ -22,6 +22,7 @@ import { Route as PublicTemaRouteImport } from './routes/_public/tema'
 import { Route as PublicTermosRouteImport } from './routes/_public/termos'
 import { Route as PublicVisiteRouteImport } from './routes/_public/visite'
 import { Route as PublicAgendaIndexRouteImport } from './routes/_public/agenda/index'
+import { Route as PublicAgendaSlugRouteImport } from './routes/_public/agenda/$slug'
 import { Route as PublicBoiGaleriaRouteImport } from './routes/_public/boi/galeria'
 import { Route as PublicBoiHistoriaRouteImport } from './routes/_public/boi/historia'
 import { Route as PublicBoiItensRouteImport } from './routes/_public/boi/itens'
@@ -29,6 +30,7 @@ import { Route as PublicBoiToadasRouteImport } from './routes/_public/boi/toadas
 import { Route as PublicLojaIndexRouteImport } from './routes/_public/loja/index'
 import { Route as PublicLojaCarrinhoRouteImport } from './routes/_public/loja/carrinho'
 import { Route as PublicNoticiasIndexRouteImport } from './routes/_public/noticias/index'
+import { Route as PublicNoticiasSlugRouteImport } from './routes/_public/noticias/$slug'
 
 const PublicLayoutRoute = PublicLayoutRouteImport.update({
   id: '/_public',
@@ -58,12 +60,16 @@ const PublicContatoRoute = PublicContatoRouteImport.update({
   id: '/contato',
   path: '/contato',
   getParentRoute: () => PublicLayoutRoute,
-} as any)
+} as any).lazy(() =>
+  import('./routes/_public/contato.lazy').then((d) => d.Route),
+)
 const PublicFestivalRoute = PublicFestivalRouteImport.update({
   id: '/festival',
   path: '/festival',
   getParentRoute: () => PublicLayoutRoute,
-} as any)
+} as any).lazy(() =>
+  import('./routes/_public/festival.lazy').then((d) => d.Route),
+)
 const PublicPrivacidadeRoute = PublicPrivacidadeRouteImport.update({
   id: '/privacidade',
   path: '/privacidade',
@@ -73,12 +79,12 @@ const PublicSocioRoute = PublicSocioRouteImport.update({
   id: '/socio',
   path: '/socio',
   getParentRoute: () => PublicLayoutRoute,
-} as any)
+} as any).lazy(() => import('./routes/_public/socio.lazy').then((d) => d.Route))
 const PublicTemaRoute = PublicTemaRouteImport.update({
   id: '/tema',
   path: '/tema',
   getParentRoute: () => PublicLayoutRoute,
-} as any)
+} as any).lazy(() => import('./routes/_public/tema.lazy').then((d) => d.Route))
 const PublicTermosRoute = PublicTermosRouteImport.update({
   id: '/termos',
   path: '/termos',
@@ -88,32 +94,51 @@ const PublicVisiteRoute = PublicVisiteRouteImport.update({
   id: '/visite',
   path: '/visite',
   getParentRoute: () => PublicLayoutRoute,
-} as any)
+} as any).lazy(() =>
+  import('./routes/_public/visite.lazy').then((d) => d.Route),
+)
 const PublicAgendaIndexRoute = PublicAgendaIndexRouteImport.update({
   id: '/agenda/',
   path: '/agenda/',
   getParentRoute: () => PublicLayoutRoute,
-} as any)
+} as any).lazy(() =>
+  import('./routes/_public/agenda/index.lazy').then((d) => d.Route),
+)
+const PublicAgendaSlugRoute = PublicAgendaSlugRouteImport.update({
+  id: '/agenda/$slug',
+  path: '/agenda/$slug',
+  getParentRoute: () => PublicLayoutRoute,
+} as any).lazy(() =>
+  import('./routes/_public/agenda/$slug.lazy').then((d) => d.Route),
+)
 const PublicBoiGaleriaRoute = PublicBoiGaleriaRouteImport.update({
   id: '/boi/galeria',
   path: '/boi/galeria',
   getParentRoute: () => PublicLayoutRoute,
-} as any)
+} as any).lazy(() =>
+  import('./routes/_public/boi/galeria.lazy').then((d) => d.Route),
+)
 const PublicBoiHistoriaRoute = PublicBoiHistoriaRouteImport.update({
   id: '/boi/historia',
   path: '/boi/historia',
   getParentRoute: () => PublicLayoutRoute,
-} as any)
+} as any).lazy(() =>
+  import('./routes/_public/boi/historia.lazy').then((d) => d.Route),
+)
 const PublicBoiItensRoute = PublicBoiItensRouteImport.update({
   id: '/boi/itens',
   path: '/boi/itens',
   getParentRoute: () => PublicLayoutRoute,
-} as any)
+} as any).lazy(() =>
+  import('./routes/_public/boi/itens.lazy').then((d) => d.Route),
+)
 const PublicBoiToadasRoute = PublicBoiToadasRouteImport.update({
   id: '/boi/toadas',
   path: '/boi/toadas',
   getParentRoute: () => PublicLayoutRoute,
-} as any)
+} as any).lazy(() =>
+  import('./routes/_public/boi/toadas.lazy').then((d) => d.Route),
+)
 const PublicLojaIndexRoute = PublicLojaIndexRouteImport.update({
   id: '/loja/',
   path: '/loja/',
@@ -128,7 +153,16 @@ const PublicNoticiasIndexRoute = PublicNoticiasIndexRouteImport.update({
   id: '/noticias/',
   path: '/noticias/',
   getParentRoute: () => PublicLayoutRoute,
-} as any)
+} as any).lazy(() =>
+  import('./routes/_public/noticias/index.lazy').then((d) => d.Route),
+)
+const PublicNoticiasSlugRoute = PublicNoticiasSlugRouteImport.update({
+  id: '/noticias/$slug',
+  path: '/noticias/$slug',
+  getParentRoute: () => PublicLayoutRoute,
+} as any).lazy(() =>
+  import('./routes/_public/noticias/$slug.lazy').then((d) => d.Route),
+)
 
 export interface FileRoutesByFullPath {
   '/': typeof PublicIndexRoute
@@ -142,11 +176,13 @@ export interface FileRoutesByFullPath {
   '/tema': typeof PublicTemaRoute
   '/termos': typeof PublicTermosRoute
   '/visite': typeof PublicVisiteRoute
+  '/agenda/$slug': typeof PublicAgendaSlugRoute
   '/boi/galeria': typeof PublicBoiGaleriaRoute
   '/boi/historia': typeof PublicBoiHistoriaRoute
   '/boi/itens': typeof PublicBoiItensRoute
   '/boi/toadas': typeof PublicBoiToadasRoute
   '/loja/carrinho': typeof PublicLojaCarrinhoRoute
+  '/noticias/$slug': typeof PublicNoticiasSlugRoute
   '/agenda/': typeof PublicAgendaIndexRoute
   '/loja/': typeof PublicLojaIndexRoute
   '/noticias/': typeof PublicNoticiasIndexRoute
@@ -163,11 +199,13 @@ export interface FileRoutesByTo {
   '/termos': typeof PublicTermosRoute
   '/visite': typeof PublicVisiteRoute
   '/': typeof PublicIndexRoute
+  '/agenda/$slug': typeof PublicAgendaSlugRoute
   '/boi/galeria': typeof PublicBoiGaleriaRoute
   '/boi/historia': typeof PublicBoiHistoriaRoute
   '/boi/itens': typeof PublicBoiItensRoute
   '/boi/toadas': typeof PublicBoiToadasRoute
   '/loja/carrinho': typeof PublicLojaCarrinhoRoute
+  '/noticias/$slug': typeof PublicNoticiasSlugRoute
   '/agenda': typeof PublicAgendaIndexRoute
   '/loja': typeof PublicLojaIndexRoute
   '/noticias': typeof PublicNoticiasIndexRoute
@@ -186,11 +224,13 @@ export interface FileRoutesById {
   '/_public/termos': typeof PublicTermosRoute
   '/_public/visite': typeof PublicVisiteRoute
   '/_public/': typeof PublicIndexRoute
+  '/_public/agenda/$slug': typeof PublicAgendaSlugRoute
   '/_public/boi/galeria': typeof PublicBoiGaleriaRoute
   '/_public/boi/historia': typeof PublicBoiHistoriaRoute
   '/_public/boi/itens': typeof PublicBoiItensRoute
   '/_public/boi/toadas': typeof PublicBoiToadasRoute
   '/_public/loja/carrinho': typeof PublicLojaCarrinhoRoute
+  '/_public/noticias/$slug': typeof PublicNoticiasSlugRoute
   '/_public/agenda/': typeof PublicAgendaIndexRoute
   '/_public/loja/': typeof PublicLojaIndexRoute
   '/_public/noticias/': typeof PublicNoticiasIndexRoute
@@ -209,11 +249,13 @@ export interface FileRouteTypes {
     | '/tema'
     | '/termos'
     | '/visite'
+    | '/agenda/$slug'
     | '/boi/galeria'
     | '/boi/historia'
     | '/boi/itens'
     | '/boi/toadas'
     | '/loja/carrinho'
+    | '/noticias/$slug'
     | '/agenda/'
     | '/loja/'
     | '/noticias/'
@@ -230,11 +272,13 @@ export interface FileRouteTypes {
     | '/termos'
     | '/visite'
     | '/'
+    | '/agenda/$slug'
     | '/boi/galeria'
     | '/boi/historia'
     | '/boi/itens'
     | '/boi/toadas'
     | '/loja/carrinho'
+    | '/noticias/$slug'
     | '/agenda'
     | '/loja'
     | '/noticias'
@@ -252,11 +296,13 @@ export interface FileRouteTypes {
     | '/_public/termos'
     | '/_public/visite'
     | '/_public/'
+    | '/_public/agenda/$slug'
     | '/_public/boi/galeria'
     | '/_public/boi/historia'
     | '/_public/boi/itens'
     | '/_public/boi/toadas'
     | '/_public/loja/carrinho'
+    | '/_public/noticias/$slug'
     | '/_public/agenda/'
     | '/_public/loja/'
     | '/_public/noticias/'
@@ -361,6 +407,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicAgendaIndexRouteImport
       parentRoute: typeof PublicLayoutRoute
     }
+    '/_public/agenda/$slug': {
+      id: '/_public/agenda/$slug'
+      path: '/agenda/$slug'
+      fullPath: '/agenda/$slug'
+      preLoaderRoute: typeof PublicAgendaSlugRouteImport
+      parentRoute: typeof PublicLayoutRoute
+    }
     '/_public/boi/galeria': {
       id: '/_public/boi/galeria'
       path: '/boi/galeria'
@@ -410,6 +463,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicNoticiasIndexRouteImport
       parentRoute: typeof PublicLayoutRoute
     }
+    '/_public/noticias/$slug': {
+      id: '/_public/noticias/$slug'
+      path: '/noticias/$slug'
+      fullPath: '/noticias/$slug'
+      preLoaderRoute: typeof PublicNoticiasSlugRouteImport
+      parentRoute: typeof PublicLayoutRoute
+    }
   }
 }
 
@@ -423,11 +483,13 @@ interface PublicLayoutRouteChildren {
   PublicTermosRoute: typeof PublicTermosRoute
   PublicVisiteRoute: typeof PublicVisiteRoute
   PublicIndexRoute: typeof PublicIndexRoute
+  PublicAgendaSlugRoute: typeof PublicAgendaSlugRoute
   PublicBoiGaleriaRoute: typeof PublicBoiGaleriaRoute
   PublicBoiHistoriaRoute: typeof PublicBoiHistoriaRoute
   PublicBoiItensRoute: typeof PublicBoiItensRoute
   PublicBoiToadasRoute: typeof PublicBoiToadasRoute
   PublicLojaCarrinhoRoute: typeof PublicLojaCarrinhoRoute
+  PublicNoticiasSlugRoute: typeof PublicNoticiasSlugRoute
   PublicAgendaIndexRoute: typeof PublicAgendaIndexRoute
   PublicLojaIndexRoute: typeof PublicLojaIndexRoute
   PublicNoticiasIndexRoute: typeof PublicNoticiasIndexRoute
@@ -443,11 +505,13 @@ const PublicLayoutRouteChildren: PublicLayoutRouteChildren = {
   PublicTermosRoute: PublicTermosRoute,
   PublicVisiteRoute: PublicVisiteRoute,
   PublicIndexRoute: PublicIndexRoute,
+  PublicAgendaSlugRoute: PublicAgendaSlugRoute,
   PublicBoiGaleriaRoute: PublicBoiGaleriaRoute,
   PublicBoiHistoriaRoute: PublicBoiHistoriaRoute,
   PublicBoiItensRoute: PublicBoiItensRoute,
   PublicBoiToadasRoute: PublicBoiToadasRoute,
   PublicLojaCarrinhoRoute: PublicLojaCarrinhoRoute,
+  PublicNoticiasSlugRoute: PublicNoticiasSlugRoute,
   PublicAgendaIndexRoute: PublicAgendaIndexRoute,
   PublicLojaIndexRoute: PublicLojaIndexRoute,
   PublicNoticiasIndexRoute: PublicNoticiasIndexRoute,

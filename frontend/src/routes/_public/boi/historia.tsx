@@ -1,6 +1,13 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-// Provisório: a página de verdade substitui este arquivo.
+import { pageHead } from '#/lib/head'
+import { m } from '#/paraglide/messages'
+
 export const Route = createFileRoute('/_public/boi/historia')({
-  component: () => <section className="container-x pt-32 pb-24">/_public/boi/historia</section>,
+  head: () =>
+    pageHead({
+      path: '/boi/historia',
+      title: m.history_pageTitle(),
+      description: m.history_pageLead(),
+    }),
 })

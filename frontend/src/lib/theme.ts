@@ -62,7 +62,11 @@ export const THEME = {
     },
     {
       numeral: 'III',
-      eyebrow: { 'pt-BR': 'Capítulo III', en: 'Chapter III', es: 'Capítulo III' },
+      eyebrow: {
+        'pt-BR': 'Capítulo III',
+        en: 'Chapter III',
+        es: 'Capítulo III',
+      },
       title: {
         'pt-BR': 'A estrela',
         en: 'The star',

@@ -97,10 +97,7 @@ export function NotFoundPageDescription({
   return (
     <p
       data-slot="not-found-page-description"
-      className={cn(
-        'mt-7 max-w-[44ch] text-lead text-on-stage/75',
-        className,
-      )}
+      className={cn('mt-7 max-w-[44ch] text-lead text-on-stage/75', className)}
       {...props}
     />
   )

@@ -4,13 +4,7 @@ import { ListIcon, ShoppingBagIcon } from '@phosphor-icons/react'
 
 import { CartCount } from './cart-count'
 import { LanguageSwitcher } from './language-switcher'
-import {
-  BOI_GROUP,
-  DIRECT_LINKS,
-  FESTIVAL_GROUP,
-  HOME,
-  STORE,
-} from './menu'
+import { BOI_GROUP, DIRECT_LINKS, FESTIVAL_GROUP, HOME, STORE } from './menu'
 import { navLinkVariants } from './nav-link'
 import { PillButton } from './pill-button'
 import { ThemeToggle } from '#/components/common/theme-toggle'
@@ -84,7 +78,9 @@ export function Header(): React.JSX.Element {
           <NavigationMenuList className="gap-0.5">
             {[BOI_GROUP, FESTIVAL_GROUP].map((group) => (
               <NavigationMenuItem key={group.label()}>
-                <NavigationMenuTrigger className={navLinkVariants({ tone: 'bar' })}>
+                <NavigationMenuTrigger
+                  className={navLinkVariants({ tone: 'bar' })}
+                >
                   {group.label()}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
