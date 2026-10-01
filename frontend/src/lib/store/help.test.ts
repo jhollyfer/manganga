@@ -32,7 +32,8 @@ describe('central de ajuda', () => {
 
   it('nenhum texto tem travessão', () => {
     for (const text of texts())
-      for (const locale of locales) expect(text[locale]).not.toMatch(/[—–]/)
+      for (const locale of locales)
+        expect(text[locale]).not.toMatch(/[\u2013\u2014]/)
   })
 
   it('acha o tópico pelo endereço', () => {

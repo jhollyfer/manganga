@@ -71,10 +71,7 @@ export function validateListingSearch(
  * celular nem sempre tem o acento à mão.
  */
 export function normalize(value: string): string {
-  return value
-    .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '')
-    .toLowerCase()
+  return value.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
 }
 
 /** Se o produto casa com o termo, pelo nome e pelo resumo no idioma atual. */
@@ -110,7 +107,10 @@ export function applyListing(
       !product.colors.some((color) => color.id === search.color)
     )
       return false
-    if (search.sale && !(product.compareAt && product.compareAt > product.price))
+    if (
+      search.sale &&
+      !(product.compareAt && product.compareAt > product.price)
+    )
       return false
     if (search.q && !matchesQuery(product, search.q)) return false
 
