@@ -18,7 +18,7 @@ const BADGE_TONES: Record<Badge, string> = {
 }
 
 const PILL =
-  'inline-flex h-6 items-center rounded-full px-2.5 text-2xs font-bold tracking-[0.08em] uppercase'
+  'inline-flex h-6 items-center rounded-sm px-2 text-2xs font-bold tracking-[0.08em] uppercase'
 
 /**
  * Os selos do produto: novidade, mais vendido, coleção da temporada e o

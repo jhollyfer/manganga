@@ -38,7 +38,7 @@ export function QuantityStepper({
       role="group"
       aria-label={m.store_quantityOf({ name: label })}
       className={cn(
-        'inline-flex h-12 items-center gap-1 rounded-full border border-foreground/15 px-1',
+        'inline-flex h-12 items-center gap-1 rounded-sm border-2 border-ink/30 px-1',
         className,
       )}
     >

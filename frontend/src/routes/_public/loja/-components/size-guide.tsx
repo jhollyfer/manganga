@@ -94,7 +94,7 @@ export function SizeGuideDialog({
         <RulerIcon aria-hidden="true" className="size-4" />
         {m.product_sizeGuide()}
       </DialogTrigger>
-      <DialogContent className="max-h-[85dvh] gap-6 overflow-y-auto rounded-3xl p-6 text-body sm:max-w-lg">
+      <DialogContent className="max-h-[85dvh] gap-6 overflow-y-auto rounded-sm p-6 text-body sm:max-w-lg">
         <DialogHeader className="gap-2">
           <DialogTitle className="font-display text-h3 font-normal">
             {m.product_sizeGuide()}

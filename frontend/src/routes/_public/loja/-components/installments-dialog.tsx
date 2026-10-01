@@ -38,7 +38,7 @@ export function InstallmentsDialog({
         <CreditCardIcon aria-hidden="true" className="size-4" />
         {m.product_installmentsSee()}
       </DialogTrigger>
-      <DialogContent className="gap-5 rounded-3xl p-6 text-body sm:max-w-md">
+      <DialogContent className="gap-5 rounded-sm p-6 text-body sm:max-w-md">
         <DialogHeader className="gap-2">
           <DialogTitle className="font-display text-h3 font-normal">
             {m.product_installmentsTitle()}
@@ -47,7 +47,7 @@ export function InstallmentsDialog({
             {m.product_installmentsLead()}
           </DialogDescription>
         </DialogHeader>
-        <p className="flex items-center justify-between rounded-2xl bg-primary/[0.08] px-4 py-3 text-small">
+        <p className="flex items-center justify-between rounded-sm bg-primary/[0.08] px-4 py-3 text-small">
           <span className="font-semibold">
             {m.store_pixLabel({ percent: PIX_DISCOUNT_PERCENT })}
           </span>

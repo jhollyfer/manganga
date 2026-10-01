@@ -15,9 +15,9 @@ import {
 import { toast } from 'sonner'
 
 import { InstallmentsDialog } from '../-components/installments-dialog'
-import { ProductBadges } from '../-components/product-badges'
-import { ProductPrice } from '../-components/product-price'
-import { ProductRail } from '../-components/product-rail'
+import { ProductBadges } from '../../-components/product-badges'
+import { ProductPrice } from '../../-components/product-price'
+import { ProductRail } from '../../-components/product-rail'
 import { QuantityStepper } from '../-components/quantity-stepper'
 import { ShippingCalculator } from '../-components/shipping'
 import { SizeGuideDialog } from '../-components/size-guide'
@@ -87,7 +87,7 @@ function RouteComponent(): React.JSX.Element {
 }
 
 const CHIP =
-  'inline-flex h-11 min-w-11 items-center justify-center rounded-full border border-foreground/15 px-3.5 text-small font-semibold transition-colors hover:border-foreground/45 aria-pressed:border-foreground aria-pressed:bg-foreground aria-pressed:text-background motion-reduce:transition-none'
+  'inline-flex h-11 min-w-11 items-center justify-center rounded-sm border-2 border-ink/30 px-3.5 text-small font-semibold transition-colors hover:border-foreground/45 aria-pressed:border-foreground aria-pressed:bg-foreground aria-pressed:text-background motion-reduce:transition-none'
 
 /** Os tamanhos infantis são números; os adultos, letras. */
 function isKidsGrid(product: Product): boolean {
@@ -198,7 +198,7 @@ function ProductPage({ product }: { product: Product }): React.JSX.Element {
           <div
             className={cn(REVEAL, 'min-w-0 lg:sticky lg:top-40 lg:self-start')}
           >
-            <div className="relative aspect-square overflow-hidden rounded-3xl bg-secondary">
+            <div className="relative aspect-square overflow-hidden rounded-sm bg-secondary">
               <ProductArt
                 art={product.art}
                 color={color?.hex ?? '#f7f6f0'}
@@ -222,7 +222,7 @@ function ProductPage({ product }: { product: Product }): React.JSX.Element {
                       aria-pressed={each.id === colorId}
                       aria-label={localized(each.name)}
                       onClick={() => setColorId(each.id)}
-                      className="block aspect-square w-full overflow-hidden rounded-2xl ring-1 ring-border transition-shadow aria-pressed:ring-2 aria-pressed:ring-foreground motion-reduce:transition-none"
+                      className="block aspect-square w-full overflow-hidden rounded-sm ring-1 ring-border transition-shadow aria-pressed:ring-2 aria-pressed:ring-foreground motion-reduce:transition-none"
                     >
                       <ProductArt
                         art={product.art}
@@ -246,7 +246,6 @@ function ProductPage({ product }: { product: Product }): React.JSX.Element {
                   params={{ slug: category.slug }}
                   className="eyebrow w-fit text-primary-glow"
                 >
-                  <span aria-hidden="true" className="h-px w-8 bg-current" />
                   {localized(category.name)}
                 </Link>
               )}
@@ -344,7 +343,7 @@ function ProductPage({ product }: { product: Product }): React.JSX.Element {
                 </div>
               )}
               {soldOut && (
-                <div className="grid gap-3 rounded-2xl bg-secondary p-5">
+                <div className="grid gap-3 rounded-sm bg-secondary p-5">
                   <PillButton type="button" disabled>
                     {m.product_soldOut()}
                   </PillButton>
@@ -363,7 +362,7 @@ function ProductPage({ product }: { product: Product }): React.JSX.Element {
               )}
             </div>
 
-            <div className="rounded-3xl border border-border p-5">
+            <div className="rounded-sm border border-border p-5">
               <ShippingCalculator
                 subtotal={product.price * quantity}
                 cep={cep}
@@ -461,7 +460,7 @@ function ProductPage({ product }: { product: Product }): React.JSX.Element {
         title={
           <>
             {m.product_relatedTitleStart()}{' '}
-            <em>{m.product_relatedTitleEm()}</em>.
+            <em>{m.product_relatedTitleEm()}</em>
           </>
         }
         products={relatedTo(product, 8)}

@@ -1,7 +1,10 @@
 import * as React from 'react'
 import { MapPinIcon, StorefrontIcon, TruckIcon } from '@phosphor-icons/react'
 
-import { SHIPPING_METHOD_LABELS, shippingDeadline } from './store-labels'
+import {
+  SHIPPING_METHOD_LABELS,
+  shippingDeadline,
+} from '../../-components/store-labels'
 import { formatMoney } from '#/lib/store/money'
 import type { Cents } from '#/lib/store/money'
 import { formatCep, parseCep, quoteShipping } from '#/lib/store/shipping'
@@ -79,7 +82,7 @@ export function ShippingOptions({
           return (
             <li
               key={option.method}
-              className="flex items-center gap-3 rounded-2xl bg-secondary px-4 py-3"
+              className="flex items-center gap-3 rounded-sm bg-secondary px-4 py-3"
             >
               {body}
             </li>
@@ -87,7 +90,7 @@ export function ShippingOptions({
 
         return (
           <li key={option.method}>
-            <label className="flex cursor-pointer items-center gap-3 rounded-2xl border border-foreground/15 px-4 py-3 transition-colors has-checked:border-primary has-checked:bg-primary/[0.06] has-focus-visible:ring-2 has-focus-visible:ring-ring/40 motion-reduce:transition-none">
+            <label className="flex cursor-pointer items-center gap-3 rounded-sm border border-foreground/15 px-4 py-3 transition-colors has-checked:border-primary has-checked:bg-primary/[0.06] has-focus-visible:ring-2 has-focus-visible:ring-ring/40 motion-reduce:transition-none">
               <input
                 type="radio"
                 name={name}
@@ -178,11 +181,11 @@ export function ShippingCalculator({
             maxLength={9}
             aria-invalid={invalid}
             aria-describedby={describedBy}
-            className="h-11 w-full min-w-0 flex-1 rounded-full border border-input bg-surface px-4 text-body tabular-nums outline-none placeholder:text-foreground/40 focus-visible:border-primary/60 focus-visible:ring-2 focus-visible:ring-ring/20 aria-invalid:border-destructive"
+            className="h-11 w-full min-w-0 flex-1 rounded-sm border-2 border-ink/70 bg-surface px-4 text-body tabular-nums outline-none placeholder:text-foreground/40 focus-visible:border-primary/60 focus-visible:ring-2 focus-visible:ring-ring/20 aria-invalid:border-destructive"
           />
           <button
             type="submit"
-            className="h-11 shrink-0 rounded-full border-[1.5px] border-foreground/20 px-5 text-small font-semibold transition-colors hover:border-primary/60 motion-reduce:transition-none"
+            className="h-11 shrink-0 rounded-sm border-2 border-ink px-5 text-small font-semibold transition-colors hover:border-primary/60 motion-reduce:transition-none"
           >
             {m.store_shippingCalculate()}
           </button>

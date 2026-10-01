@@ -45,10 +45,10 @@ export function CartSkeleton(): React.JSX.Element {
     >
       <span className="sr-only">{m.store_loading()}</span>
       <div className="grid content-start gap-4">
-        <Skeleton className="h-32 rounded-3xl" />
-        <Skeleton className="h-32 rounded-3xl" />
+        <Skeleton className="h-32 rounded-sm" />
+        <Skeleton className="h-32 rounded-sm" />
       </div>
-      <Skeleton className="h-80 rounded-3xl" />
+      <Skeleton className="h-80 rounded-sm" />
     </div>
   )
 }

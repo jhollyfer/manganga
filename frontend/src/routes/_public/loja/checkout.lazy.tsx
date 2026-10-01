@@ -82,7 +82,7 @@ function RouteComponent(): React.JSX.Element {
         eyebrow={m.nav_store()}
         title={
           <>
-            {m.checkout_titleStart()} <em>{m.checkout_titleEm()}</em>.
+            {m.checkout_titleStart()} <em>{m.checkout_titleEm()}</em>
           </>
         }
         crumbs={[
@@ -170,7 +170,7 @@ function Step({
   children: React.ReactNode
 }): React.JSX.Element {
   return (
-    <fieldset className="grid gap-6 rounded-3xl border border-border bg-surface p-6 md:p-8">
+    <fieldset className="grid gap-6 rounded-sm border border-border bg-surface p-6 md:p-8">
       <legend className="sr-only">{title}</legend>
       <p aria-hidden="true" className="flex items-center gap-3">
         <span className="inline-flex size-9 items-center justify-center rounded-full bg-primary text-small font-bold text-primary-foreground">
@@ -308,7 +308,7 @@ function CheckoutForm({ cart }: { cart: Cart }): React.JSX.Element {
       className="grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,1fr)_24rem] lg:gap-14"
     >
       <div className="grid content-start gap-6">
-        <p className="flex items-start gap-3 rounded-2xl border border-brand-gold/40 bg-brand-gold/10 p-4 text-small leading-relaxed">
+        <p className="flex items-start gap-3 rounded-sm border border-brand-gold/40 bg-brand-gold/10 p-4 text-small leading-relaxed">
           <InfoIcon
             aria-hidden="true"
             className="mt-0.5 size-5 shrink-0 text-warning"
@@ -427,7 +427,7 @@ function CheckoutForm({ cart }: { cart: Cart }): React.JSX.Element {
             {options.length === 0 && (
               <p
                 className={cn(
-                  'flex items-center gap-2 rounded-2xl bg-secondary px-4 py-3 text-small text-muted-foreground',
+                  'flex items-center gap-2 rounded-sm bg-secondary px-4 py-3 text-small text-muted-foreground',
                   shippingMissing && 'bg-destructive/10 text-destructive',
                 )}
                 role={hintRole}
@@ -455,7 +455,7 @@ function CheckoutForm({ cart }: { cart: Cart }): React.JSX.Element {
                   return (
                     <label
                       key={each}
-                      className="flex cursor-pointer items-start gap-4 rounded-2xl border border-foreground/15 p-4 transition-colors has-checked:border-primary has-checked:bg-primary/[0.06] has-focus-visible:ring-2 has-focus-visible:ring-ring/40 motion-reduce:transition-none"
+                      className="flex cursor-pointer items-start gap-4 rounded-sm border border-foreground/15 p-4 transition-colors has-checked:border-primary has-checked:bg-primary/[0.06] has-focus-visible:ring-2 has-focus-visible:ring-ring/40 motion-reduce:transition-none"
                     >
                       <input
                         type="radio"
@@ -488,7 +488,7 @@ function CheckoutForm({ cart }: { cart: Cart }): React.JSX.Element {
         aria-label={m.store_summaryTitle()}
         className="grid content-start gap-6 lg:sticky lg:top-24 lg:self-start"
       >
-        <div className="grid gap-6 rounded-3xl border border-border bg-surface p-6">
+        <div className="grid gap-6 rounded-sm border border-border bg-surface p-6">
           <h2 className="text-h3">{m.store_summaryTitle()}</h2>
           <ul className="grid gap-4">
             {lines.map(({ line, product, total: lineTotal }) => {
@@ -503,7 +503,7 @@ function CheckoutForm({ cart }: { cart: Cart }): React.JSX.Element {
                     <ProductArt
                       art={product.art}
                       color={color?.hex ?? '#f7f6f0'}
-                      className="rounded-xl p-1"
+                      className="rounded-sm p-1"
                     />
                     <span className="absolute -top-1 -right-1 inline-flex size-5 items-center justify-center rounded-full bg-foreground text-2xs font-bold text-background">
                       {line.quantity}

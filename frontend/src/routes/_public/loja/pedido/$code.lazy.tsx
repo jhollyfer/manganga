@@ -17,7 +17,7 @@ import { CartSkeleton } from '../-components/empty-cart'
 import {
   SHIPPING_METHOD_LABELS,
   shippingDeadline,
-} from '../-components/store-labels'
+} from '../../-components/store-labels'
 import { OrderSummary } from '../-components/summary'
 import { useOrder } from '../-components/use-orders'
 import { PageHero } from '../../-components/page-hero'
@@ -162,7 +162,7 @@ function OrderPage({ order }: { order: Order }): React.JSX.Element {
         eyebrow={m.order_eyebrow()}
         title={
           <>
-            {m.order_titleStart()} <em>{firstName}</em>.
+            {m.order_titleStart()} <em>{firstName}</em>
           </>
         }
         lead={m.order_lead({ count: orderItemCount(order) })}
@@ -173,7 +173,7 @@ function OrderPage({ order }: { order: Order }): React.JSX.Element {
         className="md:pb-16"
       >
         <div className="mt-8 flex flex-wrap items-center gap-3">
-          <p className="inline-flex items-center gap-3 rounded-full border border-on-stage/25 bg-on-stage/[0.06] py-1.5 pr-1.5 pl-5 text-on-stage">
+          <p className="inline-flex items-center gap-3 rounded-sm border-2 border-on-stage/40 bg-on-stage/[0.06] py-1.5 pr-1.5 pl-5 text-on-stage">
             <span className="text-micro tracking-[0.14em] text-on-stage/70 uppercase">
               {m.order_code()}
             </span>
@@ -216,7 +216,7 @@ function OrderPage({ order }: { order: Order }): React.JSX.Element {
                 key={index}
                 aria-current={ariaCurrent}
                 className={cn(
-                  'grid gap-3 rounded-2xl border border-border p-4',
+                  'grid gap-3 rounded-sm border border-border p-4',
                   current && 'border-primary bg-primary/[0.06]',
                 )}
               >
@@ -245,7 +245,7 @@ function OrderPage({ order }: { order: Order }): React.JSX.Element {
 
         <div className="grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,1fr)_24rem] lg:gap-14">
           <div className="grid content-start gap-6">
-            <article className="grid gap-5 rounded-3xl border border-border bg-surface p-6 md:p-8">
+            <article className="grid gap-5 rounded-sm border border-border bg-surface p-6 md:p-8">
               <h2 className="flex items-center gap-3 text-h3">
                 <PaymentIcon className="size-7 text-primary" />
                 {PAYMENT_METHOD_LABELS[order.payment]()}
@@ -254,16 +254,16 @@ function OrderPage({ order }: { order: Order }): React.JSX.Element {
                 {PAYMENT_STEPS[order.payment]()}
               </p>
               {order.payment === 'pix' && (
-                <div className="grid gap-3 rounded-2xl bg-secondary p-4">
+                <div className="grid gap-3 rounded-sm bg-secondary p-4">
                   <p className="text-small font-semibold">{m.order_pixKey()}</p>
                   <div className="flex flex-wrap items-center gap-3">
-                    <code className="rounded-xl bg-background px-3 py-2 font-mono text-small">
+                    <code className="rounded-sm bg-background px-3 py-2 font-mono text-small">
                       {CONTACT.storeEmail}
                     </code>
                     <button
                       type="button"
                       onClick={() => void copy(CONTACT.storeEmail)}
-                      className="inline-flex h-10 items-center gap-2 rounded-full border-[1.5px] border-foreground/20 px-4 text-small font-semibold"
+                      className="inline-flex h-10 items-center gap-2 rounded-sm border-2 border-ink px-4 text-small font-semibold"
                     >
                       <CopyIcon aria-hidden="true" className="size-4" />
                       {m.order_copyKey()}
@@ -276,7 +276,7 @@ function OrderPage({ order }: { order: Order }): React.JSX.Element {
                   </p>
                 </div>
               )}
-              <p className="rounded-2xl border border-brand-gold/40 bg-brand-gold/10 p-4 text-small leading-relaxed">
+              <p className="rounded-sm border border-brand-gold/40 bg-brand-gold/10 p-4 text-small leading-relaxed">
                 {m.checkout_demoNotice()}
               </p>
               <PillButton
@@ -294,7 +294,7 @@ function OrderPage({ order }: { order: Order }): React.JSX.Element {
               </PillButton>
             </article>
 
-            <article className="grid gap-5 rounded-3xl border border-border bg-surface p-6 md:p-8">
+            <article className="grid gap-5 rounded-sm border border-border bg-surface p-6 md:p-8">
               <h2 className="text-h3">{m.order_deliveryTitle()}</h2>
               <div className="grid gap-6 sm:grid-cols-2">
                 <div className="grid content-start gap-1 text-small">
@@ -332,7 +332,7 @@ function OrderPage({ order }: { order: Order }): React.JSX.Element {
 
           <aside
             aria-label={m.store_summaryTitle()}
-            className="grid content-start gap-6 rounded-3xl border border-border bg-surface p-6 lg:sticky lg:top-24 lg:self-start"
+            className="grid content-start gap-6 rounded-sm border border-border bg-surface p-6 lg:sticky lg:top-24 lg:self-start"
           >
             <h2 className="text-h3">{m.store_summaryTitle()}</h2>
             <ul className="grid gap-4">
@@ -345,7 +345,7 @@ function OrderPage({ order }: { order: Order }): React.JSX.Element {
                     <ProductArt
                       art={line.art}
                       color={line.color.hex}
-                      className="rounded-xl p-1"
+                      className="rounded-sm p-1"
                     />
                     <span className="absolute -top-1 -right-1 inline-flex size-5 items-center justify-center rounded-full bg-foreground text-2xs font-bold text-background">
                       {line.quantity}

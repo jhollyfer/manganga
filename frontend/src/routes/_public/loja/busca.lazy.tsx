@@ -24,20 +24,20 @@ function Title({ q, sale }: { q?: string; sale?: boolean }): React.JSX.Element {
   if (q)
     return (
       <>
-        {m.store_searchResultsFor()} <em>“{q}”</em>.
+        {m.store_searchResultsFor()} <em>“{q}”</em>
       </>
     )
 
   if (sale)
     return (
       <>
-        {m.store_saleTitleStart()} <em>{m.store_saleTitleEm()}</em>.
+        {m.store_saleTitleStart()} <em>{m.store_saleTitleEm()}</em>
       </>
     )
 
   return (
     <>
-      {m.store_searchAllStart()} <em>{m.store_searchAllEm()}</em>.
+      {m.store_searchAllStart()} <em>{m.store_searchAllEm()}</em>
     </>
   )
 }
@@ -99,7 +99,7 @@ function RouteComponent(): React.JSX.Element {
                     <Link
                       to="/loja/categoria/$slug"
                       params={{ slug: category.slug }}
-                      className="inline-flex h-10 items-center rounded-full border border-foreground/15 bg-surface px-4 text-small font-medium hover:border-primary/50"
+                      className="inline-flex h-10 items-center rounded-sm border-2 border-ink/30 bg-surface px-4 text-small font-medium hover:border-primary/50"
                     >
                       {localized(category.name)}
                     </Link>

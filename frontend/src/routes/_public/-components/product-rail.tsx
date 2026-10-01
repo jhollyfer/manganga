@@ -1,8 +1,8 @@
 import type * as React from 'react'
 
 import { ProductCard } from './product-card'
-import { REVEAL, STAGGER } from '../../-components/reveal'
-import { SectionHeading } from '../../-components/section-heading'
+import { REVEAL, STAGGER } from './reveal'
+import { SectionHeading } from './section-heading'
 import type { Product } from '#/lib/store/catalog'
 import { cn } from '#/lib/utils'
 
@@ -50,7 +50,7 @@ export function ProductRail({
         />
       </div>
       <ul
-        className="rail gap-4 scroll-px-4 px-4 pb-2 md:gap-6 md:scroll-px-[max(2rem,calc((100vw-80rem)/2+2rem))] md:px-[max(2rem,calc((100vw-80rem)/2+2rem))]"
+        className="rail gap-4 scroll-px-4 px-4 pb-2 md:gap-6 md:scroll-px-[max(2.5rem,calc((100vw-84rem)/2+2.5rem))] md:px-[max(2.5rem,calc((100vw-84rem)/2+2.5rem))]"
         aria-labelledby={id}
       >
         {products.map((product, index) => (

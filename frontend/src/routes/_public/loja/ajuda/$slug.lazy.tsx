@@ -1,7 +1,7 @@
 import type * as React from 'react'
 import { Link, createLazyFileRoute, getRouteApi } from '@tanstack/react-router'
 
-import { HELP_ICONS, HelpContact } from '../-components/help-cards'
+import { HelpContact } from '../-components/help-cards'
 import { SizeTables } from '../-components/size-guide'
 import { StoreNav } from '../-components/store-nav'
 import { PageHero } from '../../-components/page-hero'
@@ -61,7 +61,7 @@ function RouteComponent(): React.JSX.Element {
         eyebrow={m.help_title()}
         title={
           <>
-            <em>{title}</em>.
+            <em>{title}</em>
           </>
         }
         lead={localized(topic.summary)}
@@ -79,17 +79,17 @@ function RouteComponent(): React.JSX.Element {
           className="lg:sticky lg:top-40 lg:self-start"
         >
           <ul className="grid gap-1">
-            {HELP_TOPICS.map((each) => {
-              const Icon = HELP_ICONS[each.slug]
-
+            {HELP_TOPICS.map((each, index) => {
               return (
                 <li key={each.slug}>
                   <Link
                     to="/loja/ajuda/$slug"
                     params={{ slug: each.slug }}
-                    className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-small font-medium text-foreground/75 transition-colors hover:bg-secondary hover:text-foreground data-[status=active]:bg-secondary data-[status=active]:text-foreground motion-reduce:transition-none"
+                    className="flex items-center gap-3 rounded-sm px-3 py-2.5 text-small font-medium text-foreground/75 transition-colors hover:text-primary-glow data-[status=active]:bg-ink data-[status=active]:text-background motion-reduce:transition-none"
                   >
-                    <Icon className="size-5 text-primary" />
+                    <span className="font-serif text-body-lg text-primary-glow italic">
+                      {index + 1}.
+                    </span>
                     {localized(each.title)}
                   </Link>
                 </li>
@@ -111,7 +111,7 @@ function RouteComponent(): React.JSX.Element {
           </div>
 
           {topic.sizeChart && (
-            <div className="max-w-xl rounded-3xl border border-border bg-surface p-6">
+            <div className="max-w-xl rounded-sm border border-border bg-surface p-6">
               <SizeTables />
             </div>
           )}
@@ -119,7 +119,7 @@ function RouteComponent(): React.JSX.Element {
           {topic.faq && topic.faq.length > 0 && (
             <div className="grid max-w-[68ch] gap-4">
               <h2 className="text-h3">{m.help_faqTitle()}</h2>
-              <Accordion className="rounded-3xl border-border bg-surface">
+              <Accordion className="rounded-sm border-border bg-surface">
                 {topic.faq.map((item, index) => (
                   <AccordionItem
                     key={index}

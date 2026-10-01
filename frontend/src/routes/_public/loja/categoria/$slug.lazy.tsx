@@ -77,7 +77,7 @@ function RouteComponent(): React.JSX.Element {
         eyebrow={m.nav_store()}
         title={
           <>
-            <em>{localized(category.name)}</em>.
+            <em>{localized(category.name)}</em>
           </>
         }
         lead={localized(category.description)}
@@ -97,7 +97,7 @@ function RouteComponent(): React.JSX.Element {
           emptyAction={
             <Link
               to="/loja"
-              className="inline-flex h-11 items-center rounded-full border-[1.5px] border-foreground/20 px-5 text-small font-semibold"
+              className="inline-flex h-11 items-center rounded-sm border-2 border-ink px-5 text-small font-semibold"
             >
               {m.store_backToStore()}
             </Link>

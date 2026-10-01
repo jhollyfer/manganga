@@ -11,6 +11,7 @@ import { Join } from './home/join'
 import { Manifesto } from './home/manifesto'
 import { News } from './home/news'
 import { Sponsors } from './home/sponsors'
+import { Store } from './home/store'
 import { Toadas } from './home/toadas'
 import { nextFestivalNight, upcomingEvents } from '#/lib/events'
 import { latestNews } from '#/lib/news'
@@ -22,7 +23,7 @@ const route = getRouteApi('/_public/')
  *
  * Só composição: a ordem aqui é a ordem na tela, e é a do Caprichoso. Primeiro
  * o tema (hero e manifesto) e o que vem por aí (agenda); depois quem faz a
- * festa (itens e toadas), o que está acontecendo (notícias), de onde o boi vem
+ * festa (itens e toadas), o que está acontecendo (notícias), a camisa para vestir (loja), de onde o boi vem
  * (história) e como a festa funciona (festival); por fim as imagens, quem
  * apoia e o convite para entrar no boi.
  *
@@ -40,6 +41,7 @@ export function Home(): React.JSX.Element {
       <Items />
       <Toadas />
       <News articles={latestNews(3)} />
+      <Store />
       <History />
       <Festival />
       <Gallery />

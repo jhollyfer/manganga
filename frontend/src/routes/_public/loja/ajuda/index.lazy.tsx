@@ -21,7 +21,7 @@ function RouteComponent(): React.JSX.Element {
         eyebrow={m.nav_store()}
         title={
           <>
-            {m.help_titleStart()} <em>{m.help_titleEm()}</em>.
+            {m.help_titleStart()} <em>{m.help_titleEm()}</em>
           </>
         }
         lead={m.help_lead()}

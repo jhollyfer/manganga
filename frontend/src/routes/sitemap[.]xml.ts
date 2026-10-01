@@ -6,6 +6,7 @@ import { STATIC_ENTRIES, buildSitemap } from '#/lib/sitemap'
 import type { SitemapEntry } from '#/lib/sitemap'
 import { SITE_URL } from '#/lib/site'
 import { CATEGORIES, PRODUCTS } from '#/lib/store/catalog'
+import { HELP_TOPICS } from '#/lib/store/help'
 import { locales, localizeHref } from '#/paraglide/runtime'
 
 /**
@@ -45,6 +46,10 @@ export const Route = createFileRoute('/sitemap.xml')({
             path: '/loja/produto/'.concat(product.slug),
             lastModified: product.addedAt,
             priority: 0.6,
+          })),
+          ...HELP_TOPICS.map((topic) => ({
+            path: '/loja/ajuda/'.concat(topic.slug),
+            priority: 0.3,
           })),
         ]
 

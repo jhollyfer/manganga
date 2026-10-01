@@ -4,7 +4,7 @@ import { ArrowRightIcon, WhatsappLogoIcon } from '@phosphor-icons/react'
 
 import { StoreBenefits } from './-components/benefits'
 import { HelpCards } from './-components/help-cards'
-import { ProductRail } from './-components/product-rail'
+import { ProductRail } from '../-components/product-rail'
 import { StoreNav } from './-components/store-nav'
 import { PillButton } from '../-components/pill-button'
 import { ProductArt } from '../-components/product-art'
@@ -78,7 +78,7 @@ function RouteComponent(): React.JSX.Element {
             title={
               <span id="loja-vitrines">
                 {m.store_categoriesTitleStart()}{' '}
-                <em>{m.store_categoriesTitleEm()}</em>.
+                <em>{m.store_categoriesTitleEm()}</em>
               </span>
             }
           />
@@ -92,7 +92,7 @@ function RouteComponent(): React.JSX.Element {
                 <Link
                   to="/loja/categoria/$slug"
                   params={{ slug: category.slug }}
-                  className="group grid h-full overflow-hidden rounded-3xl bg-secondary md:grid-cols-[1fr_1.1fr]"
+                  className="group grid h-full overflow-hidden rounded-sm bg-secondary md:grid-cols-[1fr_1.1fr]"
                 >
                   <div className="aspect-square md:aspect-auto">
                     {cover && (
@@ -131,7 +131,7 @@ function RouteComponent(): React.JSX.Element {
         title={
           <>
             {m.store_bestsellersTitleStart()}{' '}
-            <em>{m.store_bestsellersTitleEm()}</em>.
+            <em>{m.store_bestsellersTitleEm()}</em>
           </>
         }
         action={
@@ -150,7 +150,7 @@ function RouteComponent(): React.JSX.Element {
         eyebrow={m.store_newestEyebrow()}
         title={
           <>
-            {m.store_newestTitleStart()} <em>{m.store_newestTitleEm()}</em>.
+            {m.store_newestTitleStart()} <em>{m.store_newestTitleEm()}</em>
           </>
         }
         action={
@@ -168,7 +168,7 @@ function RouteComponent(): React.JSX.Element {
         eyebrow={m.store_saleEyebrow()}
         title={
           <>
-            {m.store_saleTitleStart()} <em>{m.store_saleTitleEm()}</em>.
+            {m.store_saleTitleStart()} <em>{m.store_saleTitleEm()}</em>
           </>
         }
         action={
@@ -200,7 +200,6 @@ function SeasonBanner(): React.JSX.Element {
       <div className="container-x grid items-center gap-10 lg:grid-cols-[1.1fr_1fr]">
         <div>
           <p className={cn(REVEAL, 'eyebrow mb-5 text-primary-glow')}>
-            <span aria-hidden="true" className="h-px w-8 bg-current" />
             {m.store_heroEyebrow({ year: SEASON_YEAR })}
           </p>
           <h1
@@ -253,17 +252,13 @@ function SeasonBanner(): React.JSX.Element {
               'relative mx-auto aspect-square w-full max-w-md delay-200 zoom-in-95 duration-1000',
             )}
           >
-            <div
-              aria-hidden="true"
-              className="absolute inset-[8%] rounded-full bg-brand-leaf/15 blur-2xl"
-            />
             <ProductArt
               art={FEATURED.art}
               color={FEATURED.colors.at(0)?.hex ?? '#f7f6f0'}
               label={localized(FEATURED.name)}
               className="relative bg-transparent float-gentle motion-reduce:animate-none"
             />
-            <p className="absolute right-0 bottom-6 rounded-2xl bg-on-stage px-4 py-3 text-stage shadow-xl md:right-4">
+            <p className="absolute right-0 bottom-6 rounded-sm bg-on-stage px-4 py-3 text-stage shadow-xl md:right-4">
               <span className="block text-micro font-semibold tracking-[0.12em] uppercase opacity-70">
                 {localized(FEATURED.name)}
               </span>
@@ -288,15 +283,12 @@ function Welcome(): React.JSX.Element {
     >
       <div className="container-x grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
         <div className={REVEAL}>
-          <p className="eyebrow mb-4 text-primary-glow">
-            <span aria-hidden="true" className="h-px w-8 bg-current" />
-            {m.nav_store()}
-          </p>
+          <p className="eyebrow mb-4 text-primary-glow">{m.nav_store()}</p>
           <h2
             id="loja-boas-vindas"
             className="text-h2 [&_em]:text-primary-glow"
           >
-            {m.store_welcomeTitleStart()} <em>{m.store_welcomeTitleEm()}</em>.
+            {m.store_welcomeTitleStart()} <em>{m.store_welcomeTitleEm()}</em>
           </h2>
           <p className="mt-6 text-body-lg leading-relaxed text-muted-foreground">
             {m.store_welcomeText()}

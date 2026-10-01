@@ -3,7 +3,7 @@ import { Link } from '@tanstack/react-router'
 
 import { ProductBadges } from './product-badges'
 import { ProductPrice } from './product-price'
-import { ProductArt } from '../../-components/product-art'
+import { ProductArt } from './product-art'
 import { localized } from '#/lib/i18n'
 import { stockLevel } from '#/lib/store/catalog'
 import type { Product } from '#/lib/store/catalog'
@@ -36,11 +36,11 @@ export function ProductCard({
       params={{ slug: product.slug }}
       data-slot="product-card"
       className={cn(
-        'group flex h-full flex-col rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background',
+        'group flex h-full flex-col rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background',
         className,
       )}
     >
-      <div className="relative aspect-square overflow-hidden rounded-2xl bg-secondary">
+      <div className="relative aspect-square overflow-hidden rounded-sm bg-secondary">
         <ProductArt
           art={product.art}
           color={main?.hex ?? '#f7f6f0'}
@@ -48,7 +48,7 @@ export function ProductCard({
         />
         <ProductBadges product={product} className="absolute top-3 left-3" />
         {soldOut && (
-          <span className="absolute inset-x-3 bottom-3 rounded-full bg-stage/85 py-1.5 text-center text-micro font-semibold text-on-stage">
+          <span className="absolute inset-x-3 bottom-3 rounded-sm bg-ink py-1.5 text-center text-micro font-semibold text-on-stage">
             {m.product_soldOut()}
           </span>
         )}

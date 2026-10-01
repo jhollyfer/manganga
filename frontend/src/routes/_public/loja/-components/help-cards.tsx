@@ -2,13 +2,7 @@ import type * as React from 'react'
 import { Link } from '@tanstack/react-router'
 import {
   ArrowRightIcon,
-  ArrowsClockwiseIcon,
-  CreditCardIcon,
   EnvelopeSimpleIcon,
-  QuestionIcon,
-  RulerIcon,
-  ShoppingBagIcon,
-  TruckIcon,
   WhatsappLogoIcon,
 } from '@phosphor-icons/react'
 
@@ -17,22 +11,8 @@ import { REVEAL, STAGGER } from '../../-components/reveal'
 import { localized } from '#/lib/i18n'
 import { CONTACT, WHATSAPP_URL } from '#/lib/site'
 import { HELP_TOPICS } from '#/lib/store/help'
-import type { HelpSlug } from '#/lib/store/help'
 import { cn } from '#/lib/utils'
 import { m } from '#/paraglide/messages'
-
-/** O ícone de cada tópico, o mesmo nos cartões e no menu lateral. */
-export const HELP_ICONS: Record<
-  HelpSlug,
-  React.ComponentType<{ className?: string }>
-> = {
-  'como-comprar': ShoppingBagIcon,
-  'entregas-e-prazos': TruckIcon,
-  pagamentos: CreditCardIcon,
-  'trocas-e-devolucoes': ArrowsClockwiseIcon,
-  'guia-de-tamanhos': RulerIcon,
-  'perguntas-frequentes': QuestionIcon,
-}
 
 /**
  * O "não achou?" do fim da ajuda: WhatsApp, e-mail da loja e o horário.
@@ -47,7 +27,7 @@ export function HelpContact({
     <div
       data-slot="help-contact"
       className={cn(
-        'stage grid gap-6 rounded-3xl p-8 md:grid-cols-[1fr_auto] md:items-end md:p-10',
+        'stage grid gap-6 rounded-sm p-8 md:grid-cols-[1fr_auto] md:items-end md:p-10',
         className,
       )}
     >
@@ -94,11 +74,12 @@ export function HelpCards({
   return (
     <ul
       data-slot="help-cards"
-      className={cn('grid gap-4 sm:grid-cols-2 lg:grid-cols-3', className)}
+      className={cn(
+        'grid border-t-4 border-ink sm:grid-cols-2 lg:grid-cols-3',
+        className,
+      )}
     >
       {HELP_TOPICS.map((topic, index) => {
-        const Icon = HELP_ICONS[topic.slug]
-
         return (
           <li
             key={topic.slug}
@@ -108,11 +89,13 @@ export function HelpCards({
             <Link
               to="/loja/ajuda/$slug"
               params={{ slug: topic.slug }}
-              className="group flex h-full flex-col gap-4 rounded-3xl border border-border bg-surface p-6 transition-colors hover:border-primary/40 motion-reduce:transition-none"
+              className="group flex h-full flex-col gap-3 border-b-2 border-ink/20 py-6 sm:pr-6"
             >
-              <Icon className="size-7 text-primary" />
+              <span className="font-serif text-h3 leading-none text-primary-glow italic">
+                {index + 1}.
+              </span>
               <span className="grid gap-1.5">
-                <span className="font-display text-h4">
+                <span className="font-display text-h4 font-extrabold uppercase transition-colors group-hover:text-primary-glow">
                   {localized(topic.title)}
                 </span>
                 <span className="text-small leading-relaxed text-muted-foreground">
@@ -121,7 +104,7 @@ export function HelpCards({
               </span>
               <ArrowRightIcon
                 aria-hidden="true"
-                className="mt-auto size-4 text-primary transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transition-none"
+                className="mt-auto size-4 transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transition-none"
               />
             </Link>
           </li>

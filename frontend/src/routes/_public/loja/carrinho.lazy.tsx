@@ -80,7 +80,7 @@ function RouteComponent(): React.JSX.Element {
         eyebrow={m.nav_store()}
         title={
           <>
-            {m.store_cartTitleStart()} <em>{m.store_cartTitleEm()}</em>.
+            {m.store_cartTitleStart()} <em>{m.store_cartTitleEm()}</em>
           </>
         }
         lead={lead}
@@ -154,7 +154,7 @@ function CartContent({
         aria-label={m.store_summaryTitle()}
         className="grid content-start gap-6 lg:sticky lg:top-24 lg:self-start"
       >
-        <div className="grid gap-6 rounded-3xl border border-border bg-surface p-6">
+        <div className="grid gap-6 rounded-sm border border-border bg-surface p-6">
           <h2 className="text-h3">{m.store_summaryTitle()}</h2>
           <CouponForm cart={cart} actions={actions} />
           <ShippingCalculator
@@ -218,7 +218,7 @@ function FreeShippingBar({
     text = m.store_freeShippingMissing({ amount: formatMoney(missing) })
 
   return (
-    <div className="grid gap-3 rounded-3xl bg-secondary p-5">
+    <div className="grid gap-3 rounded-sm bg-secondary p-5">
       <p className="text-small font-medium">{text}</p>
       <div
         aria-hidden="true"
@@ -252,7 +252,7 @@ function CartLineItem({
         params={{ slug: product.slug }}
         tabIndex={-1}
         aria-hidden="true"
-        className="block aspect-square overflow-hidden rounded-2xl"
+        className="block aspect-square overflow-hidden rounded-sm"
       >
         <ProductArt
           art={product.art}
@@ -302,7 +302,7 @@ function CartLineItem({
           <button
             type="button"
             onClick={() => actions.remove(line)}
-            className="inline-flex h-10 items-center gap-1.5 rounded-full px-3 text-small text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive motion-reduce:transition-none"
+            className="inline-flex h-10 items-center gap-1.5 rounded-sm px-3 text-small text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive motion-reduce:transition-none"
           >
             <TrashIcon aria-hidden="true" className="size-4" />
             {m.store_remove()}
@@ -343,7 +343,7 @@ function CouponForm({
 
   if (cart.coupon)
     return (
-      <div className="flex items-center justify-between gap-3 rounded-2xl bg-primary/[0.08] px-4 py-3 text-small">
+      <div className="flex items-center justify-between gap-3 rounded-sm bg-primary/[0.08] px-4 py-3 text-small">
         <span className="flex items-center gap-2">
           <TicketIcon aria-hidden="true" className="size-5 text-primary" />
           <span>
@@ -390,11 +390,11 @@ function CouponForm({
           placeholder={m.store_couponPlaceholder()}
           aria-invalid={invalid}
           aria-describedby={describedBy}
-          className="h-11 w-full min-w-0 flex-1 rounded-full border border-input bg-background px-4 text-body uppercase outline-none placeholder:normal-case placeholder:text-foreground/40 focus-visible:border-primary/60 focus-visible:ring-2 focus-visible:ring-ring/20 aria-invalid:border-destructive"
+          className="h-11 w-full min-w-0 flex-1 rounded-sm border-2 border-ink/70 bg-background px-4 text-body uppercase outline-none placeholder:normal-case placeholder:text-foreground/40 focus-visible:border-primary/60 focus-visible:ring-2 focus-visible:ring-ring/20 aria-invalid:border-destructive"
         />
         <button
           type="submit"
-          className="h-11 shrink-0 rounded-full border-[1.5px] border-foreground/20 px-5 text-small font-semibold transition-colors hover:border-primary/60 motion-reduce:transition-none"
+          className="h-11 shrink-0 rounded-sm border-2 border-ink px-5 text-small font-semibold transition-colors hover:border-primary/60 motion-reduce:transition-none"
         >
           {m.store_couponApply()}
         </button>
