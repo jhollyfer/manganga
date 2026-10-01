@@ -33,6 +33,7 @@ import { Route as PublicBoiToadasRouteImport } from './routes/_public/boi/toadas
 import { Route as PublicLojaIndexRouteImport } from './routes/_public/loja/index'
 import { Route as PublicLojaCarrinhoRouteImport } from './routes/_public/loja/carrinho'
 import { Route as PublicNoticiasIndexRouteImport } from './routes/_public/noticias/index'
+import { Route as PrivatePainelMembrosIndexRouteImport } from './routes/_private/painel/membros/index'
 
 const AuthenticationLayoutRoute = AuthenticationLayoutRouteImport.update({
   id: '/_authentication',
@@ -155,6 +156,14 @@ const PublicNoticiasIndexRoute = PublicNoticiasIndexRouteImport.update({
   path: '/noticias/',
   getParentRoute: () => PublicLayoutRoute,
 } as any)
+const PrivatePainelMembrosIndexRoute =
+  PrivatePainelMembrosIndexRouteImport.update({
+    id: '/painel/membros/',
+    path: '/painel/membros/',
+    getParentRoute: () => PrivateLayoutRoute,
+  } as any).lazy(() =>
+    import('./routes/_private/painel/membros/index.lazy').then((d) => d.Route),
+  )
 
 export interface FileRoutesByFullPath {
   '/': typeof PublicIndexRoute
@@ -178,6 +187,7 @@ export interface FileRoutesByFullPath {
   '/agenda/': typeof PublicAgendaIndexRoute
   '/loja/': typeof PublicLojaIndexRoute
   '/noticias/': typeof PublicNoticiasIndexRoute
+  '/painel/membros/': typeof PrivatePainelMembrosIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof PublicIndexRoute
@@ -201,6 +211,7 @@ export interface FileRoutesByTo {
   '/agenda': typeof PublicAgendaIndexRoute
   '/loja': typeof PublicLojaIndexRoute
   '/noticias': typeof PublicNoticiasIndexRoute
+  '/painel/membros': typeof PrivatePainelMembrosIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -228,6 +239,7 @@ export interface FileRoutesById {
   '/_public/agenda/': typeof PublicAgendaIndexRoute
   '/_public/loja/': typeof PublicLojaIndexRoute
   '/_public/noticias/': typeof PublicNoticiasIndexRoute
+  '/_private/painel/membros/': typeof PrivatePainelMembrosIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -253,6 +265,7 @@ export interface FileRouteTypes {
     | '/agenda/'
     | '/loja/'
     | '/noticias/'
+    | '/painel/membros/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -276,6 +289,7 @@ export interface FileRouteTypes {
     | '/agenda'
     | '/loja'
     | '/noticias'
+    | '/painel/membros'
   id:
     | '__root__'
     | '/_authentication'
@@ -302,6 +316,7 @@ export interface FileRouteTypes {
     | '/_public/agenda/'
     | '/_public/loja/'
     | '/_public/noticias/'
+    | '/_private/painel/membros/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -482,6 +497,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicNoticiasIndexRouteImport
       parentRoute: typeof PublicLayoutRoute
     }
+    '/_private/painel/membros/': {
+      id: '/_private/painel/membros/'
+      path: '/painel/membros'
+      fullPath: '/painel/membros/'
+      preLoaderRoute: typeof PrivatePainelMembrosIndexRouteImport
+      parentRoute: typeof PrivateLayoutRoute
+    }
   }
 }
 
@@ -498,10 +520,12 @@ const AuthenticationLayoutRouteWithChildren =
 
 interface PrivateLayoutRouteChildren {
   PrivatePainelIndexRoute: typeof PrivatePainelIndexRoute
+  PrivatePainelMembrosIndexRoute: typeof PrivatePainelMembrosIndexRoute
 }
 
 const PrivateLayoutRouteChildren: PrivateLayoutRouteChildren = {
   PrivatePainelIndexRoute: PrivatePainelIndexRoute,
+  PrivatePainelMembrosIndexRoute: PrivatePainelMembrosIndexRoute,
 }
 
 const PrivateLayoutRouteWithChildren = PrivateLayoutRoute._addFileChildren(

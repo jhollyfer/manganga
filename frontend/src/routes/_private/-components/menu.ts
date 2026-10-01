@@ -1,4 +1,4 @@
-import { ChartLineIcon } from '@phosphor-icons/react'
+import { ChartLineIcon, UsersIcon } from '@phosphor-icons/react'
 import type { Icon } from '@phosphor-icons/react'
 
 import { m } from '#/paraglide/messages'
@@ -17,7 +17,7 @@ import { m } from '#/paraglide/messages'
  * lida no render, no idioma de quem está logado.
  */
 export type PanelDestination = {
-  to: '/painel'
+  to: '/painel' | '/painel/membros'
   label: () => string
   icon: Icon
   fuzzy: boolean
@@ -29,5 +29,11 @@ export const PANEL_MENU: ReadonlyArray<PanelDestination> = [
     label: () => m.admin_nav_dashboard(),
     icon: ChartLineIcon,
     fuzzy: false,
+  },
+  {
+    to: '/painel/membros',
+    label: () => m.admin_nav_members(),
+    icon: UsersIcon,
+    fuzzy: true,
   },
 ]
