@@ -9,9 +9,12 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as AuthenticationLayoutRouteImport } from './routes/_authentication/layout'
+import { Route as PrivateLayoutRouteImport } from './routes/_private/layout'
 import { Route as PublicLayoutRouteImport } from './routes/_public/layout'
 import { Route as HealthRouteImport } from './routes/health'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as AuthenticationEntrarRouteImport } from './routes/_authentication/entrar'
 import { Route as PublicIndexRouteImport } from './routes/_public/index'
 import { Route as PublicSplatRouteImport } from './routes/_public/$'
 import { Route as PublicContatoRouteImport } from './routes/_public/contato'
@@ -21,6 +24,7 @@ import { Route as PublicSocioRouteImport } from './routes/_public/socio'
 import { Route as PublicTemaRouteImport } from './routes/_public/tema'
 import { Route as PublicTermosRouteImport } from './routes/_public/termos'
 import { Route as PublicVisiteRouteImport } from './routes/_public/visite'
+import { Route as PrivatePainelIndexRouteImport } from './routes/_private/painel/index'
 import { Route as PublicAgendaIndexRouteImport } from './routes/_public/agenda/index'
 import { Route as PublicAgendaSlugRouteImport } from './routes/_public/agenda/$slug'
 import { Route as PublicBoiGaleriaRouteImport } from './routes/_public/boi/galeria'
@@ -31,7 +35,16 @@ import { Route as PublicLojaIndexRouteImport } from './routes/_public/loja/index
 import { Route as PublicLojaCarrinhoRouteImport } from './routes/_public/loja/carrinho'
 import { Route as PublicNoticiasIndexRouteImport } from './routes/_public/noticias/index'
 import { Route as PublicNoticiasSlugRouteImport } from './routes/_public/noticias/$slug'
+import { Route as PrivatePainelMembrosIndexRouteImport } from './routes/_private/painel/membros/index'
 
+const AuthenticationLayoutRoute = AuthenticationLayoutRouteImport.update({
+  id: '/_authentication',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivateLayoutRoute = PrivateLayoutRouteImport.update({
+  id: '/_private',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PublicLayoutRoute = PublicLayoutRouteImport.update({
   id: '/_public',
   getParentRoute: () => rootRouteImport,
@@ -46,6 +59,13 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticationEntrarRoute = AuthenticationEntrarRouteImport.update({
+  id: '/entrar',
+  path: '/entrar',
+  getParentRoute: () => AuthenticationLayoutRoute,
+} as any).lazy(() =>
+  import('./routes/_authentication/entrar.lazy').then((d) => d.Route),
+)
 const PublicIndexRoute = PublicIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -96,6 +116,13 @@ const PublicVisiteRoute = PublicVisiteRouteImport.update({
   getParentRoute: () => PublicLayoutRoute,
 } as any).lazy(() =>
   import('./routes/_public/visite.lazy').then((d) => d.Route),
+)
+const PrivatePainelIndexRoute = PrivatePainelIndexRouteImport.update({
+  id: '/painel/',
+  path: '/painel/',
+  getParentRoute: () => PrivateLayoutRoute,
+} as any).lazy(() =>
+  import('./routes/_private/painel/index.lazy').then((d) => d.Route),
 )
 const PublicAgendaIndexRoute = PublicAgendaIndexRouteImport.update({
   id: '/agenda/',
@@ -163,11 +190,20 @@ const PublicNoticiasSlugRoute = PublicNoticiasSlugRouteImport.update({
 } as any).lazy(() =>
   import('./routes/_public/noticias/$slug.lazy').then((d) => d.Route),
 )
+const PrivatePainelMembrosIndexRoute =
+  PrivatePainelMembrosIndexRouteImport.update({
+    id: '/painel/membros/',
+    path: '/painel/membros/',
+    getParentRoute: () => PrivateLayoutRoute,
+  } as any).lazy(() =>
+    import('./routes/_private/painel/membros/index.lazy').then((d) => d.Route),
+  )
 
 export interface FileRoutesByFullPath {
   '/': typeof PublicIndexRoute
   '/health': typeof HealthRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/entrar': typeof AuthenticationEntrarRoute
   '/$': typeof PublicSplatRoute
   '/contato': typeof PublicContatoRoute
   '/festival': typeof PublicFestivalRoute
@@ -183,13 +219,17 @@ export interface FileRoutesByFullPath {
   '/boi/toadas': typeof PublicBoiToadasRoute
   '/loja/carrinho': typeof PublicLojaCarrinhoRoute
   '/noticias/$slug': typeof PublicNoticiasSlugRoute
+  '/painel/': typeof PrivatePainelIndexRoute
   '/agenda/': typeof PublicAgendaIndexRoute
   '/loja/': typeof PublicLojaIndexRoute
   '/noticias/': typeof PublicNoticiasIndexRoute
+  '/painel/membros/': typeof PrivatePainelMembrosIndexRoute
 }
 export interface FileRoutesByTo {
+  '/': typeof PublicIndexRoute
   '/health': typeof HealthRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/entrar': typeof AuthenticationEntrarRoute
   '/$': typeof PublicSplatRoute
   '/contato': typeof PublicContatoRoute
   '/festival': typeof PublicFestivalRoute
@@ -198,7 +238,6 @@ export interface FileRoutesByTo {
   '/tema': typeof PublicTemaRoute
   '/termos': typeof PublicTermosRoute
   '/visite': typeof PublicVisiteRoute
-  '/': typeof PublicIndexRoute
   '/agenda/$slug': typeof PublicAgendaSlugRoute
   '/boi/galeria': typeof PublicBoiGaleriaRoute
   '/boi/historia': typeof PublicBoiHistoriaRoute
@@ -206,15 +245,20 @@ export interface FileRoutesByTo {
   '/boi/toadas': typeof PublicBoiToadasRoute
   '/loja/carrinho': typeof PublicLojaCarrinhoRoute
   '/noticias/$slug': typeof PublicNoticiasSlugRoute
+  '/painel': typeof PrivatePainelIndexRoute
   '/agenda': typeof PublicAgendaIndexRoute
   '/loja': typeof PublicLojaIndexRoute
   '/noticias': typeof PublicNoticiasIndexRoute
+  '/painel/membros': typeof PrivatePainelMembrosIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/_authentication': typeof AuthenticationLayoutRouteWithChildren
+  '/_private': typeof PrivateLayoutRouteWithChildren
   '/_public': typeof PublicLayoutRouteWithChildren
   '/health': typeof HealthRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/_authentication/entrar': typeof AuthenticationEntrarRoute
   '/_public/$': typeof PublicSplatRoute
   '/_public/contato': typeof PublicContatoRoute
   '/_public/festival': typeof PublicFestivalRoute
@@ -231,9 +275,11 @@ export interface FileRoutesById {
   '/_public/boi/toadas': typeof PublicBoiToadasRoute
   '/_public/loja/carrinho': typeof PublicLojaCarrinhoRoute
   '/_public/noticias/$slug': typeof PublicNoticiasSlugRoute
+  '/_private/painel/': typeof PrivatePainelIndexRoute
   '/_public/agenda/': typeof PublicAgendaIndexRoute
   '/_public/loja/': typeof PublicLojaIndexRoute
   '/_public/noticias/': typeof PublicNoticiasIndexRoute
+  '/_private/painel/membros/': typeof PrivatePainelMembrosIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -241,6 +287,7 @@ export interface FileRouteTypes {
     | '/'
     | '/health'
     | '/sitemap.xml'
+    | '/entrar'
     | '/$'
     | '/contato'
     | '/festival'
@@ -256,13 +303,17 @@ export interface FileRouteTypes {
     | '/boi/toadas'
     | '/loja/carrinho'
     | '/noticias/$slug'
+    | '/painel/'
     | '/agenda/'
     | '/loja/'
     | '/noticias/'
+    | '/painel/membros/'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/'
     | '/health'
     | '/sitemap.xml'
+    | '/entrar'
     | '/$'
     | '/contato'
     | '/festival'
@@ -271,7 +322,6 @@ export interface FileRouteTypes {
     | '/tema'
     | '/termos'
     | '/visite'
-    | '/'
     | '/agenda/$slug'
     | '/boi/galeria'
     | '/boi/historia'
@@ -279,14 +329,19 @@ export interface FileRouteTypes {
     | '/boi/toadas'
     | '/loja/carrinho'
     | '/noticias/$slug'
+    | '/painel'
     | '/agenda'
     | '/loja'
     | '/noticias'
+    | '/painel/membros'
   id:
     | '__root__'
+    | '/_authentication'
+    | '/_private'
     | '/_public'
     | '/health'
     | '/sitemap.xml'
+    | '/_authentication/entrar'
     | '/_public/$'
     | '/_public/contato'
     | '/_public/festival'
@@ -303,12 +358,16 @@ export interface FileRouteTypes {
     | '/_public/boi/toadas'
     | '/_public/loja/carrinho'
     | '/_public/noticias/$slug'
+    | '/_private/painel/'
     | '/_public/agenda/'
     | '/_public/loja/'
     | '/_public/noticias/'
+    | '/_private/painel/membros/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  AuthenticationLayoutRoute: typeof AuthenticationLayoutRouteWithChildren
+  PrivateLayoutRoute: typeof PrivateLayoutRouteWithChildren
   PublicLayoutRoute: typeof PublicLayoutRouteWithChildren
   HealthRoute: typeof HealthRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -316,6 +375,20 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/_authentication': {
+      id: '/_authentication'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticationLayoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_private': {
+      id: '/_private'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof PrivateLayoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_public': {
       id: '/_public'
       path: ''
@@ -336,6 +409,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_authentication/entrar': {
+      id: '/_authentication/entrar'
+      path: '/entrar'
+      fullPath: '/entrar'
+      preLoaderRoute: typeof AuthenticationEntrarRouteImport
+      parentRoute: typeof AuthenticationLayoutRoute
     }
     '/_public/': {
       id: '/_public/'
@@ -399,6 +479,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/visite'
       preLoaderRoute: typeof PublicVisiteRouteImport
       parentRoute: typeof PublicLayoutRoute
+    }
+    '/_private/painel/': {
+      id: '/_private/painel/'
+      path: '/painel'
+      fullPath: '/painel/'
+      preLoaderRoute: typeof PrivatePainelIndexRouteImport
+      parentRoute: typeof PrivateLayoutRoute
     }
     '/_public/agenda/': {
       id: '/_public/agenda/'
@@ -470,8 +557,40 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicNoticiasSlugRouteImport
       parentRoute: typeof PublicLayoutRoute
     }
+    '/_private/painel/membros/': {
+      id: '/_private/painel/membros/'
+      path: '/painel/membros'
+      fullPath: '/painel/membros/'
+      preLoaderRoute: typeof PrivatePainelMembrosIndexRouteImport
+      parentRoute: typeof PrivateLayoutRoute
+    }
   }
 }
+
+interface AuthenticationLayoutRouteChildren {
+  AuthenticationEntrarRoute: typeof AuthenticationEntrarRoute
+}
+
+const AuthenticationLayoutRouteChildren: AuthenticationLayoutRouteChildren = {
+  AuthenticationEntrarRoute: AuthenticationEntrarRoute,
+}
+
+const AuthenticationLayoutRouteWithChildren =
+  AuthenticationLayoutRoute._addFileChildren(AuthenticationLayoutRouteChildren)
+
+interface PrivateLayoutRouteChildren {
+  PrivatePainelIndexRoute: typeof PrivatePainelIndexRoute
+  PrivatePainelMembrosIndexRoute: typeof PrivatePainelMembrosIndexRoute
+}
+
+const PrivateLayoutRouteChildren: PrivateLayoutRouteChildren = {
+  PrivatePainelIndexRoute: PrivatePainelIndexRoute,
+  PrivatePainelMembrosIndexRoute: PrivatePainelMembrosIndexRoute,
+}
+
+const PrivateLayoutRouteWithChildren = PrivateLayoutRoute._addFileChildren(
+  PrivateLayoutRouteChildren,
+)
 
 interface PublicLayoutRouteChildren {
   PublicSplatRoute: typeof PublicSplatRoute
@@ -522,6 +641,8 @@ const PublicLayoutRouteWithChildren = PublicLayoutRoute._addFileChildren(
 )
 
 const rootRouteChildren: RootRouteChildren = {
+  AuthenticationLayoutRoute: AuthenticationLayoutRouteWithChildren,
+  PrivateLayoutRoute: PrivateLayoutRouteWithChildren,
   PublicLayoutRoute: PublicLayoutRouteWithChildren,
   HealthRoute: HealthRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
