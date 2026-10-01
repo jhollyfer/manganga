@@ -1,8 +1,17 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-// Provisório: a página de verdade substitui este arquivo.
+import { pageHead } from '#/lib/head'
+import { m } from '#/paraglide/messages'
+
+/**
+ * A vitrine da loja oficial. Sem `loader`: o catálogo mora em `lib/store`, e
+ * a tela lê as funções dele direto, como a home lê as notícias.
+ */
 export const Route = createFileRoute('/_public/loja/')({
-  component: () => (
-    <section className="container-x pt-32 pb-24">/_public/loja/</section>
-  ),
+  head: () =>
+    pageHead({
+      path: '/loja',
+      title: m.nav_store(),
+      description: m.store_metaDescription(),
+    }),
 })

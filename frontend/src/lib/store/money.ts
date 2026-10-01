@@ -64,3 +64,20 @@ export function discountPercent(price: Cents, compareAt: Cents): number {
 
   return Math.round(((compareAt - price) / compareAt) * 100)
 }
+
+/**
+ * A tabela de parcelas que o valor aceita, de 1x até o teto de
+ * `installments`.
+ *
+ * Cada linha arredonda a parcela para cima, como a de `installments`: a soma
+ * das parcelas pode passar do total em centavos, nunca ficar abaixo dele, e a
+ * loja não recebe menos do que anunciou.
+ */
+export function installmentTable(cents: Cents): Array<Installments> {
+  const { count } = installments(cents)
+
+  return Array.from({ length: count }, (_, index) => ({
+    count: index + 1,
+    value: Math.ceil(cents / (index + 1)),
+  }))
+}

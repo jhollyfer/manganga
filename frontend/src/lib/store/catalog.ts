@@ -712,3 +712,33 @@ export function relatedTo(product: Product, limit = 4): Array<Product> {
 
   return [...same, ...rest].slice(0, limit)
 }
+
+/**
+ * Até aqui a página do produto avisa "últimas unidades". É informação e não
+ * pressa fabricada: com trinta peças uma grade de cinco tamanhos já começa a
+ * faltar número.
+ */
+export const LOW_STOCK_FROM = 30
+
+export type StockLevel = 'out' | 'low' | 'in'
+
+/** Se há estoque, se está acabando ou se acabou. */
+export function stockLevel(product: Product): StockLevel {
+  if (product.stock <= 0) return 'out'
+  if (product.stock <= LOW_STOCK_FROM) return 'low'
+
+  return 'in'
+}
+
+/**
+ * A cor pelo id, caindo na primeira do produto.
+ *
+ * O carrinho e o pedido guardam só o id, e um id que saiu da grade (a cor
+ * descontinuada) desenha a cor principal em vez de uma peça sem cor.
+ */
+export function colorOf(
+  product: Product,
+  id: string,
+): ProductColor | undefined {
+  return product.colors.find((color) => color.id === id) ?? product.colors[0]
+}
