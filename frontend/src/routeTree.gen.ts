@@ -14,6 +14,21 @@ import { Route as HealthRouteImport } from './routes/health'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PublicIndexRouteImport } from './routes/_public/index'
 import { Route as PublicSplatRouteImport } from './routes/_public/$'
+import { Route as PublicContatoRouteImport } from './routes/_public/contato'
+import { Route as PublicFestivalRouteImport } from './routes/_public/festival'
+import { Route as PublicPrivacidadeRouteImport } from './routes/_public/privacidade'
+import { Route as PublicSocioRouteImport } from './routes/_public/socio'
+import { Route as PublicTemaRouteImport } from './routes/_public/tema'
+import { Route as PublicTermosRouteImport } from './routes/_public/termos'
+import { Route as PublicVisiteRouteImport } from './routes/_public/visite'
+import { Route as PublicAgendaIndexRouteImport } from './routes/_public/agenda/index'
+import { Route as PublicBoiGaleriaRouteImport } from './routes/_public/boi/galeria'
+import { Route as PublicBoiHistoriaRouteImport } from './routes/_public/boi/historia'
+import { Route as PublicBoiItensRouteImport } from './routes/_public/boi/itens'
+import { Route as PublicBoiToadasRouteImport } from './routes/_public/boi/toadas'
+import { Route as PublicLojaIndexRouteImport } from './routes/_public/loja/index'
+import { Route as PublicLojaCarrinhoRouteImport } from './routes/_public/loja/carrinho'
+import { Route as PublicNoticiasIndexRouteImport } from './routes/_public/noticias/index'
 
 const PublicLayoutRoute = PublicLayoutRouteImport.update({
   id: '/_public',
@@ -39,18 +54,123 @@ const PublicSplatRoute = PublicSplatRouteImport.update({
   path: '/$',
   getParentRoute: () => PublicLayoutRoute,
 } as any)
+const PublicContatoRoute = PublicContatoRouteImport.update({
+  id: '/contato',
+  path: '/contato',
+  getParentRoute: () => PublicLayoutRoute,
+} as any)
+const PublicFestivalRoute = PublicFestivalRouteImport.update({
+  id: '/festival',
+  path: '/festival',
+  getParentRoute: () => PublicLayoutRoute,
+} as any)
+const PublicPrivacidadeRoute = PublicPrivacidadeRouteImport.update({
+  id: '/privacidade',
+  path: '/privacidade',
+  getParentRoute: () => PublicLayoutRoute,
+} as any)
+const PublicSocioRoute = PublicSocioRouteImport.update({
+  id: '/socio',
+  path: '/socio',
+  getParentRoute: () => PublicLayoutRoute,
+} as any)
+const PublicTemaRoute = PublicTemaRouteImport.update({
+  id: '/tema',
+  path: '/tema',
+  getParentRoute: () => PublicLayoutRoute,
+} as any)
+const PublicTermosRoute = PublicTermosRouteImport.update({
+  id: '/termos',
+  path: '/termos',
+  getParentRoute: () => PublicLayoutRoute,
+} as any)
+const PublicVisiteRoute = PublicVisiteRouteImport.update({
+  id: '/visite',
+  path: '/visite',
+  getParentRoute: () => PublicLayoutRoute,
+} as any)
+const PublicAgendaIndexRoute = PublicAgendaIndexRouteImport.update({
+  id: '/agenda/',
+  path: '/agenda/',
+  getParentRoute: () => PublicLayoutRoute,
+} as any)
+const PublicBoiGaleriaRoute = PublicBoiGaleriaRouteImport.update({
+  id: '/boi/galeria',
+  path: '/boi/galeria',
+  getParentRoute: () => PublicLayoutRoute,
+} as any)
+const PublicBoiHistoriaRoute = PublicBoiHistoriaRouteImport.update({
+  id: '/boi/historia',
+  path: '/boi/historia',
+  getParentRoute: () => PublicLayoutRoute,
+} as any)
+const PublicBoiItensRoute = PublicBoiItensRouteImport.update({
+  id: '/boi/itens',
+  path: '/boi/itens',
+  getParentRoute: () => PublicLayoutRoute,
+} as any)
+const PublicBoiToadasRoute = PublicBoiToadasRouteImport.update({
+  id: '/boi/toadas',
+  path: '/boi/toadas',
+  getParentRoute: () => PublicLayoutRoute,
+} as any)
+const PublicLojaIndexRoute = PublicLojaIndexRouteImport.update({
+  id: '/loja/',
+  path: '/loja/',
+  getParentRoute: () => PublicLayoutRoute,
+} as any)
+const PublicLojaCarrinhoRoute = PublicLojaCarrinhoRouteImport.update({
+  id: '/loja/carrinho',
+  path: '/loja/carrinho',
+  getParentRoute: () => PublicLayoutRoute,
+} as any)
+const PublicNoticiasIndexRoute = PublicNoticiasIndexRouteImport.update({
+  id: '/noticias/',
+  path: '/noticias/',
+  getParentRoute: () => PublicLayoutRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof PublicIndexRoute
   '/health': typeof HealthRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/$': typeof PublicSplatRoute
+  '/contato': typeof PublicContatoRoute
+  '/festival': typeof PublicFestivalRoute
+  '/privacidade': typeof PublicPrivacidadeRoute
+  '/socio': typeof PublicSocioRoute
+  '/tema': typeof PublicTemaRoute
+  '/termos': typeof PublicTermosRoute
+  '/visite': typeof PublicVisiteRoute
+  '/boi/galeria': typeof PublicBoiGaleriaRoute
+  '/boi/historia': typeof PublicBoiHistoriaRoute
+  '/boi/itens': typeof PublicBoiItensRoute
+  '/boi/toadas': typeof PublicBoiToadasRoute
+  '/loja/carrinho': typeof PublicLojaCarrinhoRoute
+  '/agenda/': typeof PublicAgendaIndexRoute
+  '/loja/': typeof PublicLojaIndexRoute
+  '/noticias/': typeof PublicNoticiasIndexRoute
 }
 export interface FileRoutesByTo {
   '/health': typeof HealthRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/$': typeof PublicSplatRoute
+  '/contato': typeof PublicContatoRoute
+  '/festival': typeof PublicFestivalRoute
+  '/privacidade': typeof PublicPrivacidadeRoute
+  '/socio': typeof PublicSocioRoute
+  '/tema': typeof PublicTemaRoute
+  '/termos': typeof PublicTermosRoute
+  '/visite': typeof PublicVisiteRoute
   '/': typeof PublicIndexRoute
+  '/boi/galeria': typeof PublicBoiGaleriaRoute
+  '/boi/historia': typeof PublicBoiHistoriaRoute
+  '/boi/itens': typeof PublicBoiItensRoute
+  '/boi/toadas': typeof PublicBoiToadasRoute
+  '/loja/carrinho': typeof PublicLojaCarrinhoRoute
+  '/agenda': typeof PublicAgendaIndexRoute
+  '/loja': typeof PublicLojaIndexRoute
+  '/noticias': typeof PublicNoticiasIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -58,20 +178,88 @@ export interface FileRoutesById {
   '/health': typeof HealthRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/_public/$': typeof PublicSplatRoute
+  '/_public/contato': typeof PublicContatoRoute
+  '/_public/festival': typeof PublicFestivalRoute
+  '/_public/privacidade': typeof PublicPrivacidadeRoute
+  '/_public/socio': typeof PublicSocioRoute
+  '/_public/tema': typeof PublicTemaRoute
+  '/_public/termos': typeof PublicTermosRoute
+  '/_public/visite': typeof PublicVisiteRoute
   '/_public/': typeof PublicIndexRoute
+  '/_public/boi/galeria': typeof PublicBoiGaleriaRoute
+  '/_public/boi/historia': typeof PublicBoiHistoriaRoute
+  '/_public/boi/itens': typeof PublicBoiItensRoute
+  '/_public/boi/toadas': typeof PublicBoiToadasRoute
+  '/_public/loja/carrinho': typeof PublicLojaCarrinhoRoute
+  '/_public/agenda/': typeof PublicAgendaIndexRoute
+  '/_public/loja/': typeof PublicLojaIndexRoute
+  '/_public/noticias/': typeof PublicNoticiasIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/health' | '/sitemap.xml' | '/$'
+  fullPaths:
+    | '/'
+    | '/health'
+    | '/sitemap.xml'
+    | '/$'
+    | '/contato'
+    | '/festival'
+    | '/privacidade'
+    | '/socio'
+    | '/tema'
+    | '/termos'
+    | '/visite'
+    | '/boi/galeria'
+    | '/boi/historia'
+    | '/boi/itens'
+    | '/boi/toadas'
+    | '/loja/carrinho'
+    | '/agenda/'
+    | '/loja/'
+    | '/noticias/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/health' | '/sitemap.xml' | '/$' | '/'
+  to:
+    | '/health'
+    | '/sitemap.xml'
+    | '/$'
+    | '/contato'
+    | '/festival'
+    | '/privacidade'
+    | '/socio'
+    | '/tema'
+    | '/termos'
+    | '/visite'
+    | '/'
+    | '/boi/galeria'
+    | '/boi/historia'
+    | '/boi/itens'
+    | '/boi/toadas'
+    | '/loja/carrinho'
+    | '/agenda'
+    | '/loja'
+    | '/noticias'
   id:
     | '__root__'
     | '/_public'
     | '/health'
     | '/sitemap.xml'
     | '/_public/$'
+    | '/_public/contato'
+    | '/_public/festival'
+    | '/_public/privacidade'
+    | '/_public/socio'
+    | '/_public/tema'
+    | '/_public/termos'
+    | '/_public/visite'
     | '/_public/'
+    | '/_public/boi/galeria'
+    | '/_public/boi/historia'
+    | '/_public/boi/itens'
+    | '/_public/boi/toadas'
+    | '/_public/loja/carrinho'
+    | '/_public/agenda/'
+    | '/_public/loja/'
+    | '/_public/noticias/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -117,17 +305,152 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicSplatRouteImport
       parentRoute: typeof PublicLayoutRoute
     }
+    '/_public/contato': {
+      id: '/_public/contato'
+      path: '/contato'
+      fullPath: '/contato'
+      preLoaderRoute: typeof PublicContatoRouteImport
+      parentRoute: typeof PublicLayoutRoute
+    }
+    '/_public/festival': {
+      id: '/_public/festival'
+      path: '/festival'
+      fullPath: '/festival'
+      preLoaderRoute: typeof PublicFestivalRouteImport
+      parentRoute: typeof PublicLayoutRoute
+    }
+    '/_public/privacidade': {
+      id: '/_public/privacidade'
+      path: '/privacidade'
+      fullPath: '/privacidade'
+      preLoaderRoute: typeof PublicPrivacidadeRouteImport
+      parentRoute: typeof PublicLayoutRoute
+    }
+    '/_public/socio': {
+      id: '/_public/socio'
+      path: '/socio'
+      fullPath: '/socio'
+      preLoaderRoute: typeof PublicSocioRouteImport
+      parentRoute: typeof PublicLayoutRoute
+    }
+    '/_public/tema': {
+      id: '/_public/tema'
+      path: '/tema'
+      fullPath: '/tema'
+      preLoaderRoute: typeof PublicTemaRouteImport
+      parentRoute: typeof PublicLayoutRoute
+    }
+    '/_public/termos': {
+      id: '/_public/termos'
+      path: '/termos'
+      fullPath: '/termos'
+      preLoaderRoute: typeof PublicTermosRouteImport
+      parentRoute: typeof PublicLayoutRoute
+    }
+    '/_public/visite': {
+      id: '/_public/visite'
+      path: '/visite'
+      fullPath: '/visite'
+      preLoaderRoute: typeof PublicVisiteRouteImport
+      parentRoute: typeof PublicLayoutRoute
+    }
+    '/_public/agenda/': {
+      id: '/_public/agenda/'
+      path: '/agenda'
+      fullPath: '/agenda/'
+      preLoaderRoute: typeof PublicAgendaIndexRouteImport
+      parentRoute: typeof PublicLayoutRoute
+    }
+    '/_public/boi/galeria': {
+      id: '/_public/boi/galeria'
+      path: '/boi/galeria'
+      fullPath: '/boi/galeria'
+      preLoaderRoute: typeof PublicBoiGaleriaRouteImport
+      parentRoute: typeof PublicLayoutRoute
+    }
+    '/_public/boi/historia': {
+      id: '/_public/boi/historia'
+      path: '/boi/historia'
+      fullPath: '/boi/historia'
+      preLoaderRoute: typeof PublicBoiHistoriaRouteImport
+      parentRoute: typeof PublicLayoutRoute
+    }
+    '/_public/boi/itens': {
+      id: '/_public/boi/itens'
+      path: '/boi/itens'
+      fullPath: '/boi/itens'
+      preLoaderRoute: typeof PublicBoiItensRouteImport
+      parentRoute: typeof PublicLayoutRoute
+    }
+    '/_public/boi/toadas': {
+      id: '/_public/boi/toadas'
+      path: '/boi/toadas'
+      fullPath: '/boi/toadas'
+      preLoaderRoute: typeof PublicBoiToadasRouteImport
+      parentRoute: typeof PublicLayoutRoute
+    }
+    '/_public/loja/': {
+      id: '/_public/loja/'
+      path: '/loja'
+      fullPath: '/loja/'
+      preLoaderRoute: typeof PublicLojaIndexRouteImport
+      parentRoute: typeof PublicLayoutRoute
+    }
+    '/_public/loja/carrinho': {
+      id: '/_public/loja/carrinho'
+      path: '/loja/carrinho'
+      fullPath: '/loja/carrinho'
+      preLoaderRoute: typeof PublicLojaCarrinhoRouteImport
+      parentRoute: typeof PublicLayoutRoute
+    }
+    '/_public/noticias/': {
+      id: '/_public/noticias/'
+      path: '/noticias'
+      fullPath: '/noticias/'
+      preLoaderRoute: typeof PublicNoticiasIndexRouteImport
+      parentRoute: typeof PublicLayoutRoute
+    }
   }
 }
 
 interface PublicLayoutRouteChildren {
   PublicSplatRoute: typeof PublicSplatRoute
+  PublicContatoRoute: typeof PublicContatoRoute
+  PublicFestivalRoute: typeof PublicFestivalRoute
+  PublicPrivacidadeRoute: typeof PublicPrivacidadeRoute
+  PublicSocioRoute: typeof PublicSocioRoute
+  PublicTemaRoute: typeof PublicTemaRoute
+  PublicTermosRoute: typeof PublicTermosRoute
+  PublicVisiteRoute: typeof PublicVisiteRoute
   PublicIndexRoute: typeof PublicIndexRoute
+  PublicBoiGaleriaRoute: typeof PublicBoiGaleriaRoute
+  PublicBoiHistoriaRoute: typeof PublicBoiHistoriaRoute
+  PublicBoiItensRoute: typeof PublicBoiItensRoute
+  PublicBoiToadasRoute: typeof PublicBoiToadasRoute
+  PublicLojaCarrinhoRoute: typeof PublicLojaCarrinhoRoute
+  PublicAgendaIndexRoute: typeof PublicAgendaIndexRoute
+  PublicLojaIndexRoute: typeof PublicLojaIndexRoute
+  PublicNoticiasIndexRoute: typeof PublicNoticiasIndexRoute
 }
 
 const PublicLayoutRouteChildren: PublicLayoutRouteChildren = {
   PublicSplatRoute: PublicSplatRoute,
+  PublicContatoRoute: PublicContatoRoute,
+  PublicFestivalRoute: PublicFestivalRoute,
+  PublicPrivacidadeRoute: PublicPrivacidadeRoute,
+  PublicSocioRoute: PublicSocioRoute,
+  PublicTemaRoute: PublicTemaRoute,
+  PublicTermosRoute: PublicTermosRoute,
+  PublicVisiteRoute: PublicVisiteRoute,
   PublicIndexRoute: PublicIndexRoute,
+  PublicBoiGaleriaRoute: PublicBoiGaleriaRoute,
+  PublicBoiHistoriaRoute: PublicBoiHistoriaRoute,
+  PublicBoiItensRoute: PublicBoiItensRoute,
+  PublicBoiToadasRoute: PublicBoiToadasRoute,
+  PublicLojaCarrinhoRoute: PublicLojaCarrinhoRoute,
+  PublicAgendaIndexRoute: PublicAgendaIndexRoute,
+  PublicLojaIndexRoute: PublicLojaIndexRoute,
+  PublicNoticiasIndexRoute: PublicNoticiasIndexRoute,
 }
 
 const PublicLayoutRouteWithChildren = PublicLayoutRoute._addFileChildren(
