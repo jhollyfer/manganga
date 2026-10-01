@@ -50,7 +50,7 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/manganga-web:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/manganga-web:${{ github.sha }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/manganga-app:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/manganga-app:${{ github.sha }}
           cache-from: type=gha,scope=frontend
           cache-to: type=gha,mode=max,scope=frontend
