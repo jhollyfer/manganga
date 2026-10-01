@@ -72,6 +72,8 @@ export const Route = createRootRouteWithContext<RouterContext>()({
     ],
     links: [
       { rel: 'icon', href: '/manganga-symbol.svg', type: 'image/svg+xml' },
+      { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+      { rel: 'manifest', href: '/manifest.webmanifest' },
       { rel: 'canonical', href: SITE_URL },
       {
         rel: 'preload',
