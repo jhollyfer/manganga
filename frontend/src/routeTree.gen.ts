@@ -27,8 +27,15 @@ import { Route as PublicBoiHistoriaRouteImport } from './routes/_public/boi/hist
 import { Route as PublicBoiItensRouteImport } from './routes/_public/boi/itens'
 import { Route as PublicBoiToadasRouteImport } from './routes/_public/boi/toadas'
 import { Route as PublicLojaIndexRouteImport } from './routes/_public/loja/index'
+import { Route as PublicLojaBuscaRouteImport } from './routes/_public/loja/busca'
 import { Route as PublicLojaCarrinhoRouteImport } from './routes/_public/loja/carrinho'
+import { Route as PublicLojaCheckoutRouteImport } from './routes/_public/loja/checkout'
 import { Route as PublicNoticiasIndexRouteImport } from './routes/_public/noticias/index'
+import { Route as PublicLojaAjudaIndexRouteImport } from './routes/_public/loja/ajuda/index'
+import { Route as PublicLojaAjudaSlugRouteImport } from './routes/_public/loja/ajuda/$slug'
+import { Route as PublicLojaCategoriaSlugRouteImport } from './routes/_public/loja/categoria/$slug'
+import { Route as PublicLojaPedidoCodeRouteImport } from './routes/_public/loja/pedido/$code'
+import { Route as PublicLojaProdutoSlugRouteImport } from './routes/_public/loja/produto/$slug'
 
 const PublicLayoutRoute = PublicLayoutRouteImport.update({
   id: '/_public',
@@ -118,17 +125,70 @@ const PublicLojaIndexRoute = PublicLojaIndexRouteImport.update({
   id: '/loja/',
   path: '/loja/',
   getParentRoute: () => PublicLayoutRoute,
-} as any)
+} as any).lazy(() =>
+  import('./routes/_public/loja/index.lazy').then((d) => d.Route),
+)
+const PublicLojaBuscaRoute = PublicLojaBuscaRouteImport.update({
+  id: '/loja/busca',
+  path: '/loja/busca',
+  getParentRoute: () => PublicLayoutRoute,
+} as any).lazy(() =>
+  import('./routes/_public/loja/busca.lazy').then((d) => d.Route),
+)
 const PublicLojaCarrinhoRoute = PublicLojaCarrinhoRouteImport.update({
   id: '/loja/carrinho',
   path: '/loja/carrinho',
   getParentRoute: () => PublicLayoutRoute,
-} as any)
+} as any).lazy(() =>
+  import('./routes/_public/loja/carrinho.lazy').then((d) => d.Route),
+)
+const PublicLojaCheckoutRoute = PublicLojaCheckoutRouteImport.update({
+  id: '/loja/checkout',
+  path: '/loja/checkout',
+  getParentRoute: () => PublicLayoutRoute,
+} as any).lazy(() =>
+  import('./routes/_public/loja/checkout.lazy').then((d) => d.Route),
+)
 const PublicNoticiasIndexRoute = PublicNoticiasIndexRouteImport.update({
   id: '/noticias/',
   path: '/noticias/',
   getParentRoute: () => PublicLayoutRoute,
 } as any)
+const PublicLojaAjudaIndexRoute = PublicLojaAjudaIndexRouteImport.update({
+  id: '/loja/ajuda/',
+  path: '/loja/ajuda/',
+  getParentRoute: () => PublicLayoutRoute,
+} as any).lazy(() =>
+  import('./routes/_public/loja/ajuda/index.lazy').then((d) => d.Route),
+)
+const PublicLojaAjudaSlugRoute = PublicLojaAjudaSlugRouteImport.update({
+  id: '/loja/ajuda/$slug',
+  path: '/loja/ajuda/$slug',
+  getParentRoute: () => PublicLayoutRoute,
+} as any).lazy(() =>
+  import('./routes/_public/loja/ajuda/$slug.lazy').then((d) => d.Route),
+)
+const PublicLojaCategoriaSlugRoute = PublicLojaCategoriaSlugRouteImport.update({
+  id: '/loja/categoria/$slug',
+  path: '/loja/categoria/$slug',
+  getParentRoute: () => PublicLayoutRoute,
+} as any).lazy(() =>
+  import('./routes/_public/loja/categoria/$slug.lazy').then((d) => d.Route),
+)
+const PublicLojaPedidoCodeRoute = PublicLojaPedidoCodeRouteImport.update({
+  id: '/loja/pedido/$code',
+  path: '/loja/pedido/$code',
+  getParentRoute: () => PublicLayoutRoute,
+} as any).lazy(() =>
+  import('./routes/_public/loja/pedido/$code.lazy').then((d) => d.Route),
+)
+const PublicLojaProdutoSlugRoute = PublicLojaProdutoSlugRouteImport.update({
+  id: '/loja/produto/$slug',
+  path: '/loja/produto/$slug',
+  getParentRoute: () => PublicLayoutRoute,
+} as any).lazy(() =>
+  import('./routes/_public/loja/produto/$slug.lazy').then((d) => d.Route),
+)
 
 export interface FileRoutesByFullPath {
   '/': typeof PublicIndexRoute
@@ -146,10 +206,17 @@ export interface FileRoutesByFullPath {
   '/boi/historia': typeof PublicBoiHistoriaRoute
   '/boi/itens': typeof PublicBoiItensRoute
   '/boi/toadas': typeof PublicBoiToadasRoute
+  '/loja/busca': typeof PublicLojaBuscaRoute
   '/loja/carrinho': typeof PublicLojaCarrinhoRoute
+  '/loja/checkout': typeof PublicLojaCheckoutRoute
   '/agenda/': typeof PublicAgendaIndexRoute
   '/loja/': typeof PublicLojaIndexRoute
   '/noticias/': typeof PublicNoticiasIndexRoute
+  '/loja/ajuda/$slug': typeof PublicLojaAjudaSlugRoute
+  '/loja/categoria/$slug': typeof PublicLojaCategoriaSlugRoute
+  '/loja/pedido/$code': typeof PublicLojaPedidoCodeRoute
+  '/loja/produto/$slug': typeof PublicLojaProdutoSlugRoute
+  '/loja/ajuda/': typeof PublicLojaAjudaIndexRoute
 }
 export interface FileRoutesByTo {
   '/health': typeof HealthRoute
@@ -167,10 +234,17 @@ export interface FileRoutesByTo {
   '/boi/historia': typeof PublicBoiHistoriaRoute
   '/boi/itens': typeof PublicBoiItensRoute
   '/boi/toadas': typeof PublicBoiToadasRoute
+  '/loja/busca': typeof PublicLojaBuscaRoute
   '/loja/carrinho': typeof PublicLojaCarrinhoRoute
+  '/loja/checkout': typeof PublicLojaCheckoutRoute
   '/agenda': typeof PublicAgendaIndexRoute
   '/loja': typeof PublicLojaIndexRoute
   '/noticias': typeof PublicNoticiasIndexRoute
+  '/loja/ajuda/$slug': typeof PublicLojaAjudaSlugRoute
+  '/loja/categoria/$slug': typeof PublicLojaCategoriaSlugRoute
+  '/loja/pedido/$code': typeof PublicLojaPedidoCodeRoute
+  '/loja/produto/$slug': typeof PublicLojaProdutoSlugRoute
+  '/loja/ajuda': typeof PublicLojaAjudaIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -190,10 +264,17 @@ export interface FileRoutesById {
   '/_public/boi/historia': typeof PublicBoiHistoriaRoute
   '/_public/boi/itens': typeof PublicBoiItensRoute
   '/_public/boi/toadas': typeof PublicBoiToadasRoute
+  '/_public/loja/busca': typeof PublicLojaBuscaRoute
   '/_public/loja/carrinho': typeof PublicLojaCarrinhoRoute
+  '/_public/loja/checkout': typeof PublicLojaCheckoutRoute
   '/_public/agenda/': typeof PublicAgendaIndexRoute
   '/_public/loja/': typeof PublicLojaIndexRoute
   '/_public/noticias/': typeof PublicNoticiasIndexRoute
+  '/_public/loja/ajuda/$slug': typeof PublicLojaAjudaSlugRoute
+  '/_public/loja/categoria/$slug': typeof PublicLojaCategoriaSlugRoute
+  '/_public/loja/pedido/$code': typeof PublicLojaPedidoCodeRoute
+  '/_public/loja/produto/$slug': typeof PublicLojaProdutoSlugRoute
+  '/_public/loja/ajuda/': typeof PublicLojaAjudaIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -213,10 +294,17 @@ export interface FileRouteTypes {
     | '/boi/historia'
     | '/boi/itens'
     | '/boi/toadas'
+    | '/loja/busca'
     | '/loja/carrinho'
+    | '/loja/checkout'
     | '/agenda/'
     | '/loja/'
     | '/noticias/'
+    | '/loja/ajuda/$slug'
+    | '/loja/categoria/$slug'
+    | '/loja/pedido/$code'
+    | '/loja/produto/$slug'
+    | '/loja/ajuda/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/health'
@@ -234,10 +322,17 @@ export interface FileRouteTypes {
     | '/boi/historia'
     | '/boi/itens'
     | '/boi/toadas'
+    | '/loja/busca'
     | '/loja/carrinho'
+    | '/loja/checkout'
     | '/agenda'
     | '/loja'
     | '/noticias'
+    | '/loja/ajuda/$slug'
+    | '/loja/categoria/$slug'
+    | '/loja/pedido/$code'
+    | '/loja/produto/$slug'
+    | '/loja/ajuda'
   id:
     | '__root__'
     | '/_public'
@@ -256,10 +351,17 @@ export interface FileRouteTypes {
     | '/_public/boi/historia'
     | '/_public/boi/itens'
     | '/_public/boi/toadas'
+    | '/_public/loja/busca'
     | '/_public/loja/carrinho'
+    | '/_public/loja/checkout'
     | '/_public/agenda/'
     | '/_public/loja/'
     | '/_public/noticias/'
+    | '/_public/loja/ajuda/$slug'
+    | '/_public/loja/categoria/$slug'
+    | '/_public/loja/pedido/$code'
+    | '/_public/loja/produto/$slug'
+    | '/_public/loja/ajuda/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -396,6 +498,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicLojaIndexRouteImport
       parentRoute: typeof PublicLayoutRoute
     }
+    '/_public/loja/busca': {
+      id: '/_public/loja/busca'
+      path: '/loja/busca'
+      fullPath: '/loja/busca'
+      preLoaderRoute: typeof PublicLojaBuscaRouteImport
+      parentRoute: typeof PublicLayoutRoute
+    }
     '/_public/loja/carrinho': {
       id: '/_public/loja/carrinho'
       path: '/loja/carrinho'
@@ -403,11 +512,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicLojaCarrinhoRouteImport
       parentRoute: typeof PublicLayoutRoute
     }
+    '/_public/loja/checkout': {
+      id: '/_public/loja/checkout'
+      path: '/loja/checkout'
+      fullPath: '/loja/checkout'
+      preLoaderRoute: typeof PublicLojaCheckoutRouteImport
+      parentRoute: typeof PublicLayoutRoute
+    }
     '/_public/noticias/': {
       id: '/_public/noticias/'
       path: '/noticias'
       fullPath: '/noticias/'
       preLoaderRoute: typeof PublicNoticiasIndexRouteImport
+      parentRoute: typeof PublicLayoutRoute
+    }
+    '/_public/loja/ajuda/': {
+      id: '/_public/loja/ajuda/'
+      path: '/loja/ajuda'
+      fullPath: '/loja/ajuda/'
+      preLoaderRoute: typeof PublicLojaAjudaIndexRouteImport
+      parentRoute: typeof PublicLayoutRoute
+    }
+    '/_public/loja/ajuda/$slug': {
+      id: '/_public/loja/ajuda/$slug'
+      path: '/loja/ajuda/$slug'
+      fullPath: '/loja/ajuda/$slug'
+      preLoaderRoute: typeof PublicLojaAjudaSlugRouteImport
+      parentRoute: typeof PublicLayoutRoute
+    }
+    '/_public/loja/categoria/$slug': {
+      id: '/_public/loja/categoria/$slug'
+      path: '/loja/categoria/$slug'
+      fullPath: '/loja/categoria/$slug'
+      preLoaderRoute: typeof PublicLojaCategoriaSlugRouteImport
+      parentRoute: typeof PublicLayoutRoute
+    }
+    '/_public/loja/pedido/$code': {
+      id: '/_public/loja/pedido/$code'
+      path: '/loja/pedido/$code'
+      fullPath: '/loja/pedido/$code'
+      preLoaderRoute: typeof PublicLojaPedidoCodeRouteImport
+      parentRoute: typeof PublicLayoutRoute
+    }
+    '/_public/loja/produto/$slug': {
+      id: '/_public/loja/produto/$slug'
+      path: '/loja/produto/$slug'
+      fullPath: '/loja/produto/$slug'
+      preLoaderRoute: typeof PublicLojaProdutoSlugRouteImport
       parentRoute: typeof PublicLayoutRoute
     }
   }
@@ -427,10 +578,17 @@ interface PublicLayoutRouteChildren {
   PublicBoiHistoriaRoute: typeof PublicBoiHistoriaRoute
   PublicBoiItensRoute: typeof PublicBoiItensRoute
   PublicBoiToadasRoute: typeof PublicBoiToadasRoute
+  PublicLojaBuscaRoute: typeof PublicLojaBuscaRoute
   PublicLojaCarrinhoRoute: typeof PublicLojaCarrinhoRoute
+  PublicLojaCheckoutRoute: typeof PublicLojaCheckoutRoute
   PublicAgendaIndexRoute: typeof PublicAgendaIndexRoute
   PublicLojaIndexRoute: typeof PublicLojaIndexRoute
   PublicNoticiasIndexRoute: typeof PublicNoticiasIndexRoute
+  PublicLojaAjudaSlugRoute: typeof PublicLojaAjudaSlugRoute
+  PublicLojaCategoriaSlugRoute: typeof PublicLojaCategoriaSlugRoute
+  PublicLojaPedidoCodeRoute: typeof PublicLojaPedidoCodeRoute
+  PublicLojaProdutoSlugRoute: typeof PublicLojaProdutoSlugRoute
+  PublicLojaAjudaIndexRoute: typeof PublicLojaAjudaIndexRoute
 }
 
 const PublicLayoutRouteChildren: PublicLayoutRouteChildren = {
@@ -447,10 +605,17 @@ const PublicLayoutRouteChildren: PublicLayoutRouteChildren = {
   PublicBoiHistoriaRoute: PublicBoiHistoriaRoute,
   PublicBoiItensRoute: PublicBoiItensRoute,
   PublicBoiToadasRoute: PublicBoiToadasRoute,
+  PublicLojaBuscaRoute: PublicLojaBuscaRoute,
   PublicLojaCarrinhoRoute: PublicLojaCarrinhoRoute,
+  PublicLojaCheckoutRoute: PublicLojaCheckoutRoute,
   PublicAgendaIndexRoute: PublicAgendaIndexRoute,
   PublicLojaIndexRoute: PublicLojaIndexRoute,
   PublicNoticiasIndexRoute: PublicNoticiasIndexRoute,
+  PublicLojaAjudaSlugRoute: PublicLojaAjudaSlugRoute,
+  PublicLojaCategoriaSlugRoute: PublicLojaCategoriaSlugRoute,
+  PublicLojaPedidoCodeRoute: PublicLojaPedidoCodeRoute,
+  PublicLojaProdutoSlugRoute: PublicLojaProdutoSlugRoute,
+  PublicLojaAjudaIndexRoute: PublicLojaAjudaIndexRoute,
 }
 
 const PublicLayoutRouteWithChildren = PublicLayoutRoute._addFileChildren(
