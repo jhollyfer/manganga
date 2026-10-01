@@ -5,6 +5,8 @@ on:
     secrets:
       COOLIFY_TOKEN:
         required: true
+      COOLIFY_UUID_APP:
+        required: true
 
 # Os valores que mudam de projeto para projeto, num lugar só. Três aqui: este
 # repositório publica só o site, e a API do Mangangá tem a própria cadeia. O uuid é da
@@ -14,10 +16,9 @@ on:
 # implanta nada, que é o modo de falha que este arquivo passou a cobrar.
 env:
   COOLIFY_URL: https://coolify.maiyu.com.br
-  # PREENCHER: o uuid da aplicação do Mangangá no painel do Coolify. Com o
-  # valor de exemplo o deploy reprova no passo abaixo, e é de propósito: o
-  # corpo da resposta não traz `deployment_uuid`.
-  UUID_APP: preencher-uuid-da-aplicacao
+  # Secret e não literal: o uuid identifica a aplicação no painel, e mora com
+  # o token, nas configurações do repositório.
+  UUID_APP: ${{ secrets.COOLIFY_UUID_APP }}
   URL_APP: https://manganga.maiyu.com.br
 
 jobs:
