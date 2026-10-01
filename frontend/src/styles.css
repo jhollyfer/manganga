@@ -1,0 +1,416 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+/*
+ * As duas famílias, servidas do próprio bundle.
+ *
+ * Instrument Serif é a voz dos títulos, com o itálico para a palavra que a
+ * frase quer cantar ("o boi que *canta* o seu chão"). Inter fica com o corpo,
+ * os números e a loja inteira. É o par do site do Caprichoso, que é a régua
+ * visual deste projeto.
+ *
+ * Do pacote e não do Google Fonts: fonte que depende de terceiro para chegar
+ * é fonte que às vezes não chega, e quem visita da tríplice fronteira está
+ * quase sempre num 4G instável.
+ */
+@import '@fontsource-variable/inter';
+@import '@fontsource/instrument-serif/400.css';
+@import '@fontsource/instrument-serif/400-italic.css';
+
+@plugin '@tailwindcss/typography';
+
+/*
+ * O tema escuro é uma classe no `<html>`, escrita pelo `next-themes` do
+ * `__root.tsx` antes da hidratação. Sem esta linha a classe cairia no vazio.
+ */
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * ============================================================================
+ * PALETA MANGANGÁ
+ * ============================================================================
+ *
+ * O Boi Besouro é branco com uma estrela verde na testa, e a brincadeira veste
+ * a cor da floresta do Javarizinho. A paleta sai daí: verde-mata como cor
+ * principal, verde-folha para o brilho, branco para o boi, e o urucum e o ouro
+ * das fantasias como acento.
+ *
+ * Duas camadas, como no maiyu. Os nomes do shadcn (`--primary`, `--card`,
+ * `--border`) são o que a página inteira lê e o que troca entre claro e
+ * escuro. As cores da marca (`--color-brand-*`) são fixas nos dois temas: são
+ * assinatura, não superfície.
+ *
+ * O `--stage` é o palco: a faixa quase preta, esverdeada, que alterna com o
+ * papel claro ao longo da home, como as seções escuras do Caprichoso. Ela é
+ * escura nos dois temas, e quem escreve sobre ela usa `--on-stage`.
+ */
+:root {
+  --radius: 0.875rem;
+  color-scheme: light;
+
+  --background: #fbfaf5;
+  --surface: #ffffff;
+  --foreground: #06180f;
+
+  --card: #ffffff;
+  --card-foreground: #06180f;
+  --popover: #ffffff;
+  --popover-foreground: #06180f;
+
+  --primary: #0d6b3a;
+  --primary-foreground: #ffffff;
+  --primary-glow: #1f9d55;
+
+  --secondary: #eef4ec;
+  --secondary-foreground: #06180f;
+  --secondary-hover: color-mix(
+    in oklab,
+    var(--secondary) 80%,
+    var(--foreground)
+  );
+
+  --muted: #eef4ec;
+  --muted-foreground: #4d5e53;
+
+  --accent: #d6f0dc;
+  --accent-foreground: #06180f;
+
+  --destructive: #c8341b;
+  --destructive-foreground: #ffffff;
+
+  --border: #dbe5d8;
+  --input: #cbd8c7;
+  --ring: #0d6b3a;
+  --overlay: rgba(3, 20, 11, 0.45);
+
+  --highlight: #0d6b3a;
+  --highlight-bar: #1f9d55;
+
+  --stage: #03140b;
+  --stage-2: #082414;
+  --on-stage: #eef8f0;
+
+  --shadow-tint: rgba(3, 20, 11, 0.18);
+
+  --success: #1f9d55;
+  --warning: #b7791f;
+}
+
+/* O mesmo site à noite: a mata depois que o sol se põe sobre o Javari. */
+.dark {
+  color-scheme: dark;
+
+  --background: #020d07;
+  --surface: #06190f;
+  --foreground: #e9f5ec;
+
+  --card: #06190f;
+  --card-foreground: #e9f5ec;
+  --popover: #06190f;
+  --popover-foreground: #e9f5ec;
+
+  --primary: #46d483;
+  --primary-foreground: #03140b;
+  --primary-glow: #8ff0b5;
+
+  --secondary: #0b2416;
+  --secondary-foreground: #e9f5ec;
+
+  --muted: #0b2416;
+  --muted-foreground: #9db3a4;
+
+  --accent: #0f3320;
+  --accent-foreground: #e9f5ec;
+
+  --destructive: #ff7a5c;
+  --destructive-foreground: #03140b;
+
+  --border: rgba(233, 245, 236, 0.12);
+  --input: rgba(233, 245, 236, 0.18);
+  --ring: #46d483;
+  --overlay: rgba(0, 0, 0, 0.6);
+
+  --highlight: #46d483;
+  --highlight-bar: #46d483;
+
+  --stage: #000804;
+  --stage-2: #04140b;
+  --on-stage: #e9f5ec;
+
+  --shadow-tint: rgba(0, 0, 0, 0.5);
+
+  --success: #46d483;
+  --warning: #f2b632;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 10px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-glow: var(--primary-glow);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-overlay: var(--overlay);
+
+  --color-surface: var(--surface);
+  --color-highlight: var(--highlight);
+  --color-highlight-bar: var(--highlight-bar);
+  --color-stage: var(--stage);
+  --color-stage-2: var(--stage-2);
+  --color-on-stage: var(--on-stage);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+
+  /* As cores da marca, iguais nos dois temas. */
+  --color-brand-forest: #0d6b3a;
+  --color-brand-leaf: #2fbf6b;
+  --color-brand-star: #1fa855;
+  --color-brand-bone: #fbfaf5;
+  --color-brand-urucum: #e4572e;
+  --color-brand-gold: #f2b632;
+  --color-brand-river: #2a7f8f;
+
+  --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter Variable', Inter, system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+
+  /*
+   * A escala fluida da vitrine.
+   *
+   * Nomes próprios, e não os degraus do Tailwind: o registry `base-mira` é
+   * miúdo (botão de 28px, `text-xs/relaxed`), e redefinir `--text-sm` mudaria
+   * o tamanho dos componentes de `ui/` junto. A serifa é estreita, então os
+   * títulos sobem um degrau em relação ao maiyu.
+   */
+  --text-2xs: 0.625rem;
+  --text-micro: clamp(0.68rem, 0.65rem + 0.15vw, 0.78rem);
+  --text-small: clamp(0.8rem, 0.76rem + 0.2vw, 0.9rem);
+  --text-body: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --text-body-lg: clamp(1.05rem, 0.98rem + 0.35vw, 1.2rem);
+  --text-lead: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+  --text-h4: clamp(1.35rem, 1.2rem + 0.6vw, 1.7rem);
+  --text-h3: clamp(1.7rem, 1.5rem + 1vw, 2.25rem);
+  --text-h2: clamp(2.3rem, 1.9rem + 2vw, 3.6rem);
+  --text-h2--line-height: 1.02;
+  --text-h1: clamp(2.8rem, 2.1rem + 3.4vw, 5rem);
+  --text-h1--line-height: 1;
+  --text-display: clamp(3.4rem, 2.4rem + 5vw, 7rem);
+  --text-display--line-height: 0.95;
+  --text-display-xl: clamp(3.8rem, 2.4rem + 6.6vw, 8.75rem);
+  --text-display-xl--line-height: 0.92;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply scroll-smooth antialiased;
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground;
+  }
+
+  /*
+   * Título é serifa de peso único: a Instrument Serif só tem o 400, e pedir
+   * negrito faria o navegador engrossar a letra por conta própria, que é o
+   * borrão que a fonte existe para evitar.
+   */
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    overflow-wrap: break-word;
+  }
+
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: #2fbf6b;
+    color: #03140b;
+  }
+}
+
+/*
+ * Respeita quem pediu menos movimento. Uma regra só, no fim, alcança tudo,
+ * inclusive a animação que alguém acrescentar amanhã sem lembrar disto.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.prose {
+  --tw-prose-body: var(--muted-foreground);
+  --tw-prose-headings: var(--foreground);
+  --tw-prose-lead: var(--muted-foreground);
+  --tw-prose-links: var(--primary);
+  --tw-prose-bold: var(--foreground);
+  --tw-prose-counters: var(--muted-foreground);
+  --tw-prose-bullets: var(--border);
+  --tw-prose-hr: var(--border);
+  --tw-prose-quotes: var(--foreground);
+  --tw-prose-quote-borders: var(--highlight-bar);
+}
+
+/* O recipiente das seções: a mesma largura e o mesmo respiro em toda página. */
+@utility container-x {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+
+  @media (width >= 48rem) {
+    padding-inline: 2rem;
+  }
+}
+
+/* A barra curta sob os títulos. */
+@utility brand-bar {
+  display: block;
+  height: 0.25rem;
+  width: 4rem;
+  border-radius: 9999px;
+  background: var(--highlight-bar);
+}
+
+/*
+ * O palco: o fundo das faixas escuras. A luz verde de cima e o urucum de baixo
+ * imitam o refletor do bumbódromo sobre a arena.
+ */
+@utility stage {
+  background-color: var(--stage);
+  color: var(--on-stage);
+  background-image:
+    radial-gradient(
+      ellipse 60% 45% at 15% 0%,
+      rgba(47, 191, 107, 0.22) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 90% 100%,
+      rgba(228, 87, 46, 0.14) 0%,
+      transparent 70%
+    ),
+    linear-gradient(180deg, var(--stage) 0%, var(--stage-2) 100%);
+}
+
+/* O rótulo pequeno acima de um título de seção. */
+@utility eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--text-micro);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/*
+ * Trilho horizontal: carrossel por rolagem nativa, com encaixe por cartão e
+ * sem barra visível. Rolagem nativa e não biblioteca: o dedo no celular já
+ * sabe fazer isso, e o leitor de tela lê a lista como lista.
+ */
+@utility rail {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  & > * {
+    scroll-snap-align: start;
+  }
+}
+
+@utility text-gradient-leaf {
+  background-image: linear-gradient(100deg, #8ff0b5 0%, #2fbf6b 100%);
+  background-clip: text;
+  color: transparent;
+}
+
+@utility marquee {
+  animation: marquee 40s linear infinite;
+}
+
+@utility float-gentle {
+  animation: float-gentle 7s ease-in-out infinite;
+}
+
+@utility sway {
+  animation: sway 9s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+@keyframes marquee {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes float-gentle {
+  50% {
+    transform: translate3d(0, -8px, 0);
+  }
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-1.2deg);
+  }
+  50% {
+    transform: rotate(1.2deg);
+  }
+}

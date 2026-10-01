@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /painel
+Disallow: /entrar
+Disallow: /loja/carrinho
+Disallow: /loja/checkout
+Disallow: /loja/pedido
+
+Sitemap: https://manganga.maiyu.com.br/sitemap.xml

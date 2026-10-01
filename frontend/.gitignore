@@ -1,0 +1,17 @@
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
+.env
+.nitro
+.tanstack
+.wrangler
+.output
+.vinxi
+__unconfig*
+todos.json
+
+# O carimbo de revisão, escrito pelo CI antes do build. Não é fonte, e um valor
+# de build local commitado viraria a revisão anunciada em produção.
+public/revision.txt
