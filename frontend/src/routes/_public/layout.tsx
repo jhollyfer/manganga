@@ -54,9 +54,9 @@ function RouteComponent(): React.JSX.Element {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={m.footer_whatsappTitle()}
-        className="fixed right-4 bottom-4 z-40 inline-flex size-14 items-center justify-center rounded-full bg-brand-leaf text-stage shadow-[0_12px_30px_-10px_rgba(31,168,85,0.8)] transition-transform duration-300 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring motion-reduce:transition-none md:right-6 md:bottom-6"
+        className="fixed right-4 bottom-4 z-40 inline-flex size-13 items-center justify-center rounded-sm border-2 border-ink bg-brand-gold text-ink shadow-[4px_4px_0_0_var(--ink)] transition-[transform,box-shadow] duration-150 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_0_var(--ink)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring motion-reduce:transition-none md:right-6 md:bottom-6"
       >
-        <WhatsappLogoIcon weight="fill" className="size-7" />
+        <WhatsappLogoIcon weight="fill" className="size-6" />
       </a>
     </div>
   )

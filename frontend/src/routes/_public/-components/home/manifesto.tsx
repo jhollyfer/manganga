@@ -11,57 +11,56 @@ import { cn } from '#/lib/utils'
 import { m } from '#/paraglide/messages'
 
 /**
- * O manifesto da temporada, logo abaixo do hero: o texto do tema ao lado da
- * imagem do boi, como a seção "Tema 2026" do Caprichoso.
+ * O manifesto da temporada, logo abaixo do hero: o retrato do boi preso com
+ * fita crepe, e o texto do tema com a frase de fechamento escrita à mão.
  *
  * É o alvo do "role para descobrir" do hero (`#manifesto`), e o
  * `scroll-mt-16` desconta o cabeçalho fixo para o título não nascer coberto.
  */
 export function Manifesto(): React.JSX.Element {
-  const first = THEME.chapters.at(0)
-
   return (
     <section
       id="manifesto"
       data-slot="home-manifesto"
-      className="scroll-mt-16 py-24 md:py-32"
+      className="scroll-mt-16 py-24 md:py-36"
     >
-      <div className="container-x grid items-center gap-12 lg:grid-cols-[1.1fr_1fr]">
-        <div className={REVEAL}>
-          <p className="eyebrow mb-5 text-primary">
-            <span aria-hidden="true" className="h-px w-8 bg-current" />
+      <div className="container-x grid gap-16 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+        <figure className={cn(REVEAL, 'relative mx-auto w-full max-w-sm')}>
+          <div className="sticker aspect-[4/5] rotate-[-3deg] overflow-hidden p-0">
+            <CoverImage
+              cover={{ kind: 'photo', photo: 'boi', focus: '50% 35%' }}
+              alt={m.home_manifestoImageAlt()}
+            />
+          </div>
+          {/* As duas tiras de fita que prendem o retrato no papel. */}
+          <span
+            aria-hidden="true"
+            className="absolute -top-3 left-8 h-7 w-24 -rotate-6 bg-brand-gold/70"
+          />
+          <span
+            aria-hidden="true"
+            className="absolute right-6 -bottom-3 h-7 w-24 rotate-[8deg] bg-brand-gold/70"
+          />
+        </figure>
+
+        <div className={cn(REVEAL, 'delay-100')}>
+          <p className="eyebrow mb-3 text-primary-glow">
             {m.home_manifestoEyebrow({ year: SEASON_YEAR })}
           </p>
-          <h2 className="text-h2 [&_em]:text-primary">
-            {m.home_manifestoTitleLead()} <em>{m.home_manifestoTitleEm()}</em>.
+          <h2 className="text-h2">
+            {m.home_manifestoTitleLead()} <em>{m.home_manifestoTitleEm()}</em>
           </h2>
-          <p className="mt-6 max-w-[56ch] text-body-lg leading-relaxed text-muted-foreground">
+          <p className="mt-8 max-w-[52ch] text-body-lg leading-relaxed text-muted-foreground">
             {localized(THEME.lead)}
           </p>
-          <blockquote className="mt-8 border-l-2 border-primary-glow pl-5 font-display text-h4 leading-snug text-foreground italic">
-            {localized(THEME.closing)}
-          </blockquote>
-          <div className="mt-8">
+          <p className="mt-10 font-serif text-h3 leading-[1.08] text-primary italic">
+            “{localized(THEME.closing)}”
+          </p>
+          <div className="mt-10">
             <SectionAction render={<Link to="/tema" />}>
               {m.home_manifestoCta()}
             </SectionAction>
           </div>
-        </div>
-        <div
-          className={cn(
-            REVEAL,
-            'relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-stage delay-150',
-          )}
-        >
-          <CoverImage
-            cover={{ kind: 'photo', photo: 'boi', focus: '50% 35%' }}
-            alt={m.home_manifestoImageAlt()}
-          />
-          {first && (
-            <span className="absolute bottom-5 left-5 rounded-full bg-background/90 px-4 py-2 text-micro font-semibold backdrop-blur">
-              {localized(first.eyebrow)}: {localized(first.title)}
-            </span>
-          )}
         </div>
       </div>
     </section>

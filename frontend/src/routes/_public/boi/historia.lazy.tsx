@@ -1,13 +1,11 @@
 import type * as React from 'react'
 import { createLazyFileRoute } from '@tanstack/react-router'
-import { MusicNotesIcon, SparkleIcon, TrophyIcon } from '@phosphor-icons/react'
 
 import { CoverImage } from '../-components/artwork'
 import { PageHero } from '../-components/page-hero'
 import { REVEAL, STAGGER } from '../-components/reveal'
 import { SectionHeading } from '../-components/section-heading'
 import { MILESTONES, PILLARS } from '#/lib/history'
-import type { Pillar } from '#/lib/history'
 import { localized } from '#/lib/i18n'
 import { FOUNDED_YEAR } from '#/lib/site'
 import { m } from '#/paraglide/messages'
@@ -16,19 +14,9 @@ export const Route = createLazyFileRoute('/_public/boi/historia')({
   component: RouteComponent,
 })
 
-const PILLAR_ICONS: Record<
-  Pillar['key'],
-  React.ComponentType<{ className?: string }>
-> = {
-  marujada: MusicNotesIcon,
-  champion: TrophyIcon,
-  trilogy: SparkleIcon,
-}
-
 /**
- * A história: o fundador e o boi do alagado, a linha do tempo com os marcos
- * e os três pilares da tradição. É a página "História" do Caprichoso no
- * tamanho do que o Mangangá já publicou sobre si.
+ * A história: o fundador e o boi do alagado, a linha do tempo na folha verde
+ * e os três pilares da tradição como colunas de jornal, numeradas à mão.
  */
 function RouteComponent(): React.JSX.Element {
   const years = new Date().getFullYear() - FOUNDED_YEAR
@@ -39,7 +27,7 @@ function RouteComponent(): React.JSX.Element {
         eyebrow={m.history_pageEyebrow({ year: FOUNDED_YEAR })}
         title={
           <>
-            {m.history_heroTitleLead()} <em>{m.history_heroTitleEm()}</em>.
+            {m.history_heroTitleLead()} <em>{m.history_heroTitleEm()}</em>
           </>
         }
         lead={m.history_pageLead()}
@@ -48,60 +36,48 @@ function RouteComponent(): React.JSX.Element {
       />
 
       <section className="py-24 md:py-32">
-        <div className="container-x grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-center">
+        <div className="container-x grid gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div
-            className={`${REVEAL} relative aspect-square overflow-hidden rounded-[2rem] bg-stage`}
+            className={`${REVEAL} sticker relative mx-auto aspect-square w-full max-w-md -rotate-2 overflow-hidden p-0`}
           >
             <CoverImage
-              cover={{ kind: 'photo', photo: 'boi', focus: '50% 40%' }}
+              cover={{ kind: 'photo', photo: 'festival', focus: '50% 35%' }}
               alt={m.home_manifestoImageAlt()}
             />
           </div>
           <div className={REVEAL}>
-            <p className="eyebrow mb-4 text-primary">
+            <p className="eyebrow mb-3 text-primary-glow">
               {m.history_founderEyebrow()}
             </p>
             <h2 className="text-h2">
               {m.history_founderTitleLead()}{' '}
-              <em className="text-primary">{m.history_founderTitleEm()}</em>.
+              <em>{m.history_founderTitleEm()}</em>
             </h2>
-            <div className="mt-6 grid gap-4 text-body-lg leading-relaxed text-muted-foreground">
+            <div className="mt-8 grid gap-4 text-body-lg leading-relaxed text-muted-foreground">
               <p>{m.history_founderP1()}</p>
               <p>{m.history_founderP2()}</p>
               <p>{m.history_founderP3()}</p>
             </div>
-            <dl className="mt-8 grid grid-cols-2 gap-4">
-              <div className="rounded-2xl border border-border p-5">
-                <dt className="text-small text-muted-foreground">
-                  {m.history_statFounded()}
-                </dt>
-                <dd className="font-display text-h2 text-primary">
-                  {FOUNDED_YEAR}
-                </dd>
-              </div>
-              <div className="rounded-2xl border border-border p-5">
-                <dt className="text-small text-muted-foreground">
-                  {m.history_statYears()}
-                </dt>
-                <dd className="font-display text-h2 text-primary">{years}</dd>
-              </div>
-            </dl>
+            <p className="mt-10 border-t-2 border-ink pt-5 font-serif text-h4 text-primary italic">
+              {m.history_statFounded()} {FOUNDED_YEAR}. {years}{' '}
+              {m.history_statYears()}.
+            </p>
           </div>
         </div>
       </section>
 
-      <section className="stage py-24 md:py-32">
+      <section className="stage zigzag-y py-24 md:py-32">
         <div className="container-x">
           <SectionHeading
             eyebrow={m.history_timelineEyebrow()}
             title={
               <>
                 {m.history_timelineTitleLead()}{' '}
-                <em>{m.history_timelineTitleEm()}</em>.
+                <em>{m.history_timelineTitleEm()}</em>
               </>
             }
           />
-          <ol className="relative grid gap-10 border-l border-on-stage/15 pl-8 md:pl-12">
+          <ol className="relative grid gap-12 border-l-2 border-on-stage/40 pl-8 md:pl-12">
             {MILESTONES.map((milestone, index) => (
               <li
                 key={localized(milestone.when)}
@@ -110,15 +86,15 @@ function RouteComponent(): React.JSX.Element {
               >
                 <span
                   aria-hidden="true"
-                  className="absolute top-3 -left-[calc(2rem+5px)] size-2.5 rounded-full bg-brand-leaf ring-4 ring-stage md:-left-[calc(3rem+5px)]"
+                  className="absolute top-4 -left-[calc(2rem+9px)] size-4 rotate-45 bg-primary-glow md:-left-[calc(3rem+9px)]"
                 />
-                <p className="font-display text-h2 text-brand-gold">
+                <p className="font-display text-h1 text-primary-glow">
                   {localized(milestone.when)}
                 </p>
-                <h3 className="mt-2 font-sans text-h4 font-semibold">
+                <h3 className="mt-2 font-sans text-h4 font-bold normal-case">
                   {localized(milestone.title)}
                 </h3>
-                <p className="mt-2 max-w-[60ch] text-body text-on-stage/70">
+                <p className="mt-2 max-w-[60ch] text-body opacity-80">
                   {localized(milestone.text)}
                 </p>
               </li>
@@ -134,33 +110,27 @@ function RouteComponent(): React.JSX.Element {
             title={
               <>
                 {m.history_pillarsTitleLead()}{' '}
-                <em className="text-primary">{m.history_pillarsTitleEm()}</em>.
+                <em>{m.history_pillarsTitleEm()}</em>
               </>
             }
           />
-          <ul className="grid gap-4 md:grid-cols-3">
-            {PILLARS.map((pillar, index) => {
-              const Icon = PILLAR_ICONS[pillar.key]
-
-              return (
-                <li
-                  key={pillar.key}
-                  className={`${REVEAL} rounded-2xl border border-border bg-surface p-7`}
-                  style={{ animationDelay: `${index * STAGGER}ms` }}
-                >
-                  <span className="inline-flex size-12 items-center justify-center rounded-xl bg-accent text-primary">
-                    <Icon className="size-6" />
-                  </span>
-                  <h3 className="mt-6 font-sans text-h4 font-semibold">
-                    {localized(pillar.title)}
-                  </h3>
-                  <p className="mt-2 text-small leading-relaxed text-muted-foreground">
-                    {localized(pillar.text)}
-                  </p>
-                </li>
-              )
-            })}
-          </ul>
+          <ol className="grid border-t-4 border-ink md:grid-cols-3">
+            {PILLARS.map((pillar, index) => (
+              <li
+                key={pillar.key}
+                className={`${REVEAL} border-b-2 border-ink/20 py-8 md:border-r-2 md:border-b-0 md:px-8 md:first:pl-0 md:last:border-r-0`}
+                style={{ animationDelay: `${index * STAGGER}ms` }}
+              >
+                <span className="font-serif text-h2 leading-none text-primary-glow italic">
+                  {index + 1}.
+                </span>
+                <h3 className="mt-4 text-h3">{localized(pillar.title)}</h3>
+                <p className="mt-3 text-body leading-relaxed text-muted-foreground">
+                  {localized(pillar.text)}
+                </p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
     </>

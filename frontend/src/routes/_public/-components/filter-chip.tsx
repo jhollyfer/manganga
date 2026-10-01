@@ -30,7 +30,7 @@ export function FilterChip({
     {
       'aria-current': current,
       className: cn(
-        'inline-flex h-10 items-center rounded-full border border-border px-4 text-small font-medium text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground aria-[current=true]:border-primary aria-[current=true]:bg-primary aria-[current=true]:text-primary-foreground',
+        'inline-flex h-9 items-center rounded-sm border-2 border-current/25 px-3 text-micro font-bold tracking-[0.08em] uppercase opacity-80 transition-[opacity,border-color] hover:border-current hover:opacity-100 aria-[current=true]:border-ink aria-[current=true]:bg-ink aria-[current=true]:text-background aria-[current=true]:opacity-100',
       ),
     },
     children,

@@ -27,7 +27,7 @@ function RouteComponent(): React.JSX.Element {
         eyebrow={m.items_pageTitle({ year: SEASON_YEAR })}
         title={
           <>
-            {m.items_heroTitleLead()} <em>{m.items_heroTitleEm()}</em>.
+            {m.items_heroTitleLead()} <em>{m.items_heroTitleEm()}</em>
           </>
         }
         lead={m.items_pageLead()}

@@ -69,7 +69,7 @@ function RouteComponent(): React.JSX.Element | null {
       </header>
 
       <div className="container-x mt-12 max-w-5xl">
-        <div className="aspect-[16/9] overflow-hidden rounded-[2rem] bg-stage">
+        <div className="sticker aspect-[16/9] overflow-hidden p-0">
           <CoverImage cover={article.cover} loading="eager" />
         </div>
       </div>

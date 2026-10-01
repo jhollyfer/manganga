@@ -19,7 +19,7 @@ export function LegalPage({
   return (
     <>
       <PageHero eyebrow={m.legal_eyebrow()} title={title} lead={lead}>
-        <p className="mt-6 text-small text-on-stage/60">
+        <p className="mt-6 font-serif text-body-lg text-muted-foreground italic">
           {m.legal_updatedAt({ date: formatLongDate(document.updatedAt) })}
         </p>
       </PageHero>

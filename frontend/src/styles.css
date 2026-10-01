@@ -3,19 +3,20 @@
 @import 'shadcn/tailwind.css';
 
 /*
- * As duas famílias, servidas do próprio bundle.
+ * As três vozes do cartaz, servidas do próprio bundle.
  *
- * Instrument Serif é a voz dos títulos, com o itálico para a palavra que a
- * frase quer cantar ("o boi que *canta* o seu chão"). Inter fica com o corpo,
- * os números e a loja inteira. É o par do site do Caprichoso, que é a régua
- * visual deste projeto.
+ * Big Shoulders Display é a letra de cartaz de arraial: alta, condensada, em
+ * caixa alta, que cabe "MANGANGÁ" inteiro numa linha de celular. Instrument
+ * Serif em itálico é a mão que escreve por cima do cartaz: entra só na palavra
+ * que a frase quer cantar (`<em>` dentro do título). Hanken Grotesk carrega o
+ * texto corrido e a loja, sem chamar atenção para si.
  *
  * Do pacote e não do Google Fonts: fonte que depende de terceiro para chegar
  * é fonte que às vezes não chega, e quem visita da tríplice fronteira está
  * quase sempre num 4G instável.
  */
-@import '@fontsource-variable/inter';
-@import '@fontsource/instrument-serif/400.css';
+@import '@fontsource-variable/big-shoulders-display';
+@import '@fontsource-variable/hanken-grotesk';
 @import '@fontsource/instrument-serif/400-italic.css';
 
 @plugin '@tailwindcss/typography';
@@ -28,120 +29,158 @@
 
 /*
  * ============================================================================
- * PALETA MANGANGÁ
+ * PALETA MANGANGÁ: TINTA SOBRE PAPEL
  * ============================================================================
  *
- * O Boi Besouro é branco com uma estrela verde na testa, e a brincadeira veste
- * a cor da floresta do Javarizinho. A paleta sai daí: verde-mata como cor
- * principal, verde-folha para o brilho, branco para o boi, e o urucum e o ouro
- * das fantasias como acento.
+ * O site é um cartaz de arraial impresso em serigrafia: papel cor de osso,
+ * e as tintas chapadas da festa. Verde-mata do pavilhão, urucum das
+ * dançarinas, ouro dos adereços, e o verde da estrela do Boi Besouro.
  *
- * Duas camadas, como no maiyu. Os nomes do shadcn (`--primary`, `--card`,
- * `--border`) são o que a página inteira lê e o que troca entre claro e
- * escuro. As cores da marca (`--color-brand-*`) são fixas nos dois temas: são
- * assinatura, não superfície.
+ * Nada de preto e branco puros: o papel puxa para o amarelo e a tinta escura
+ * puxa para o verde, como numa impressão de verdade. Nada de brilho, vidro ou
+ * gradiente: tinta chapada não brilha.
  *
- * O `--stage` é o palco: a faixa quase preta, esverdeada, que alterna com o
- * papel claro ao longo da home, como as seções escuras do Caprichoso. Ela é
- * escura nos dois temas, e quem escreve sobre ela usa `--on-stage`.
+ * O `--stage` é a folha verde do cartaz, a faixa escura que alterna com o
+ * papel. Verde-mata e não quase-preto: o palco escuro com acento neon é a
+ * assinatura de site feito no automático, e o boi é verde.
+ *
+ * Duas camadas, como no maiyu: os nomes do shadcn (`--primary`, `--card`)
+ * trocam entre claro e escuro; as cores da marca (`--color-brand-*`) são
+ * tintas fixas.
  */
 :root {
-  --radius: 0.875rem;
+  --radius: 0.375rem;
   color-scheme: light;
 
-  --background: #fbfaf5;
-  --surface: #ffffff;
-  --foreground: #06180f;
+  --background: #f3eee2;
+  --surface: #faf6ec;
+  --foreground: #14201a;
 
-  --card: #ffffff;
-  --card-foreground: #06180f;
-  --popover: #ffffff;
-  --popover-foreground: #06180f;
+  --card: #faf6ec;
+  --card-foreground: #14201a;
+  --popover: #faf6ec;
+  --popover-foreground: #14201a;
 
-  --primary: #0d6b3a;
-  --primary-foreground: #ffffff;
-  --primary-glow: #1f9d55;
+  --primary: #0e5a33;
+  --primary-foreground: #f3eee2;
+  /* A tinta de destaque: urucum no papel, ouro no palco (ver `stage`). */
+  --primary-glow: #c8431c;
 
-  --secondary: #eef4ec;
-  --secondary-foreground: #06180f;
+  --secondary: #e8e1cf;
+  --secondary-foreground: #14201a;
   --secondary-hover: color-mix(
     in oklab,
     var(--secondary) 80%,
     var(--foreground)
   );
 
-  --muted: #eef4ec;
-  --muted-foreground: #4d5e53;
+  --muted: #e8e1cf;
+  --muted-foreground: #4f5a48;
 
-  --accent: #d6f0dc;
-  --accent-foreground: #06180f;
+  --accent: #dce6cc;
+  --accent-foreground: #14201a;
 
-  --destructive: #c8341b;
-  --destructive-foreground: #ffffff;
+  --destructive: #b8361a;
+  --destructive-foreground: #f3eee2;
 
-  --border: #dbe5d8;
-  --input: #cbd8c7;
-  --ring: #0d6b3a;
-  --overlay: rgba(3, 20, 11, 0.45);
+  --border: #cfc6ae;
+  --input: #bdb398;
+  --ring: #0e5a33;
+  --overlay: rgba(20, 32, 26, 0.5);
 
-  --highlight: #0d6b3a;
-  --highlight-bar: #1f9d55;
+  --highlight: #c8431c;
+  --highlight-bar: #c8431c;
 
-  --stage: #03140b;
-  --stage-2: #082414;
-  --on-stage: #eef8f0;
+  --ink: #14201a;
+  --stage: #0f3b25;
+  --stage-2: #0b2e1c;
+  --on-stage: #f3eee2;
 
-  --shadow-tint: rgba(3, 20, 11, 0.18);
+  --shadow-tint: rgba(20, 32, 26, 0.25);
 
-  --success: #1f9d55;
-  --warning: #b7791f;
+  --success: #2c8a4e;
+  --warning: #a26a10;
+
+  /*
+   * O painel da diretoria (sidebar e gráficos do registry). Mesmas tintas do
+   * cartaz: a gaveta é papel, e os gráficos usam as cores da festa em vez da
+   * paleta azul padrão do shadcn.
+   */
+  --sidebar: #ece6d6;
+  --sidebar-foreground: #14201a;
+  --sidebar-primary: #0e5a33;
+  --sidebar-primary-foreground: #f3eee2;
+  --sidebar-accent: #dfd7c2;
+  --sidebar-accent-foreground: #14201a;
+  --sidebar-border: #cfc6ae;
+  --sidebar-ring: #0e5a33;
+  --chart-1: #0e5a33;
+  --chart-2: #c8431c;
+  --chart-3: #e8a71c;
+  --chart-4: #1f6f7a;
+  --chart-5: #2c9a55;
 }
 
-/* O mesmo site à noite: a mata depois que o sol se põe sobre o Javari. */
+/* O mesmo cartaz à noite: o papel vira mata fechada, a tinta vira osso. */
 .dark {
   color-scheme: dark;
 
-  --background: #020d07;
-  --surface: #06190f;
-  --foreground: #e9f5ec;
+  --background: #111a14;
+  --surface: #17231b;
+  --foreground: #ece5d3;
 
-  --card: #06190f;
-  --card-foreground: #e9f5ec;
-  --popover: #06190f;
-  --popover-foreground: #e9f5ec;
+  --card: #17231b;
+  --card-foreground: #ece5d3;
+  --popover: #17231b;
+  --popover-foreground: #ece5d3;
 
-  --primary: #46d483;
-  --primary-foreground: #03140b;
-  --primary-glow: #8ff0b5;
+  --primary: #5cc285;
+  --primary-foreground: #111a14;
+  --primary-glow: #ec7a4f;
 
-  --secondary: #0b2416;
-  --secondary-foreground: #e9f5ec;
+  --secondary: #1f2e24;
+  --secondary-foreground: #ece5d3;
 
-  --muted: #0b2416;
-  --muted-foreground: #9db3a4;
+  --muted: #1f2e24;
+  --muted-foreground: #a3ad98;
 
-  --accent: #0f3320;
-  --accent-foreground: #e9f5ec;
+  --accent: #23392a;
+  --accent-foreground: #ece5d3;
 
-  --destructive: #ff7a5c;
-  --destructive-foreground: #03140b;
+  --destructive: #f08a68;
+  --destructive-foreground: #111a14;
 
-  --border: rgba(233, 245, 236, 0.12);
-  --input: rgba(233, 245, 236, 0.18);
-  --ring: #46d483;
+  --border: #33463a;
+  --input: #3d5245;
+  --ring: #5cc285;
   --overlay: rgba(0, 0, 0, 0.6);
 
-  --highlight: #46d483;
-  --highlight-bar: #46d483;
+  --highlight: #ec7a4f;
+  --highlight-bar: #ec7a4f;
 
-  --stage: #000804;
-  --stage-2: #04140b;
-  --on-stage: #e9f5ec;
+  --ink: #ece5d3;
+  --stage: #0c2a1a;
+  --stage-2: #092114;
+  --on-stage: #ece5d3;
 
   --shadow-tint: rgba(0, 0, 0, 0.5);
 
-  --success: #46d483;
-  --warning: #f2b632;
+  --success: #5cc285;
+  --warning: #e8b23a;
+
+  --sidebar: #142019;
+  --sidebar-foreground: #ece5d3;
+  --sidebar-primary: #5cc285;
+  --sidebar-primary-foreground: #111a14;
+  --sidebar-accent: #1f2e24;
+  --sidebar-accent-foreground: #ece5d3;
+  --sidebar-border: #33463a;
+  --sidebar-ring: #5cc285;
+  --chart-1: #5cc285;
+  --chart-2: #ec7a4f;
+  --chart-3: #e8b23a;
+  --chart-4: #4fb3c0;
+  --chart-5: #9fd8a8;
 }
 
 @theme inline {
@@ -174,9 +213,24 @@
   --color-ring: var(--ring);
   --color-overlay: var(--overlay);
 
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
   --color-surface: var(--surface);
   --color-highlight: var(--highlight);
   --color-highlight-bar: var(--highlight-bar);
+  --color-ink: var(--ink);
   --color-stage: var(--stage);
   --color-stage-2: var(--stage-2);
   --color-on-stage: var(--on-stage);
@@ -184,42 +238,45 @@
   --color-warning: var(--warning);
 
   /* As cores da marca, iguais nos dois temas. */
-  --color-brand-forest: #0d6b3a;
-  --color-brand-leaf: #2fbf6b;
-  --color-brand-star: #1fa855;
-  --color-brand-bone: #fbfaf5;
-  --color-brand-urucum: #e4572e;
-  --color-brand-gold: #f2b632;
-  --color-brand-river: #2a7f8f;
+  --color-brand-forest: #0e5a33;
+  --color-brand-leaf: #2c9a55;
+  --color-brand-star: #1f8f4b;
+  --color-brand-bone: #f3eee2;
+  --color-brand-urucum: #c8431c;
+  --color-brand-gold: #e8a71c;
+  --color-brand-river: #1f6f7a;
 
-  --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
-  --font-sans: 'Inter Variable', Inter, system-ui, sans-serif;
+  --font-display:
+    'Big Shoulders Display Variable', 'Arial Narrow', Impact, sans-serif;
+  --font-sans: 'Hanken Grotesk Variable', system-ui, sans-serif;
   --font-serif: 'Instrument Serif', Georgia, serif;
 
   /*
-   * A escala fluida da vitrine.
+   * A escala fluida.
    *
    * Nomes próprios, e não os degraus do Tailwind: o registry `base-mira` é
-   * miúdo (botão de 28px, `text-xs/relaxed`), e redefinir `--text-sm` mudaria
-   * o tamanho dos componentes de `ui/` junto. A serifa é estreita, então os
-   * títulos sobem um degrau em relação ao maiyu.
+   * miúdo, e redefinir `--text-sm` mudaria os componentes de `ui/` junto. A
+   * letra de cartaz é condensada, então os títulos sobem muito mais que numa
+   * serifa: o cartaz grita, e o texto corrido fala baixo.
    */
   --text-2xs: 0.625rem;
-  --text-micro: clamp(0.68rem, 0.65rem + 0.15vw, 0.78rem);
-  --text-small: clamp(0.8rem, 0.76rem + 0.2vw, 0.9rem);
-  --text-body: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
-  --text-body-lg: clamp(1.05rem, 0.98rem + 0.35vw, 1.2rem);
-  --text-lead: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
-  --text-h4: clamp(1.35rem, 1.2rem + 0.6vw, 1.7rem);
-  --text-h3: clamp(1.7rem, 1.5rem + 1vw, 2.25rem);
-  --text-h2: clamp(2.3rem, 1.9rem + 2vw, 3.6rem);
-  --text-h2--line-height: 1.02;
-  --text-h1: clamp(2.8rem, 2.1rem + 3.4vw, 5rem);
-  --text-h1--line-height: 1;
-  --text-display: clamp(3.4rem, 2.4rem + 5vw, 7rem);
-  --text-display--line-height: 0.95;
-  --text-display-xl: clamp(3.8rem, 2.4rem + 6.6vw, 8.75rem);
-  --text-display-xl--line-height: 0.92;
+  --text-micro: clamp(0.72rem, 0.69rem + 0.15vw, 0.8rem);
+  --text-small: clamp(0.84rem, 0.8rem + 0.2vw, 0.94rem);
+  --text-body: clamp(0.98rem, 0.93rem + 0.25vw, 1.08rem);
+  --text-body-lg: clamp(1.08rem, 1rem + 0.35vw, 1.24rem);
+  --text-lead: clamp(1.2rem, 1.08rem + 0.55vw, 1.5rem);
+  --text-h4: clamp(1.5rem, 1.3rem + 0.8vw, 2rem);
+  --text-h4--line-height: 1;
+  --text-h3: clamp(2rem, 1.6rem + 1.6vw, 3rem);
+  --text-h3--line-height: 0.95;
+  --text-h2: clamp(2.8rem, 2rem + 3.4vw, 5.25rem);
+  --text-h2--line-height: 0.9;
+  --text-h1: clamp(3.4rem, 2.2rem + 5.6vw, 8rem);
+  --text-h1--line-height: 0.86;
+  --text-display: clamp(4.2rem, 2.2rem + 9vw, 12rem);
+  --text-display--line-height: 0.82;
+  --text-display-xl: clamp(5rem, 2rem + 13vw, 16rem);
+  --text-display-xl--line-height: 0.8;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -240,24 +297,37 @@
   }
 
   /*
-   * Título é serifa de peso único: a Instrument Serif só tem o 400, e pedir
-   * negrito faria o navegador engrossar a letra por conta própria, que é o
-   * borrão que a fonte existe para evitar.
+   * O título é letra de cartaz: caixa alta, condensada, pesada e apertada. O
+   * `<em>` dentro dele é a outra mão, a serifa itálica em caixa baixa e na
+   * tinta de destaque, escrita por cima. É o contraste das duas que faz a
+   * página parecer impressa e não montada.
    */
   h1,
   h2,
   h3 {
     font-family: var(--font-display);
-    font-weight: 400;
-    letter-spacing: -0.01em;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.005em;
     text-wrap: balance;
     overflow-wrap: break-word;
+  }
+
+  h1 em,
+  h2 em,
+  h3 em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: -0.01em;
+    color: var(--primary-glow);
   }
 
   h4,
   h5,
   h6 {
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: -0.005em;
     text-wrap: balance;
   }
@@ -267,8 +337,29 @@
   }
 
   ::selection {
-    background: #2fbf6b;
-    color: #03140b;
+    background: #e8a71c;
+    color: #14201a;
+  }
+
+  /*
+   * O grão do papel, numa camada fixa por cima de tudo. Fixa e não na
+   * superfície que rola: textura que rola junto repinta a página inteira a
+   * cada quadro.
+   */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 60;
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+  }
+
+  .dark body::before {
+    opacity: 0.08;
+    mix-blend-mode: overlay;
   }
 }
 
@@ -303,54 +394,110 @@
 /* O recipiente das seções: a mesma largura e o mesmo respiro em toda página. */
 @utility container-x {
   width: 100%;
-  max-width: 80rem;
+  max-width: 84rem;
   margin-inline: auto;
   padding-inline: 1rem;
 
   @media (width >= 48rem) {
-    padding-inline: 2rem;
+    padding-inline: 2.5rem;
   }
 }
 
-/* A barra curta sob os títulos. */
+/* O traço curto de tinta sob um título. */
 @utility brand-bar {
   display: block;
-  height: 0.25rem;
+  height: 0.375rem;
   width: 4rem;
-  border-radius: 9999px;
   background: var(--highlight-bar);
 }
 
 /*
- * O palco: o fundo das faixas escuras. A luz verde de cima e o urucum de baixo
- * imitam o refletor do bumbódromo sobre a arena.
+ * A folha verde do cartaz. Chapada, sem gradiente de refletor: a textura vem
+ * do grão do papel por cima. Dentro dela a tinta de destaque vira ouro, que é
+ * o que lê sobre o verde, e quem usa `text-primary-glow` não precisa saber.
  */
 @utility stage {
   background-color: var(--stage);
   color: var(--on-stage);
-  background-image:
-    radial-gradient(
-      ellipse 60% 45% at 15% 0%,
-      rgba(47, 191, 107, 0.22) 0%,
-      transparent 70%
-    ),
-    radial-gradient(
-      ellipse 50% 40% at 90% 100%,
-      rgba(228, 87, 46, 0.14) 0%,
-      transparent 70%
-    ),
-    linear-gradient(180deg, var(--stage) 0%, var(--stage-2) 100%);
+  --primary-glow: #e8a71c;
+  --border: color-mix(in oklab, var(--on-stage) 22%, transparent);
 }
 
-/* O rótulo pequeno acima de um título de seção. */
+/*
+ * O rótulo pequeno: caixa alta espaçada, sem o fio decorativo ao lado, que é
+ * a muleta de todo site montado no automático.
+ */
 @utility eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   font-size: var(--text-micro);
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+}
+
+/*
+ * O adesivo impresso: borda de tinta e a sombra deslocada sem desfoque, como
+ * a segunda cor que a serigrafia deixa um pouco fora do registro. É o lugar
+ * do cartão arredondado com sombra difusa.
+ */
+@utility sticker {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  background-color: var(--surface);
+  color: var(--foreground);
+  box-shadow: 5px 5px 0 0 var(--ink);
+  /* Colado sobre a folha verde, o adesivo volta a ser papel: a tinta de
+     destaque volta ao urucum e a borda volta à tinta escura. */
+  --primary-glow: var(--highlight);
+  --border: var(--ink);
+}
+
+/* O adesivo que afunda ao passar o mouse, como carimbo apertado no papel. */
+@utility sticker-press {
+  transition:
+    transform 160ms var(--ease-out-expo),
+    box-shadow 160ms var(--ease-out-expo);
+
+  &:hover {
+    transform: translate(3px, 3px);
+    box-shadow: 2px 2px 0 0 var(--ink);
+  }
+}
+
+/*
+ * O corte em zigue-zague da borda de cima ou de baixo de uma faixa, o
+ * picotado do ingresso e da bandeirinha. Máscara e não SVG solto: a faixa
+ * continua um bloco só, com a cor e o conteúdo dela. Sem recuo próprio: os
+ * dentes comem 14px da borda, e toda faixa que os usa já tem respiro maior
+ * que isso.
+ */
+@utility zigzag-bottom {
+  --zz: 14px;
+  mask: conic-gradient(
+      from -45deg at bottom,
+      #0000,
+      #000 1deg 89deg,
+      #0000 90deg
+    )
+    50% / calc(2 * var(--zz)) 100%;
+}
+
+@utility zigzag-top {
+  --zz: 14px;
+  mask: conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg)
+    50% / calc(2 * var(--zz)) 100%;
+}
+
+/* Os dois cortes juntos, em cima e embaixo: duas máscaras de meia altura. */
+@utility zigzag-y {
+  --zz: 14px;
+  mask:
+    conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg)
+      top / calc(2 * var(--zz)) 51% repeat-x,
+    conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg)
+      bottom / calc(2 * var(--zz)) 51% repeat-x;
 }
 
 /*
@@ -374,12 +521,6 @@
   }
 }
 
-@utility text-gradient-leaf {
-  background-image: linear-gradient(100deg, #8ff0b5 0%, #2fbf6b 100%);
-  background-clip: text;
-  color: transparent;
-}
-
 @utility marquee {
   animation: marquee 40s linear infinite;
 }
@@ -391,6 +532,11 @@
 @utility sway {
   animation: sway 9s ease-in-out infinite;
   transform-origin: top center;
+}
+
+/* O selo que gira devagar, como o carimbo "Desde 1992" do canto do cartaz. */
+@utility spin-slow {
+  animation: spin 40s linear infinite;
 }
 
 @keyframes marquee {

@@ -1,6 +1,5 @@
 import type * as React from 'react'
 import { Link } from '@tanstack/react-router'
-import { CaretRightIcon } from '@phosphor-icons/react'
 
 import { CoverImage } from './artwork'
 import { REVEAL } from './reveal'
@@ -18,7 +17,7 @@ type PageHeroProps = {
   title: React.ReactNode
   eyebrow?: string
   lead?: React.ReactNode
-  /** A imagem de fundo, escurecida pelo palco. Sem ela o palco fica liso. */
+  /** A imagem colada ao lado do título, como recorte no cartaz. */
   cover?: Cover
   /** A trilha até aqui, sem a home (que entra sozinha) e sem a própria página. */
   crumbs?: ReadonlyArray<Crumb>
@@ -28,11 +27,13 @@ type PageHeroProps = {
 }
 
 /**
- * O topo das páginas internas, sobre o palco.
+ * O topo das páginas internas: papel, título de cartaz e o recorte colado.
  *
- * O desenho do Caprichoso: faixa escura com a imagem esmaecida ao fundo, trilha
- * de navegação, rótulo, título grande em serifa e a frase de apoio. O
- * `padding` de cima desconta o cabeçalho fixo de 64px.
+ * A primeira versão punha a foto esmaecida atrás do título, sob um gradiente
+ * escuro, que é o topo de página de todo site montado no automático. Aqui a
+ * imagem é um recorte com borda de tinta, levemente torto, ao lado do texto,
+ * e o título ocupa a largura que quiser. A folha verde fica para a home e
+ * para as faixas de destaque, e a página interna abre clara.
  *
  * A trilha é desenhada aqui e o JSON-LD dela fica com a rota, que sabe o
  * endereço absoluto no idioma da requisição.
@@ -50,59 +51,44 @@ export function PageHero({
     <section
       data-slot="page-hero"
       className={cn(
-        'stage relative isolate overflow-hidden pt-32 pb-16 md:pt-40 md:pb-24',
+        'relative overflow-hidden border-b-2 border-ink pt-28 pb-14 md:pt-36 md:pb-20',
         className,
       )}
     >
-      {cover && (
-        <div aria-hidden="true" className="absolute inset-0 -z-10">
-          <CoverImage cover={cover} loading="eager" className="opacity-35" />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(3_20_11/0.55)_0%,rgb(3_20_11/0.92)_80%,var(--stage)_100%)]" />
-        </div>
-      )}
-
-      <div className="container-x">
-        <nav aria-label={m.a11y_breadcrumb()} className={cn(REVEAL, 'mb-8')}>
-          <ol className="flex flex-wrap items-center gap-1.5 text-micro text-on-stage/60">
-            <li>
-              <Link to="/" className="hover:text-on-stage">
-                {m.nav_home()}
-              </Link>
-            </li>
-            {crumbs.map((crumb) => (
-              <li key={crumb.label} className="flex items-center gap-1.5">
-                <CaretRightIcon aria-hidden="true" className="size-3" />
-                {crumb.to && (
-                  <Link to={crumb.to} className="hover:text-on-stage">
-                    {crumb.label}
-                  </Link>
-                )}
-                {!crumb.to && <span>{crumb.label}</span>}
+      <div className="container-x grid items-end gap-10 lg:grid-cols-[1fr_auto]">
+        <div className="min-w-0">
+          <nav aria-label={m.a11y_breadcrumb()} className={cn(REVEAL, 'mb-6')}>
+            <ol className="flex flex-wrap items-center gap-2 text-micro font-bold tracking-[0.1em] text-muted-foreground uppercase">
+              <li>
+                <Link to="/" className="hover:text-primary-glow">
+                  {m.nav_home()}
+                </Link>
               </li>
-            ))}
-          </ol>
-        </nav>
+              {crumbs.map((crumb) => (
+                <li key={crumb.label} className="flex items-center gap-2">
+                  <span aria-hidden="true">/</span>
+                  {crumb.to && (
+                    <Link to={crumb.to} className="hover:text-primary-glow">
+                      {crumb.label}
+                    </Link>
+                  )}
+                  {!crumb.to && <span>{crumb.label}</span>}
+                </li>
+              ))}
+            </ol>
+          </nav>
 
-        <div className="max-w-4xl">
           {eyebrow && (
-            <p className={cn(REVEAL, 'eyebrow mb-5 text-primary-glow')}>
-              <span aria-hidden="true" className="h-px w-8 bg-current" />
+            <p className={cn(REVEAL, 'eyebrow mb-4 text-primary-glow')}>
               {eyebrow}
             </p>
           )}
-          <h1
-            className={cn(
-              REVEAL,
-              'text-h1 text-on-stage delay-75 [&_em]:text-primary-glow',
-            )}
-          >
-            {title}
-          </h1>
+          <h1 className={cn(REVEAL, 'text-h1 delay-75')}>{title}</h1>
           {lead && (
             <p
               className={cn(
                 REVEAL,
-                'mt-6 max-w-[58ch] text-lead leading-snug text-on-stage/75 delay-150',
+                'mt-6 max-w-[56ch] text-lead leading-snug text-muted-foreground delay-150',
               )}
             >
               {lead}
@@ -110,6 +96,18 @@ export function PageHero({
           )}
           {children}
         </div>
+
+        {cover && (
+          <div
+            aria-hidden="true"
+            className={cn(
+              REVEAL,
+              'sticker hidden aspect-[4/5] w-72 rotate-2 overflow-hidden p-0 delay-200 lg:block xl:w-80',
+            )}
+          >
+            <CoverImage cover={cover} loading="eager" />
+          </div>
+        )}
       </div>
     </section>
   )

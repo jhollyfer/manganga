@@ -77,7 +77,7 @@ function RouteComponent(): React.JSX.Element {
         eyebrow={m.home_newsEyebrow()}
         title={
           <>
-            {m.home_newsTitleLead()} <em>{m.home_newsTitleEm()}</em>.
+            {m.home_newsTitleLead()} <em>{m.home_newsTitleEm()}</em>
           </>
         }
         lead={m.news_pageLead()}
@@ -137,7 +137,7 @@ function RouteComponent(): React.JSX.Element {
           </div>
 
           {articles.length === 0 && (
-            <div className="flex flex-col items-center rounded-2xl border border-dashed border-border px-6 py-16 text-center">
+            <div className="flex flex-col items-start border-2 border-dashed border-ink/30 px-6 py-12">
               <NewspaperIcon className="size-10 text-muted-foreground" />
               <p className="mt-4 text-body-lg font-semibold">
                 {m.news_emptyTitle()}

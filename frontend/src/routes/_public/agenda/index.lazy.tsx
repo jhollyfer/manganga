@@ -54,7 +54,7 @@ function RouteComponent(): React.JSX.Element {
         eyebrow={m.nav_agenda()}
         title={
           <>
-            {m.home_agendaTitleLead()} <em>{m.home_agendaTitleEm()}</em>.
+            {m.home_agendaTitleLead()} <em>{m.home_agendaTitleEm()}</em>
           </>
         }
         lead={m.home_agendaLead()}
@@ -62,9 +62,9 @@ function RouteComponent(): React.JSX.Element {
         crumbs={[{ label: m.nav_groupFestival() }]}
       >
         {festival && (
-          <div className="mt-10 flex flex-col gap-4 rounded-2xl border border-on-stage/15 bg-on-stage/[0.05] p-5 sm:flex-row sm:items-center sm:justify-between">
+          <div className="sticker mt-10 flex max-w-2xl rotate-[-1deg] flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p className="eyebrow mb-1 text-brand-gold">
+              <p className="eyebrow mb-1 text-primary-glow">
                 {m.agenda_featuredEyebrow()}
               </p>
               <p className="text-body-lg font-semibold">
@@ -73,7 +73,7 @@ function RouteComponent(): React.JSX.Element {
             </div>
             <div className="flex flex-wrap gap-2">
               <PillButton
-                tone="light"
+                tone="ink"
                 scale="md"
                 render={
                   <Link to="/agenda/$slug" params={{ slug: festival.slug }}>
@@ -82,7 +82,7 @@ function RouteComponent(): React.JSX.Element {
                 }
               />
               <PillButton
-                tone="light-outline"
+                tone="outline"
                 scale="md"
                 render={<Link to="/visite">{m.nav_visit()}</Link>}
               />
@@ -122,10 +122,7 @@ function RouteComponent(): React.JSX.Element {
                 </FilterChip>
               ))}
             </nav>
-            <nav
-              aria-label={m.agenda_filterPeriod()}
-              className="flex gap-1 rounded-full bg-secondary p-1"
-            >
+            <nav aria-label={m.agenda_filterPeriod()} className="flex gap-1">
               <FilterChip
                 active={periodo !== 'passados'}
                 render={<Link to="." search={{ tipo }} resetScroll={false} />}
@@ -148,7 +145,7 @@ function RouteComponent(): React.JSX.Element {
           </div>
 
           {events.length === 0 && (
-            <div className="flex flex-col items-center rounded-2xl border border-dashed border-border px-6 py-16 text-center">
+            <div className="flex flex-col items-start border-2 border-dashed border-ink/30 px-6 py-12">
               <CalendarXIcon className="size-10 text-muted-foreground" />
               <p className="mt-4 text-body-lg font-semibold">
                 {m.agenda_emptyTitle()}

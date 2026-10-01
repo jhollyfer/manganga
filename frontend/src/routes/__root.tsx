@@ -22,13 +22,16 @@ import { getLocale } from '#/paraglide/runtime'
 import appCss from '../styles.css?url'
 
 /**
- * O woff2 do corpo do texto, com o endereço de hash que o build gera.
+ * Os woff2 do título e do corpo, com o endereço de hash que o build gera. O
+ * título é o maior elemento da primeira tela, e chegar na fonte reserva faz
+ * o hero pular de altura quando a fonte de cartaz carrega.
  *
  * `?url` e não um caminho escrito à mão: um literal quebraria no próximo build
  * que mudasse o hash, e quebraria em silêncio - um `preload` que aponta para
  * 404 não estraga a página, só deixa de adiantar o download.
  */
-import interLatin from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url'
+import displayLatin from '@fontsource-variable/big-shoulders-display/files/big-shoulders-display-latin-wght-normal.woff2?url'
+import bodyLatin from '@fontsource-variable/hanken-grotesk/files/hanken-grotesk-latin-wght-normal.woff2?url'
 
 import type { QueryClient } from '@tanstack/react-query'
 
@@ -79,7 +82,14 @@ export const Route = createRootRouteWithContext<RouterContext>()({
         rel: 'preload',
         as: 'font',
         type: 'font/woff2',
-        href: interLatin,
+        href: displayLatin,
+        crossOrigin: 'anonymous',
+      },
+      {
+        rel: 'preload',
+        as: 'font',
+        type: 'font/woff2',
+        href: bodyLatin,
         crossOrigin: 'anonymous',
       },
       { rel: 'stylesheet', href: appCss },
@@ -114,12 +124,12 @@ function RootDocument({
         <meta
           name="theme-color"
           media="(prefers-color-scheme: light)"
-          content="#fbfaf5"
+          content="#f3eee2"
         />
         <meta
           name="theme-color"
           media="(prefers-color-scheme: dark)"
-          content="#020d07"
+          content="#111a14"
         />
         <HeadContent />
       </head>

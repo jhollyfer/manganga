@@ -54,7 +54,7 @@ function RouteComponent(): React.JSX.Element {
         eyebrow={m.nav_member()}
         title={
           <>
-            {m.member_heroTitleLead()} <em>{m.member_heroTitleEm()}</em>.
+            {m.member_heroTitleLead()} <em>{m.member_heroTitleEm()}</em>
           </>
         }
         lead={m.member_pageLead()}
@@ -62,11 +62,11 @@ function RouteComponent(): React.JSX.Element {
       >
         <div className="mt-10 flex flex-wrap gap-3">
           <PillButton
-            tone="light"
+            tone="ink"
             render={<a href="#cadastro">{m.member_heroCta()}</a>}
           />
           <PillButton
-            tone="light-outline"
+            tone="outline"
             render={
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
                 {m.member_heroHelp()}
@@ -83,7 +83,7 @@ function RouteComponent(): React.JSX.Element {
             title={
               <>
                 {m.member_benefitsTitleLead()}{' '}
-                <em className="text-primary">{m.member_benefitsTitleEm()}</em>.
+                <em>{m.member_benefitsTitleEm()}</em>
               </>
             }
           />
@@ -118,8 +118,7 @@ function RouteComponent(): React.JSX.Element {
               eyebrow={m.member_formEyebrow()}
               title={
                 <>
-                  {m.member_formTitleLead()}{' '}
-                  <em className="text-primary">{m.member_formTitleEm()}</em>.
+                  {m.member_formTitleLead()} <em>{m.member_formTitleEm()}</em>
                 </>
               }
               lead={m.member_formLead()}
@@ -139,7 +138,7 @@ function RouteComponent(): React.JSX.Element {
               </li>
             </ol>
           </div>
-          <div className="rounded-[2rem] border border-border bg-background p-6 md:p-10">
+          <div className="sticker p-6 md:p-10">
             <MembershipForm />
           </div>
         </div>

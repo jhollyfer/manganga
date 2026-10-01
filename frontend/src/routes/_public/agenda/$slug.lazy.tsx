@@ -53,16 +53,20 @@ function RouteComponent(): React.JSX.Element | null {
         cover={{ kind: 'art', art: 'bandeirinhas' }}
         crumbs={[{ label: m.nav_agenda(), to: '/agenda' }]}
       >
-        <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-body text-on-stage/80">
+        <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-body font-semibold">
           <li className="flex items-center gap-2">
-            <ClockIcon aria-hidden="true" className="size-5 text-brand-gold" />
-            <span className="capitalize">
-              {formatWeekday(event.startsAt)}
-            </span>, {formatLongDate(event.startsAt)},{' '}
-            {formatTime(event.startsAt)}
+            <ClockIcon
+              aria-hidden="true"
+              className="size-5 text-primary-glow"
+            />
+            <span className="capitalize">{formatWeekday(event.startsAt)}</span>,{' '}
+            {formatLongDate(event.startsAt)}, {formatTime(event.startsAt)}
           </li>
           <li className="flex items-center gap-2">
-            <MapPinIcon aria-hidden="true" className="size-5 text-brand-gold" />
+            <MapPinIcon
+              aria-hidden="true"
+              className="size-5 text-primary-glow"
+            />
             {event.location}
           </li>
         </ul>
@@ -75,7 +79,7 @@ function RouteComponent(): React.JSX.Element | null {
               <p key={localized(paragraph)}>{localized(paragraph)}</p>
             ))}
           </div>
-          <aside className="grid content-start gap-3 rounded-2xl border border-border bg-surface p-6">
+          <aside className="sticker grid content-start gap-4 p-6">
             <PillButton
               render={
                 <a

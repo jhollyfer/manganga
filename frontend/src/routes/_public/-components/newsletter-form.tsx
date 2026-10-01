@@ -78,7 +78,7 @@ export function NewsletterForm({
           </Field>
         )}
       />
-      <p className="mt-3 text-micro text-on-stage/50">
+      <p className="mt-3 text-micro text-on-stage/70">
         {m.footer_newsletterPrivacy()}
       </p>
     </form>

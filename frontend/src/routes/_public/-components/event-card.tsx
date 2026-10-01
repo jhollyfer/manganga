@@ -1,6 +1,5 @@
 import type * as React from 'react'
 import { Link } from '@tanstack/react-router'
-import { ClockIcon, MapPinIcon } from '@phosphor-icons/react'
 
 import {
   dayOfMonth,
@@ -14,15 +13,15 @@ import { EVENT_TYPE_LABELS } from '#/lib/labels'
 import { cn } from '#/lib/utils'
 
 /**
- * O cartão de um evento: o selo do calendário à esquerda, o tipo, o título e
- * onde e quando.
+ * Uma linha da programação, como no cartaz do arraial: o dia grande à
+ * esquerda, o tipo, o título e onde e quando, separados por um fio de tinta.
  *
- * Usado pela home (sobre o palco) e pela agenda (sobre o papel), e por isso a
- * cor vem de quem envolve: o cartão só desenha borda e fundo translúcidos
- * sobre `currentColor`.
+ * Linha e não cartão: a programação de festa se lê de cima para baixo, como
+ * lista, e uma grade de cartões iguais é o desenho que qualquer gerador de
+ * site entrega. A cor vem de quem envolve, então a mesma linha serve no papel
+ * e na folha verde.
  *
- * O cartão inteiro é o link, com o título como nome acessível, e não um
- * "saiba mais" solto no canto.
+ * A linha inteira é o link, com o título como nome acessível.
  */
 export function EventCard({
   event,
@@ -38,37 +37,29 @@ export function EventCard({
       data-slot="event-card"
       data-type={event.type}
       className={cn(
-        'group flex gap-5 rounded-2xl border border-current/12 bg-current/[0.03] p-5 transition-colors hover:border-primary-glow/60 hover:bg-current/[0.06]',
+        'group grid grid-cols-[4.5rem_1fr] gap-5 border-t-2 border-current py-5',
         className,
       )}
     >
-      <div className="flex w-16 shrink-0 flex-col items-center justify-center rounded-xl bg-primary py-3 text-primary-foreground group-data-[type=festival]:bg-brand-urucum group-data-[type=festival]:text-white">
-        <span className="font-display text-4xl leading-none">
+      <div className="leading-none">
+        <span className="block font-display text-6xl font-black group-data-[type=festival]:text-primary-glow">
           {dayOfMonth(event.startsAt)}
         </span>
-        <span className="mt-1 text-micro font-semibold uppercase">
+        <span className="mt-1 block text-micro font-bold tracking-[0.14em] uppercase opacity-75">
           {formatMonthShort(event.startsAt)}
         </span>
       </div>
       <div className="min-w-0">
-        <p className="eyebrow mb-2 text-primary-glow">
+        <p className="eyebrow mb-1.5 text-primary-glow">
           {EVENT_TYPE_LABELS[event.type]()}
         </p>
-        <h3 className="font-sans text-body-lg leading-snug font-semibold">
+        <h3 className="text-h4 transition-colors group-hover:text-primary-glow">
           {localized(event.title)}
         </h3>
-        <ul className="mt-3 grid gap-1 text-small opacity-70">
-          <li className="flex items-center gap-1.5">
-            <ClockIcon aria-hidden="true" className="size-4 shrink-0" />
-            <span className="capitalize">
-              {formatWeekday(event.startsAt)}
-            </span>, {formatTime(event.startsAt)}
-          </li>
-          <li className="flex items-center gap-1.5">
-            <MapPinIcon aria-hidden="true" className="size-4 shrink-0" />
-            <span className="truncate">{event.location}</span>
-          </li>
-        </ul>
+        <p className="mt-2 text-small opacity-75">
+          <span className="capitalize">{formatWeekday(event.startsAt)}</span>,{' '}
+          {formatTime(event.startsAt)} · {event.location}
+        </p>
       </div>
     </Link>
   )

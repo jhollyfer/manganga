@@ -8,11 +8,12 @@
  * toque.
  */
 export const FIELD =
-  'h-12 rounded-xl border-foreground/15 bg-surface px-4 text-body placeholder:text-foreground/45 focus-visible:border-primary/60 focus-visible:ring-2 focus-visible:ring-ring/20'
+  'h-12 rounded-sm border-2 border-ink/70 bg-surface px-4 text-body shadow-none placeholder:text-foreground/45 focus-visible:border-ink focus-visible:shadow-[3px_3px_0_0_var(--primary-glow)] focus-visible:ring-0'
 
 /** O mesmo campo sobre o palco escuro do rodapé. */
 export const FIELD_ON_STAGE =
-  'h-12 rounded-full border-on-stage/20 bg-on-stage/[0.06] px-5 text-body text-on-stage placeholder:text-on-stage/45 focus-visible:border-brand-leaf/70 focus-visible:ring-2 focus-visible:ring-brand-leaf/25'
+  'h-12 rounded-sm border-2 border-on-stage/60 bg-transparent px-4 text-body text-on-stage placeholder:text-on-stage/50 focus-visible:border-on-stage focus-visible:ring-0'
 
 /** O rótulo acima de cada campo. */
-export const LABEL = 'text-small font-medium text-foreground'
+export const LABEL =
+  'text-micro font-bold tracking-[0.1em] text-foreground uppercase'

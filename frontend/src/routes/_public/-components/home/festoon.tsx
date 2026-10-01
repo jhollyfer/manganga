@@ -2,7 +2,7 @@ import type * as React from 'react'
 
 import { cn } from '#/lib/utils'
 
-const COLORS = ['#2fbf6b', '#fbfaf5', '#e4572e', '#f2b632', '#1fa855']
+const COLORS = ['#e8a71c', '#f3eee2', '#c8431c', '#2c9a55', '#1f6f7a']
 
 /**
  * O cordão de bandeirinhas do topo do hero, o mesmo das festas de rua do

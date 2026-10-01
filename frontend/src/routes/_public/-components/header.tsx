@@ -33,12 +33,12 @@ import { SITE_TITLE } from '#/lib/site'
 import { m } from '#/paraglide/messages'
 
 /**
- * O cabeçalho de vidro.
+ * O cabeçalho: a tira de papel no alto do cartaz, com o fio de tinta embaixo.
  *
- * O desenho do Caprichoso: barra fixa, fundo translúcido com desfoque, e um
- * fio de borda que fica mais firme quando a página rola. Translúcido e não
- * transparente porque metade das páginas abre sobre papel claro e a outra
- * metade sobre o palco escuro, e o vidro lê bem nos dois.
+ * Chapado e não de vidro. O vidro desfocado foi o primeiro desenho, e era
+ * justamente o que deixava o site com cara de modelo pronto. Papel sólido lê
+ * igual sobre a folha verde e sobre o papel, e o fio de tinta engrossa quando
+ * a página rola, que é o único sinal de que algo passa por baixo.
  *
  * "O Boi" e "O Festival" abrem painéis com descrição, como lá; notícias,
  * sócio e contato são links diretos; a loja é a pílula da direita, com a
@@ -51,7 +51,7 @@ export function Header(): React.JSX.Element {
     <header
       data-slot="site-header"
       data-scrolled={scrolled}
-      className="fixed inset-x-0 top-0 z-50 border-b border-primary/10 bg-background/65 backdrop-blur-xl backdrop-saturate-150 transition-[background-color,box-shadow,border-color] duration-500 motion-reduce:transition-none data-[scrolled=true]:border-primary/15 data-[scrolled=true]:bg-background/85 data-[scrolled=true]:shadow-[0_8px_30px_-16px_var(--shadow-tint)]"
+      className="fixed inset-x-0 top-0 z-50 border-b-2 border-ink bg-background transition-shadow duration-300 motion-reduce:transition-none data-[scrolled=true]:shadow-[0_3px_0_0_var(--ink)]"
     >
       <div className="container-x flex h-16 items-center gap-4">
         <Link
@@ -59,12 +59,12 @@ export function Header(): React.JSX.Element {
           aria-label={m.a11y_home()}
           className="flex shrink-0 items-center gap-2.5 py-2"
         >
-          <BrandStar className="size-8" />
+          <BrandStar className="size-9" />
           <span className="flex flex-col leading-none">
-            <span className="font-display text-2xl text-foreground italic">
+            <span className="font-display text-[1.7rem] leading-[0.8] font-extrabold tracking-[0.01em] text-foreground uppercase">
               {SITE_TITLE}
             </span>
-            <span className="text-2xs tracking-[0.16em] text-muted-foreground uppercase">
+            <span className="mt-1 font-serif text-small text-primary-glow italic">
               {m.brand_tagline()}
             </span>
           </span>
@@ -88,10 +88,10 @@ export function Header(): React.JSX.Element {
                     {group.links.map((link) => (
                       <li key={link.to}>
                         <NavigationMenuLink
-                          className="flex flex-col items-start gap-0.5 rounded-xl px-3 py-2.5"
+                          className="flex flex-col items-start gap-0.5 rounded-sm px-3 py-2.5"
                           render={<Link to={link.to} />}
                         >
-                          <span className="text-small font-semibold text-foreground">
+                          <span className="font-display text-xl font-bold text-foreground uppercase">
                             {link.label()}
                           </span>
                           <span className="text-micro leading-snug text-muted-foreground">
@@ -121,7 +121,7 @@ export function Header(): React.JSX.Element {
           <div className="hidden md:block">
             <LanguageSwitcher />
           </div>
-          <ThemeToggle className="hidden size-9 rounded-full md:inline-flex" />
+          <ThemeToggle className="hidden size-9 rounded-sm md:inline-flex" />
           <CartButton />
           <PillButton
             scale="md"
@@ -147,7 +147,7 @@ function CartButton(): React.JSX.Element {
       variant="ghost"
       size="icon-lg"
       nativeButton={false}
-      className="relative size-10 rounded-full"
+      className="relative size-10 rounded-sm"
       render={
         <Link to="/loja/carrinho" aria-label={m.a11y_openCart()}>
           <ShoppingBagIcon className="size-5" />
@@ -173,7 +173,7 @@ function MobileMenu(): React.JSX.Element {
           <Button
             variant="ghost"
             size="icon-lg"
-            className="size-11 rounded-full xl:hidden"
+            className="size-11 rounded-sm xl:hidden"
             aria-label={m.a11y_openMenu()}
           >
             <ListIcon className="size-5" />
@@ -192,7 +192,7 @@ function MobileMenu(): React.JSX.Element {
         <nav aria-label={m.a11y_mainNav()} className="grid gap-8">
           {[BOI_GROUP, FESTIVAL_GROUP].map((group) => (
             <div key={group.label()}>
-              <p className="eyebrow mb-2 text-primary">{group.label()}</p>
+              <p className="eyebrow mb-2 text-primary-glow">{group.label()}</p>
               <ul>
                 {group.links.map((link) => (
                   <li key={link.to}>
@@ -233,7 +233,7 @@ function MobileMenu(): React.JSX.Element {
 
         <SheetFooter className="mt-8 flex-row items-center justify-between gap-4 px-0">
           <LanguageSwitcher />
-          <ThemeToggle className="size-11 rounded-full" />
+          <ThemeToggle className="size-11 rounded-sm" />
         </SheetFooter>
       </SheetContent>
     </Sheet>

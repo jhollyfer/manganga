@@ -44,7 +44,7 @@ function RouteComponent(): React.JSX.Element | null {
         eyebrow={m.toadas_pageTitle()}
         title={
           <>
-            {m.toadas_heroTitleLead()} <em>{m.toadas_heroTitleEm()}</em>.
+            {m.toadas_heroTitleLead()} <em>{m.toadas_heroTitleEm()}</em>
           </>
         }
         lead={m.toadas_pageLead()}
@@ -54,7 +54,7 @@ function RouteComponent(): React.JSX.Element | null {
         {YOUTUBE && (
           <div className="mt-10">
             <PillButton
-              tone="light"
+              tone="ink"
               render={
                 <a
                   href={YOUTUBE.href}
@@ -95,12 +95,12 @@ function RouteComponent(): React.JSX.Element | null {
 
           <div className="grid gap-12 lg:grid-cols-[320px_1fr]">
             <div className="lg:sticky lg:top-24 lg:self-start">
-              <div className="relative aspect-square overflow-hidden rounded-[2rem]">
+              <div className="sticker relative aspect-square -rotate-2 overflow-hidden p-0">
                 <Artwork art="estrela" />
-                <span className="absolute top-5 left-5 rounded-full bg-on-stage/90 px-3 py-1 text-micro font-bold text-stage">
+                <span className="absolute top-0 left-0 bg-brand-gold px-3 py-1 font-display text-xl font-black text-ink">
                   {album.year}
                 </span>
-                <p className="absolute inset-x-5 bottom-5 font-display text-h3 leading-tight text-on-stage italic">
+                <p className="absolute inset-x-5 bottom-5 font-display text-h3 font-extrabold text-brand-bone uppercase">
                   {album.title}
                 </p>
               </div>
@@ -116,21 +116,21 @@ function RouteComponent(): React.JSX.Element | null {
               <h2 className="mb-6 text-h2">
                 {m.toadas_lyricsTitle({ year: album.year })}
               </h2>
-              <Accordion className="rounded-2xl border border-border bg-surface">
+              <Accordion className="border-t-4 border-ink">
                 {album.tracks.map((track) => (
                   <AccordionItem
                     key={track.number}
                     value={String(track.number)}
                     id={`faixa-${track.number}`}
-                    className="scroll-mt-24 px-5"
+                    className="scroll-mt-24 border-b-2 border-ink/20"
                   >
                     <AccordionTrigger className="py-4 hover:no-underline">
                       <span className="flex items-center gap-4 text-left">
-                        <span className="w-6 text-right text-small text-muted-foreground tabular-nums">
+                        <span className="w-10 font-display text-3xl font-black text-primary-glow tabular-nums">
                           {track.number}
                         </span>
                         <span>
-                          <span className="block text-body font-semibold">
+                          <span className="block font-display text-h4 font-extrabold uppercase">
                             {track.title}
                           </span>
                           <span className="block text-micro text-muted-foreground">
@@ -139,9 +139,9 @@ function RouteComponent(): React.JSX.Element | null {
                         </span>
                       </span>
                     </AccordionTrigger>
-                    <AccordionContent className="pb-6 pl-10">
+                    <AccordionContent className="pb-8 pl-14">
                       {track.lyrics.length > 0 && (
-                        <div className="grid gap-5 font-display text-h4 leading-snug whitespace-pre-line text-foreground/85">
+                        <div className="grid gap-6 font-serif text-h4 leading-snug whitespace-pre-line text-foreground italic">
                           {track.lyrics.map((stanza) => (
                             <p key={stanza}>{stanza}</p>
                           ))}

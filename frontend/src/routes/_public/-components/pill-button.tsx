@@ -7,34 +7,36 @@ import { cn } from '#/lib/utils'
 import type { Merge } from '#/lib/interfaces'
 
 /**
- * A pílula do site: o botão redondo do hero, das seções e da loja.
+ * O botão do cartaz: retângulo de tinta com a sombra deslocada da
+ * serigrafia, que afunda no clique como carimbo apertado no papel.
  *
  * Mora fora de `components/ui/button.tsx` porque aquele diretório é o que o
  * `shadcn` entrega, e `shadcn add button` reescreve o arquivo inteiro. O que é
  * do Mangangá **compõe** o botão de fábrica, que continua tratando foco,
- * `disabled`, `render` e ícone.
+ * `disabled`, `render` e ícone. O nome ficou `PillButton` da primeira versão,
+ * redonda, e trocá-lo agora seria mexer em todo consumidor por estética.
  *
- *   ink            a ação principal: verde-mata com texto branco
- *   outline        a secundária ao lado dela
- *   light          a principal sobre o palco escuro: branco com texto verde
- *   light-outline  a secundária sobre o palco
+ *   ink            a ação principal: verde-mata com letra cor de osso
+ *   outline        a secundária, só a tinta do contorno
+ *   light          a principal sobre a folha verde: osso com letra verde
+ *   light-outline  a secundária sobre a folha verde
  */
 const pillVariants = cva(
-  "rounded-full border-[1.5px] font-semibold transition-[background-color,border-color,color,transform] duration-300 ease-out-expo active:scale-[0.98] motion-reduce:transition-none [&_svg:not([class*='size-'])]:size-4",
+  "rounded-sm border-2 font-bold tracking-[0.02em] uppercase transition-[transform,box-shadow,background-color,color] duration-150 ease-out-expo active:translate-x-[3px] active:translate-y-[3px] active:shadow-none motion-reduce:transition-none [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       tone: {
-        ink: 'border-transparent bg-primary text-primary-foreground shadow-[0_10px_28px_-14px_var(--primary)] hover:bg-primary/90 hover:text-primary-foreground',
+        ink: 'border-ink bg-primary text-primary-foreground shadow-[4px_4px_0_0_var(--ink)] hover:bg-primary hover:text-primary-foreground hover:shadow-[2px_2px_0_0_var(--ink)] hover:translate-x-[2px] hover:translate-y-[2px]',
         outline:
-          'border-foreground/20 bg-transparent text-foreground hover:border-primary/60 hover:bg-primary/[0.05] hover:text-foreground',
+          'border-ink bg-surface text-foreground shadow-[4px_4px_0_0_var(--ink)] hover:bg-surface hover:text-foreground hover:shadow-[2px_2px_0_0_var(--ink)] hover:translate-x-[2px] hover:translate-y-[2px]',
         light:
-          'border-transparent bg-on-stage text-stage hover:bg-white hover:text-stage',
+          'border-on-stage bg-on-stage text-stage shadow-[4px_4px_0_0_var(--primary-glow)] hover:bg-on-stage hover:text-stage hover:shadow-[2px_2px_0_0_var(--primary-glow)] hover:translate-x-[2px] hover:translate-y-[2px]',
         'light-outline':
-          'border-on-stage/35 bg-transparent text-on-stage hover:border-on-stage/70 hover:bg-on-stage/10 hover:text-on-stage',
+          'border-on-stage bg-transparent text-on-stage hover:bg-on-stage/10 hover:text-on-stage',
       },
       scale: {
         sm: 'h-8 gap-1.5 px-3 text-micro',
-        md: 'h-10 gap-2 px-4 text-small',
+        md: 'h-10 gap-2 px-4 text-micro',
         lg: 'h-12 gap-2 px-6 text-small',
       },
     },

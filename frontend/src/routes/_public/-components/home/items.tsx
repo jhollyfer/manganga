@@ -7,12 +7,15 @@ import { ITEMS } from '#/lib/items'
 import { m } from '#/paraglide/messages'
 
 /**
- * Os itens oficiais num trilho horizontal: quem dá vida ao boi na arena.
+ * Os itens oficiais como um álbum de figurinhas aberto: o trilho horizontal
+ * com uma figurinha de cada papel, levemente tortas como coladas à mão.
  *
  * Trilho de rolagem nativa (`rail`) e não carrossel com biblioteca: o dedo no
  * celular já sabe arrastar, o teclado já sabe rolar, e o leitor de tela lê a
  * lista como lista.
  */
+const TILT = ['-rotate-1', 'rotate-1', 'rotate-0', '-rotate-2', 'rotate-2']
+
 export function Items(): React.JSX.Element {
   return (
     <section data-slot="home-items" className="py-24 md:py-32">
@@ -21,7 +24,7 @@ export function Items(): React.JSX.Element {
           eyebrow={m.home_itemsEyebrow()}
           title={
             <>
-              {m.home_itemsTitleLead()} <em>{m.home_itemsTitleEm()}</em>.
+              {m.home_itemsTitleLead()} <em>{m.home_itemsTitleEm()}</em>
             </>
           }
           action={
@@ -31,9 +34,12 @@ export function Items(): React.JSX.Element {
           }
         />
       </div>
-      <ul className="rail gap-4 px-[max(1rem,calc((100vw-80rem)/2+2rem))] pb-4">
-        {ITEMS.slice(0, 8).map((item) => (
-          <li key={item.slug} className="w-[78vw] shrink-0 sm:w-80">
+      <ul className="rail gap-6 px-[max(1rem,calc((100vw-84rem)/2+2.5rem))] pt-2 pb-8">
+        {ITEMS.slice(0, 8).map((item, index) => (
+          <li
+            key={item.slug}
+            className={`w-[76vw] shrink-0 sm:w-72 ${TILT[index % TILT.length]}`}
+          >
             <ItemCard item={item} />
           </li>
         ))}

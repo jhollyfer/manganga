@@ -43,7 +43,7 @@ function RouteComponent(): React.JSX.Element {
       >
         <div className="mt-10">
           <PillButton
-            tone="light"
+            tone="ink"
             render={
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
                 <WhatsappLogoIcon weight="fill" />
@@ -62,7 +62,7 @@ function RouteComponent(): React.JSX.Element {
               <li key={subject}>
                 <a
                   href={`mailto:${SUBJECT_EMAILS[subject]}`}
-                  className="group flex h-full flex-col rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-primary/50"
+                  className="group flex h-full flex-col border-t-4 border-ink pt-5 transition-colors hover:text-primary-glow"
                 >
                   <EnvelopeSimpleIcon className="size-7 text-primary" />
                   <span className="mt-5 text-body-lg font-semibold">
@@ -120,7 +120,7 @@ function RouteComponent(): React.JSX.Element {
               </li>
             </ul>
           </div>
-          <div className="rounded-[2rem] border border-border bg-background p-6 md:p-10">
+          <div className="sticker p-6 md:p-10">
             <ContactForm key={assunto} subject={assunto} />
           </div>
         </div>

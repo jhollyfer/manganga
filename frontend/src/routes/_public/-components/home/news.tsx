@@ -4,10 +4,17 @@ import { Link } from '@tanstack/react-router'
 import { NewsCard } from '../news-card'
 import { REVEAL, STAGGER } from '../reveal'
 import { SectionAction, SectionHeading } from '../section-heading'
+import { formatShortDate } from '#/lib/dates'
+import { localized } from '#/lib/i18n'
+import { NEWS_CATEGORY_LABELS } from '#/lib/labels'
 import type { NewsArticle } from '#/lib/news'
 import { m } from '#/paraglide/messages'
 
-/** As últimas notícias: a mais nova em destaque, as outras ao lado. */
+/**
+ * As últimas notícias como primeira página de jornal: a manchete com foto de
+ * um lado, as outras como chamadas só de texto do outro. Três cartões iguais
+ * lado a lado é a grade que todo gerador entrega; jornal tem hierarquia.
+ */
 export function News({
   articles,
 }: {
@@ -24,7 +31,7 @@ export function News({
           eyebrow={m.home_newsEyebrow()}
           title={
             <>
-              {m.home_newsTitleLead()} <em>{m.home_newsTitleEm()}</em>.
+              {m.home_newsTitleLead()} <em>{m.home_newsTitleEm()}</em>
             </>
           }
           action={
@@ -33,16 +40,33 @@ export function News({
             </SectionAction>
           }
         />
-        <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
+        <div className="grid gap-12 border-t-4 border-ink pt-10 lg:grid-cols-[1.5fr_1fr]">
           <NewsCard article={featured} featured className={REVEAL} />
-          <ul className="grid gap-10 sm:grid-cols-2 lg:grid-cols-1">
+          <ul className="grid content-start lg:border-l-2 lg:border-ink/15 lg:pl-10">
             {rest.map((article, index) => (
               <li
                 key={article.slug}
-                className={REVEAL}
+                className={`${REVEAL} border-b-2 border-ink/15 py-6 first:pt-0`}
                 style={{ animationDelay: `${(index + 1) * STAGGER}ms` }}
               >
-                <NewsCard article={article} />
+                <Link
+                  to="/noticias/$slug"
+                  params={{ slug: article.slug }}
+                  className="group block"
+                >
+                  <p className="text-micro font-bold tracking-[0.1em] text-primary-glow uppercase">
+                    {NEWS_CATEGORY_LABELS[article.category]()} ·{' '}
+                    <time dateTime={article.date}>
+                      {formatShortDate(article.date)}
+                    </time>
+                  </p>
+                  <h3 className="mt-2 text-h4 transition-colors group-hover:text-primary-glow">
+                    {localized(article.title)}
+                  </h3>
+                  <p className="mt-2 line-clamp-2 text-small text-muted-foreground">
+                    {localized(article.excerpt)}
+                  </p>
+                </Link>
               </li>
             ))}
           </ul>

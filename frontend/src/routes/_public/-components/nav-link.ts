@@ -18,16 +18,16 @@ export const navLinkVariants = cva(
          * reposição: o link do catálogo nasce com altura, recuo e fundo no
          * hover, e aqui ele é uma pílula de texto que só troca de cor.
          */
-        bar: 'h-9 rounded-full bg-transparent px-3.5 py-2 text-small font-medium text-foreground/75 hover:bg-primary/[0.06] hover:text-foreground focus:bg-primary/[0.06] data-popup-open:bg-primary/[0.06] data-[status=active]:text-primary',
+        bar: 'h-9 rounded-sm bg-transparent px-3 py-2 text-micro font-bold tracking-[0.12em] text-foreground uppercase hover:bg-transparent hover:text-primary-glow focus:bg-transparent data-popup-open:bg-transparent data-popup-open:text-primary-glow data-[status=active]:underline data-[status=active]:decoration-2 data-[status=active]:underline-offset-[6px]',
         /**
          * O painel do celular: títulos em serifa, um por linha. `min-h-11`
          * passa com folga dos 44px da WCAG 2.5.5.
          */
         sheet:
-          'flex min-h-11 items-center border-b border-border py-3 font-display text-3xl text-foreground/75 data-[status=active]:text-primary',
+          'flex min-h-11 items-center border-b-2 border-ink/15 py-2 font-display text-4xl font-extrabold text-foreground uppercase data-[status=active]:text-primary-glow',
         /** O rodapé, sobre o palco. `min-h-9` com a entrelinha cobre o alvo. */
         footer:
-          'inline-flex min-h-9 items-center gap-1 text-small text-on-stage/70 hover:text-on-stage',
+          'inline-flex min-h-9 items-center gap-1 text-small text-on-stage/80 hover:text-primary-glow',
       },
     },
     defaultVariants: {

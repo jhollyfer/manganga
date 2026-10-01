@@ -78,14 +78,14 @@ function RouteComponent(): React.JSX.Element {
                   type="button"
                   onClick={() => setOpen(image)}
                   data-tall={index % 3 === 0}
-                  className="group relative block aspect-[4/3] w-full overflow-hidden rounded-2xl bg-stage text-left data-[tall=true]:aspect-[3/4] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                  className="group relative block aspect-[4/3] w-full overflow-hidden rounded-sm border-2 border-ink bg-stage text-left shadow-[5px_5px_0_0_var(--ink)] data-[tall=true]:aspect-[3/4] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
                 >
                   <CoverImage
                     cover={image.cover}
                     alt={localized(image.caption)}
                     className="transition-transform duration-700 ease-out-expo group-hover:scale-[1.04] motion-reduce:transition-none"
                   />
-                  <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-stage/90 to-transparent p-4 pt-10 text-small text-on-stage opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
+                  <span className="absolute inset-x-0 bottom-0 translate-y-full bg-ink p-3 text-small text-background transition-transform group-hover:translate-y-0 group-focus-visible:translate-y-0 motion-reduce:transition-none">
                     {localized(image.caption)}
                   </span>
                 </button>

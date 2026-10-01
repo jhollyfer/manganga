@@ -41,21 +41,21 @@ export function LanguageSwitcher(): React.JSX.Element {
       <DropdownMenuTrigger
         data-slot="language-switcher"
         aria-label={m.a11y_changeLanguage()}
-        className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-[11px] font-medium tracking-[0.18em] text-foreground/70 uppercase transition-[color,border-color] duration-500 ease-out-expo hover:border-foreground/30 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring motion-reduce:transition-none"
+        className="inline-flex min-h-9 items-center gap-1.5 rounded-sm border-2 border-ink px-2.5 py-1 text-micro font-bold tracking-[0.12em] text-foreground uppercase transition-colors hover:bg-ink hover:text-background focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring motion-reduce:transition-none"
       >
         {current.label}
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="end"
         sideOffset={10}
-        className="min-w-[180px] rounded-2xl border border-border bg-background/95 p-1.5 backdrop-blur-xl"
+        className="min-w-[180px] rounded-sm border-2 border-ink bg-background p-1 shadow-[4px_4px_0_0_var(--ink)]"
       >
         {OPTIONS.map((option) => (
           <DropdownMenuItem
             key={option.code}
             data-current={option.code === locale}
             onClick={() => setLocale(option.code)}
-            className="flex cursor-pointer items-center justify-between rounded-xl px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground data-[current=true]:bg-foreground/5 data-[current=true]:text-foreground"
+            className="flex cursor-pointer items-center justify-between rounded-sm px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground data-[current=true]:bg-foreground/5 data-[current=true]:text-foreground"
           >
             <span>{option.native}</span>
             <span className="text-[10px] font-medium tracking-[0.22em] uppercase">
