@@ -1,26 +1,13 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
+# Segredos. O `frontend/.gitignore` cobre o projeto, mas a raiz não cobria nada,
+# e um `.env` criado aqui por engano entraria no commit sem ninguém notar.
 .env
+.env.local
+
+# IDE da JetBrains.
+.idea/
+
+node_modules/
+
+# Build solto na raiz. O site é `frontend/`, e o build dele sai em
+# `frontend/.output/`, que o `frontend/.gitignore` já cobre.
+dist/
