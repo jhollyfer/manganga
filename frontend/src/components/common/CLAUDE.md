@@ -21,6 +21,7 @@ do carrinho e dos formulários. Sobe para cá o que uma área **fora** da vitrin
 | `not-found-page.tsx` | o `router.tsx` desenha o 404 e o erro fora de qualquer casca    |
 | `brand-mark.tsx`     | a estrela do Besouro aparece na vitrine, na entrada e no painel |
 | `theme-toggle.tsx`   | a vitrine e o painel alternam o tema com o mesmo botão          |
+| `scenery.tsx`        | a paisagem desenhada serve a vitrine e o 404 do `router.tsx`    |
 
 ## Compound onde há estado compartilhado
 

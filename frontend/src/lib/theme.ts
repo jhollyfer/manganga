@@ -63,7 +63,7 @@ export const THEME = {
         en: 'Raimundo Dimas came from the Northeast and found his sea in the Javari. Fishing taught him the timing of the waters, and on alley 50 he gave the neighbourhood a boi to call its own.',
         es: 'Raimundo Dimas vino del Nordeste y encontró en el Yavarí su mar. Pescando aprendió el tiempo de las aguas, y en el callejón 50 le dio al barrio un boi para llamar suyo.',
       },
-      cover: { kind: 'photo', photo: 'boi', focus: '50% 40%' },
+      cover: { kind: 'art', art: 'rio' },
     },
     {
       numeral: 'III',
@@ -99,7 +99,7 @@ export const THEME = {
         en: "The forest standing, the river full of fish, the party on everyone's street. Mangangá's utopia is the one the elders already knew, and the arena is where it exists again for one night.",
         es: 'La selva en pie, el río con peces, la fiesta en la calle de todos. La utopía del Mangangá es la que los mayores ya conocieron, y la arena es donde vuelve a existir por una noche.',
       },
-      cover: { kind: 'photo', photo: 'festival', focus: '50% 60%' },
+      cover: { kind: 'art', art: 'bandeirinhas' },
     },
   ] satisfies ReadonlyArray<ThemeChapter>,
 }

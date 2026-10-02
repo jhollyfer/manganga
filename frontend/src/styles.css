@@ -118,6 +118,25 @@
   --chart-3: #9a650f;
   --chart-4: #1f6f7a;
   --chart-5: #5aa874;
+
+  /*
+   * A paisagem das cenas (`components/common/scenery.tsx`): o céu, a mata em
+   * três planos, o rio e as luzes. O amarelo das luzes só existe dentro da
+   * cena, nunca na interface.
+   */
+  --sky-top: #d9e6df;
+  --sky-low: #eff1ec;
+  --sun: #fbf9ef;
+  --forest-back: #b7cfbf;
+  --forest-mid: #84ad93;
+  --forest-front: #3d7652;
+  --house: #2c4a39;
+  --river: #bcd6cf;
+  --river-deep: #e4ece7;
+  --river-glint: rgba(255, 255, 255, 0.85);
+  --lights: #e2b043;
+  --star: #1f9d55;
+  --star-dust: #e4e8e2;
 }
 
 /* A mesma revista à noite: o papel vira mata fechada, a tinta vira neblina. */
@@ -180,6 +199,20 @@
   --chart-3: #e0ad45;
   --chart-4: #4fb3c0;
   --chart-5: #a6d9b4;
+
+  --sky-top: #060f0a;
+  --sky-low: #10241a;
+  --sun: transparent;
+  --forest-back: #143022;
+  --forest-mid: #0e2219;
+  --forest-front: #08140e;
+  --house: #050c08;
+  --river: #0f241c;
+  --river-deep: #0a1611;
+  --river-glint: rgba(228, 232, 226, 0.28);
+  --lights: #f2c75c;
+  --star: #36b96c;
+  --star-dust: #e4e8e2;
 }
 
 @theme inline {
@@ -488,5 +521,33 @@
 
   & > * {
     scroll-snap-align: start;
+  }
+}
+
+/*
+ * O dia e a noite das cenas. Por classe e não por JS, como no céu do maiyu:
+ * o tema escuro chega antes da hidratação, e decidir em React desenharia o
+ * céu errado no primeiro quadro.
+ */
+.dark .scene-day {
+  display: none;
+}
+
+.scene-night {
+  display: none;
+}
+
+.dark .scene-night {
+  display: inline;
+}
+
+/* As estrelas da noite de festival piscam devagar, cada uma no seu tempo. */
+@utility twinkle {
+  animation: twinkle 6s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  50% {
+    opacity: 0.25;
   }
 }

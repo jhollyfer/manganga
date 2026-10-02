@@ -42,7 +42,7 @@ function RouteComponent(): React.JSX.Element {
         eyebrow={m.gallery_pageTitle()}
         title={m.home_galleryTitle()}
         lead={m.gallery_pageLead()}
-        cover={{ kind: 'photo', photo: 'festival', focus: '50% 70%' }}
+        cover={{ kind: 'art', art: 'mata' }}
         crumbs={[{ label: m.nav_groupBoi() }]}
       />
 

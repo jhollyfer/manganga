@@ -3,46 +3,34 @@ import { Link } from '@tanstack/react-router'
 
 import { PillButton } from '../pill-button'
 import { REVEAL } from '../reveal'
+import { Scene } from '#/components/common/scenery'
 import { localized } from '#/lib/i18n'
-import { PHOTOS } from '#/lib/media'
 import { SEASON_YEAR, SITE_TITLE } from '#/lib/site'
 import { THEME } from '#/lib/theme'
 import { cn } from '#/lib/utils'
 import { m } from '#/paraglide/messages'
 
 /**
- * O hero: a foto da festa de ponta a ponta, e o nome do boi sobre ela.
+ * O hero: a estrela do Besouro nascendo sobre a mata do Javari, de ponta a
+ * ponta, e o nome do boi no céu.
  *
- * A versão cartaz montava uma colagem (bandeirinhas desenhadas, selo girando,
- * recorte torto com sombra deslocada, canhoto de ingresso) e cada peça era um
- * enfeite a mais disputando o olho. Aqui a foto é o cartaz: o texto encosta
- * no canto de baixo, sobre um véu escuro que só existe para a letra ler, e o
- * hero tem quatro coisas e não mais (rótulo, título, frase, ações). A
- * contagem para o festival foi para a agenda, que é onde ela informa.
+ * Cena desenhada e não foto: a foto que estava aqui era gerada por IA, e é a
+ * primeira coisa que se vê. De dia (tema claro) o céu é claro e a letra é
+ * tinta; à noite (tema escuro) é noite de festival, com estrelas, e a letra
+ * clareia junto com o tema, sem véu escuro por cima de nada.
  *
- * A foto entra com `fetchPriority="high"` porque é ela que o LCP mede.
+ * Quatro coisas e não mais: rótulo, título, frase, ações.
  */
 export function Hero(): React.JSX.Element {
   return (
     <section
       data-slot="home-hero"
-      className="stage relative isolate flex min-h-[100dvh] items-end overflow-hidden"
+      className="relative isolate flex min-h-[100dvh] flex-col overflow-hidden"
     >
-      <img
-        src={PHOTOS.festival}
-        alt=""
-        fetchPriority="high"
-        decoding="async"
-        className="absolute inset-0 -z-20 size-full object-cover object-[50%_35%]"
-      />
-      {/* Véu de leitura: escurece só a faixa de baixo, onde o texto mora. */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgb(8_20_13/0.92)_0%,rgb(8_20_13/0.55)_45%,rgb(8_20_13/0.1)_75%)]"
-      />
+      <Scene scene="estrela" className="absolute inset-0 -z-10" />
 
-      <div className="container-x w-full pt-28 pb-14 md:pb-20">
-        <p className={cn(REVEAL, 'eyebrow mb-4 text-on-stage/80')}>
+      <div className="container-x w-full pt-28 pb-[34vh] md:pt-36 md:pb-[30vh]">
+        <p className={cn(REVEAL, 'eyebrow mb-4 text-muted-foreground')}>
           {m.home_heroEyebrow({ year: SEASON_YEAR })}
         </p>
         <h1 className={cn(REVEAL, 'delay-75')}>
@@ -53,27 +41,23 @@ export function Hero(): React.JSX.Element {
             {localized(THEME.title)}
           </em>
         </h1>
-        <div className="mt-8 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-          <p
-            className={cn(
-              REVEAL,
-              'max-w-[44ch] text-body-lg leading-relaxed text-on-stage/85 delay-150',
-            )}
-          >
-            {m.home_heroLead()}
-          </p>
-          <div
-            className={cn(REVEAL, 'flex shrink-0 flex-wrap gap-3 delay-200')}
-          >
-            <PillButton
-              tone="light"
-              render={<Link to="/tema">{m.home_heroThemeCta()}</Link>}
-            />
-            <PillButton
-              tone="light-outline"
-              render={<Link to="/agenda">{m.home_heroAgendaCta()}</Link>}
-            />
-          </div>
+        <p
+          className={cn(
+            REVEAL,
+            'mt-6 max-w-[44ch] text-body-lg leading-relaxed text-muted-foreground delay-150',
+          )}
+        >
+          {m.home_heroLead()}
+        </p>
+        <div className={cn(REVEAL, 'mt-8 flex flex-wrap gap-3 delay-200')}>
+          <PillButton
+            tone="ink"
+            render={<Link to="/tema">{m.home_heroThemeCta()}</Link>}
+          />
+          <PillButton
+            tone="outline"
+            render={<Link to="/agenda">{m.home_heroAgendaCta()}</Link>}
+          />
         </div>
       </div>
     </section>

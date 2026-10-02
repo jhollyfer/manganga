@@ -58,7 +58,7 @@ function RouteComponent(): React.JSX.Element {
           </>
         }
         lead={m.member_pageLead()}
-        cover={{ kind: 'photo', photo: 'festival', focus: '85% 55%' }}
+        cover={{ kind: 'art', art: 'tambor' }}
       >
         <div className="mt-10 flex flex-wrap gap-3">
           <PillButton

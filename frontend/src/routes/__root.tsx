@@ -65,7 +65,7 @@ export const Route = createRootRouteWithContext<RouterContext>()({
       { property: 'og:title', content: m.meta_title() },
       { property: 'og:description', content: m.meta_description() },
       { property: 'og:image', content: SITE_IMAGE },
-      { property: 'og:image:type', content: 'image/jpeg' },
+      { property: 'og:image:type', content: 'image/png' },
       { property: 'og:image:width', content: '1024' },
       { property: 'og:image:height', content: '1024' },
       { name: 'twitter:card', content: 'summary' },

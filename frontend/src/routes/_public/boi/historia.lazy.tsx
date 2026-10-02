@@ -31,7 +31,7 @@ function RouteComponent(): React.JSX.Element {
           </>
         }
         lead={m.history_pageLead()}
-        cover={{ kind: 'photo', photo: 'boi', focus: '50% 35%' }}
+        cover={{ kind: 'art', art: 'rio' }}
         crumbs={[{ label: m.nav_groupBoi() }]}
       />
 
@@ -40,10 +40,7 @@ function RouteComponent(): React.JSX.Element {
           <div
             className={`${REVEAL} sticker relative mx-auto aspect-square w-full max-w-md overflow-hidden p-0`}
           >
-            <CoverImage
-              cover={{ kind: 'photo', photo: 'festival', focus: '50% 35%' }}
-              alt={m.home_manifestoImageAlt()}
-            />
+            <CoverImage cover={{ kind: 'art', art: 'tambor' }} />
           </div>
           <div className={REVEAL}>
             <p className="eyebrow mb-3 text-primary-glow">

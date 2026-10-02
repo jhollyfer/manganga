@@ -2,9 +2,8 @@ import { createFileRoute, notFound } from '@tanstack/react-router'
 
 import { pageHead } from '#/lib/head'
 import { localized, localizedUrl } from '#/lib/i18n'
-import { PHOTOS } from '#/lib/media'
 import { newsBySlug } from '#/lib/news'
-import { SITE_IMAGE, SITE_TITLE, absoluteUrl } from '#/lib/site'
+import { SITE_IMAGE, SITE_TITLE } from '#/lib/site'
 import {
   breadcrumbListJsonLd,
   jsonLdScript,
@@ -38,9 +37,9 @@ export const Route = createFileRoute('/_public/noticias/$slug')({
     const title = localized(article.title)
     const description = localized(article.excerpt)
 
-    let image = SITE_IMAGE
-    if (article.cover.kind === 'photo')
-      image = absoluteUrl(PHOTOS[article.cover.photo])
+    // A capa é uma cena em SVG, que rede social não mostra: a prévia usa a
+    // imagem do site até a notícia ter foto própria.
+    const image = SITE_IMAGE
 
     return {
       ...pageHead({ path, title, description, image, type: 'article' }),

@@ -46,7 +46,7 @@ function RouteComponent(): React.JSX.Element {
         eyebrow={m.theme_pageTitle({ year: SEASON_YEAR })}
         title={localized(THEME.title)}
         lead={localized(THEME.lead)}
-        cover={{ kind: 'photo', photo: 'festival', focus: '50% 30%' }}
+        cover={{ kind: 'art', art: 'estrela' }}
         crumbs={[{ label: m.nav_groupBoi() }]}
       >
         <div className="mt-10">

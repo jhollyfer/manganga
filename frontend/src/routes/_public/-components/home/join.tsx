@@ -3,7 +3,7 @@ import { Link } from '@tanstack/react-router'
 
 import { PillButton } from '../pill-button'
 import { REVEAL } from '../reveal'
-import { PHOTOS } from '#/lib/media'
+import { Scene } from '#/components/common/scenery'
 import { cn } from '#/lib/utils'
 import { m } from '#/paraglide/messages'
 
@@ -46,13 +46,9 @@ export function Join(): React.JSX.Element {
           </div>
         </div>
         <div className={cn(REVEAL, 'delay-150 lg:col-span-4 lg:col-start-9')}>
-          <img
-            src={PHOTOS.boi}
-            alt={m.home_manifestoImageAlt()}
-            loading="lazy"
-            decoding="async"
-            className="aspect-[4/5] w-full object-cover object-[50%_30%]"
-          />
+          <div className="aspect-[4/5] w-full overflow-hidden">
+            <Scene scene="bandeirinhas" />
+          </div>
           <dl className="mt-8 grid gap-6">
             {paths.map((path) => (
               <div key={path.title}>

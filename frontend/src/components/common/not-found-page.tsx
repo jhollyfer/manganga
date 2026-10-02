@@ -3,6 +3,7 @@ import { Link } from '@tanstack/react-router'
 import { ArrowLeftIcon } from '@phosphor-icons/react'
 
 import { BrandStar } from '#/components/common/brand-mark'
+import { Scene } from '#/components/common/scenery'
 import { Button } from '#/components/ui/button'
 import { ButtonGroup } from '#/components/ui/button-group'
 import { cn } from '#/lib/utils'
@@ -13,7 +14,7 @@ type NotFoundPageProps = Merge<
   React.ComponentProps<'section'>,
   {
     /**
-     * O código na pílula. `404` por padrão; a fronteira de erro do router passa
+     * O código acima do título. `404` por padrão; a fronteira de erro do router passa
      * `500`, e sem este parâmetro anunciaria "404" para uma falha de servidor.
      */
     code?: React.ReactNode
@@ -24,8 +25,8 @@ type NotFoundPageProps = Merge<
  * A página de saída: endereço que não existe, e também erro não tratado.
  *
  * A mesma API compound do academy (`Title`, `Subtitle`, `Description`,
- * `Actions`, `HomeButton`), com a cara do Mangangá: o palco escuro, a estrela
- * do Besouro e a pílula com o código. Sem children, escreve o 404 genérico; a
+ * `Actions`, `HomeButton`), com a cara do Mangangá: a beira do rio desenhada
+ * (`Scene`), a estrela do Besouro e o código. Sem children, escreve o 404 genérico; a
  * fronteira de erro troca as partes que quiser.
  */
 export function NotFoundPage({
@@ -38,14 +39,14 @@ export function NotFoundPage({
     <section
       data-slot="not-found-page"
       className={cn(
-        'stage relative flex min-h-dvh items-center overflow-hidden px-4 pt-16',
+        'relative flex min-h-dvh flex-col overflow-hidden pt-16 [--on-stage:var(--foreground)]',
         className,
       )}
       {...props}
     >
-      <div className="relative mx-auto flex max-w-3xl flex-col items-center py-24 text-center">
-        <BrandStar className="mb-8 size-16" />
-        <span className="mb-7 inline-flex items-center rounded-full border border-brand-leaf/40 bg-brand-leaf/10 px-3.5 py-1.5 text-micro font-bold text-brand-leaf">
+      <div className="relative mx-auto flex max-w-3xl flex-col items-center px-4 pt-16 pb-10 text-center md:pt-24">
+        <BrandStar className="mb-8 size-14" />
+        <span className="mb-6 text-small font-semibold text-muted-foreground tabular-nums">
           {code}
         </span>
         {children ?? (
@@ -59,6 +60,11 @@ export function NotFoundPage({
             </NotFoundPageActions>
           </>
         )}
+      </div>
+      {/* A beira do rio embaixo do texto, e não atrás dele: as palafitas
+          disputariam a leitura. A borda de cima some no papel. */}
+      <div className="mt-auto h-[38vh] min-h-56 [mask-image:linear-gradient(to_bottom,transparent,black_35%)]">
+        <Scene scene="rio" />
       </div>
     </section>
   )
@@ -147,7 +153,7 @@ export function NotFoundPageHomeButton({
       variant="outline"
       size="lg"
       data-slot="not-found-page-home-button"
-      className="w-fit rounded-full border-on-stage/30 bg-transparent px-6 text-on-stage hover:bg-on-stage/10 hover:text-on-stage"
+      className="w-fit rounded-none border-on-stage/30 bg-transparent px-6 text-on-stage hover:bg-on-stage/10 hover:text-on-stage"
       render={
         <Link to={to}>
           <ArrowLeftIcon />

@@ -101,9 +101,16 @@ skills `design-taste-frontend`, `redesign-existing-projects` e
   destaque das páginas internas, `stage` (verde escuro) só no convite final
   da home, no rodapé e na entrada do painel. `eyebrow` em caixa normal e no
   máximo uma a cada três seções.
-- **Imagem**: foto de verdade, reta e larga. Registro sem foto usa um recorte
-  duotone das fotos do acervo (`artwork.tsx`), nunca ilustração desenhada em
-  SVG. Nada colado por cima da foto além do véu de leitura do hero.
+- **Imagem**: nada de foto gerada por IA. Até chegarem fotos de verdade do
+  curral e da arena, toda imagem é uma cena do Alto Solimões desenhada em SVG
+  com semente fixa, no padrão do céu do maiyu: geometria em
+  `lib/scenery.ts` (mata, rio, palafitas, canoa, arena, fogueira, a estrela
+  do Besouro), desenho em `components/common/scenery.tsx`, cores em tokens
+  (`--sky-*`, `--forest-*`, `--river*`, `--lights`, `--star`), dia no claro e
+  noite de festival no escuro por CSS. Capa é `{ kind: 'art', art }` de
+  `lib/media.ts`. A prévia social (`public/og-image.png`) sai da mesma cena:
+  `node scripts/generate-og.mjs`. Paisagem inteira, nunca enfeite solto (selo,
+  bandeirinha avulsa); nada colado por cima da cena.
 - **O que não volta**: etiqueta em caixa alta espaçada sobre todo título,
   grade de cartões iguais, bloco "número grande e rótulo pequeno", letreiro
   correndo, enfeite girando ou balançando, selo sobre imagem, zigue-zague de

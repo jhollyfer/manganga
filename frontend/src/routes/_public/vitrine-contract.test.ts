@@ -38,6 +38,7 @@ describe('movimento respeita quem pediu menos movimento', () => {
       'footer.tsx',
       'page-hero.tsx',
       'artwork.tsx',
+      '../../../components/common/scenery.tsx',
       'home/hero.tsx',
       'home/manifesto.tsx',
       'home/agenda.tsx',
@@ -49,6 +50,23 @@ describe('movimento respeita quem pediu menos movimento', () => {
       'home/join.tsx',
     ])
       expect(read(components, file)).not.toContain('motion/react')
+  })
+})
+
+describe('as cenas desenhadas', () => {
+  it('as estrelas param para quem pediu menos movimento', () => {
+    // A noite de festival pisca em toda capa do site; sem o freio, quem pediu
+    // menos movimento veria a página inteira cintilando.
+    const scene = read(here, '..', '..', 'components', 'common', 'scenery.tsx')
+
+    expect(scene).toContain('twinkle')
+    expect(scene).toContain('motion-reduce:animate-none')
+  })
+
+  it('não voltam as fotos geradas', () => {
+    // As duas fotos do acervo eram geradas por IA e saíram; uma capa nova que
+    // aponte para elas quebraria em silêncio, com o arquivo apagado.
+    expect(read(here, '..', '..', 'lib', 'media.ts')).not.toContain('.jpg')
   })
 })
 

@@ -26,10 +26,7 @@ export function Toadas(): React.JSX.Element | null {
       <div className="container-x grid gap-14 lg:grid-cols-12 lg:items-start">
         <figure className={cn(REVEAL, 'lg:sticky lg:top-28 lg:col-span-5')}>
           <div className="aspect-square overflow-hidden bg-stage">
-            <CoverImage
-              cover={{ kind: 'photo', photo: 'boi', focus: '50% 30%' }}
-              alt={m.home_manifestoImageAlt()}
-            />
+            <CoverImage cover={{ kind: 'art', art: 'estrela' }} />
           </div>
           <figcaption className="mt-4 flex items-baseline justify-between gap-4">
             <span className="font-display text-h4 font-bold [font-stretch:85%]">

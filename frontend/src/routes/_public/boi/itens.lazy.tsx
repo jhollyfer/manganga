@@ -31,7 +31,7 @@ function RouteComponent(): React.JSX.Element {
           </>
         }
         lead={m.items_pageLead()}
-        cover={{ kind: 'photo', photo: 'festival', focus: '80% 50%' }}
+        cover={{ kind: 'art', art: 'bandeirinhas' }}
         crumbs={[{ label: m.nav_groupBoi() }]}
       />
 

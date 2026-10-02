@@ -29,7 +29,7 @@ export const NEWS: ReadonlyArray<NewsArticle> = [
     slug: 'manganga-abre-inscricoes-para-brincantes-2026',
     date: '2026-09-22',
     category: 'comunidade',
-    cover: { kind: 'photo', photo: 'festival', focus: '50% 30%' },
+    cover: { kind: 'art', art: 'bandeirinhas' },
     title: {
       'pt-BR': 'Mangangá abre inscrições para brincantes da temporada 2026',
       en: 'Mangangá opens sign-ups for 2026 season performers',
@@ -91,7 +91,7 @@ export const NEWS: ReadonlyArray<NewsArticle> = [
     slug: 'tema-2026-e-apresentado-a-galera',
     date: '2026-08-28',
     category: 'festival',
-    cover: { kind: 'photo', photo: 'boi', focus: '50% 35%' },
+    cover: { kind: 'art', art: 'estrela' },
     title: {
       'pt-BR': 'Tema 2026 é apresentado à galera verde',
       en: 'The 2026 theme is unveiled to the green crowd',

@@ -26,7 +26,7 @@ export const SITE_URL = 'https://manganga.maiyu.com.br'
  * fora: caminho relativo em `og:image` resolveria contra o domínio de quem
  * raspa.
  */
-export const SITE_IMAGE = `${SITE_URL}/og-image.jpg`
+export const SITE_IMAGE = `${SITE_URL}/og-image.png`
 
 /** O caminho vira endereço absoluto, para `canonical` e `og:url`. */
 export function absoluteUrl(path: string): string {
